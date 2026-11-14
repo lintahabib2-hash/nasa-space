@@ -1,4 +1,4 @@
-import { render, screen, within } from "@testing-library/react";
+import { act, render, screen, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, expect, it, vi } from "vitest";
 import { BodyMap } from "../../src/components/body-map/BodyMap";
@@ -27,7 +27,7 @@ describe("BodyMap", () => {
     const onSelect = vi.fn();
     render(<BodyMap regions={regions} selected="brain" onSelect={onSelect} />);
     const heart = screen.getByRole("button", { name: /Heart and blood vessels: No sustained change/ });
-    heart.focus();
+    act(() => heart.focus());
     await userEvent.keyboard("{Enter}");
     expect(onSelect).toHaveBeenCalledWith("cardiovascular");
     await userEvent.keyboard(" ");

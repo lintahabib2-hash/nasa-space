@@ -1,6 +1,6 @@
 # frontend/ (React + Vite + TypeScript)
 
-The crew dashboard for Crew Vitals (Member 3, Frontend & UX).
+The NASA Space Health Monitoring Agent dashboard for crew readiness (Member 3, Frontend & UX).
 
 > Decision support, not a diagnosis. The UI contains **no medical rules**. Every status, reason,
 > baseline and reference band comes from the analytics output (Member 2). The UI only maps the
