@@ -40,3 +40,4 @@ data/external/**
 # Presentation media: link large videos instead of committing them
 presentation/video/*.mp4
 presentation/video/*.mov
+frontend/.vite/
