@@ -1,6 +1,6 @@
 // Loads dashboard data in one of two modes:
 //   fixtures: bundled SIMULATED scenarios. Works offline and on a static host.
-//   api:      Member 2's localhost API (member2/offline_api.py), via the Vite /api proxy.
+//   api:      Member 2's localhost API (prototypes/offline_research/offline_api.py), via the Vite /api proxy.
 // Member 6 can swap this for src/services/apiClient.ts once it exists.
 
 import stable from "./fixtures/crew_01_stable.json";
@@ -76,7 +76,7 @@ export async function loadApiBundle(subjectId: string, signal?: AbortSignal): Pr
     provenance_kind: result.provenance_kind,
     study_id: result.study_id,
     as_of_utc: new Date().toISOString(),
-    generated_by: "member2/offline_api.py",
+    generated_by: "prototypes/offline_research/offline_api.py",
     indicators: [
       {
         measurement: "sleep_duration",

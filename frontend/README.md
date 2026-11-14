@@ -28,7 +28,7 @@ env: `station`, `spacecraft`, `lunar`, `mars`).
 | `VITE_DATA_MODE` | Source | Notes |
 |---|---|---|
 | `fixtures` (default) | `src/features/dashboard/fixtures/*.json`, bundled | Works offline and on a static host. All values are **simulated** (X01) |
-| `api` | Member 2's `member2/offline_api.py` on `127.0.0.1:8766`, proxied as `/api` | Today the API only provides self-reported **sleep duration** |
+| `api` | Member 2's `prototypes/offline_research/offline_api.py` on `127.0.0.1:8766`, proxied as `/api` | Today the API only provides self-reported **sleep duration** |
 
 ```bash
 # api mode (Member 2's server must be running)
@@ -47,8 +47,7 @@ scored by Member 2's real `get_baseline_result()`, so the UI shows the engine's 
 | `crew_03` | missing_data | Missing latest reading → `unknown`, sparse glucose → `insufficient_history`, flat 1–5 scales → `insufficient_scale` |
 
 ```bash
-git show origin/feature/member2-analytics:member2/analytics.py > /tmp/analytics.py
-python scripts/make_fixtures.py --analytics /tmp/analytics.py
+python scripts/make_fixtures.py --analytics ../backend/app/analytics/baseline.py
 ```
 
 ## What is where

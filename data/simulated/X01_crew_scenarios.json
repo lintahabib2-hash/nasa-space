@@ -1,0 +1,379 @@
+{
+  "source_id": "X01",
+  "provenance_kind": "simulated",
+  "description": "Deterministic engineering fixtures only",
+  "not_real_astronaut_data": true,
+  "scenarios": [
+    {
+      "scenario_id": "stable",
+      "source_id": "X01",
+      "provenance_kind": "simulated",
+      "dataset_type": "engineering_fixture_only",
+      "not_real_astronaut_data": true,
+      "history": [
+        {
+          "subject_id": "X01_stable",
+          "study_id": "X01_engineering_fixture",
+          "source_id": "X01",
+          "provenance_kind": "simulated",
+          "measurement": "sleep_duration",
+          "value": 7.0,
+          "units": "hours",
+          "timestamp_utc": "2026-11-01T07:00:00Z",
+          "quality_state": "valid"
+        },
+        {
+          "subject_id": "X01_stable",
+          "study_id": "X01_engineering_fixture",
+          "source_id": "X01",
+          "provenance_kind": "simulated",
+          "measurement": "sleep_duration",
+          "value": 7.2,
+          "units": "hours",
+          "timestamp_utc": "2026-11-02T07:00:00Z",
+          "quality_state": "valid"
+        },
+        {
+          "subject_id": "X01_stable",
+          "study_id": "X01_engineering_fixture",
+          "source_id": "X01",
+          "provenance_kind": "simulated",
+          "measurement": "sleep_duration",
+          "value": 6.9,
+          "units": "hours",
+          "timestamp_utc": "2026-11-03T07:00:00Z",
+          "quality_state": "valid"
+        },
+        {
+          "subject_id": "X01_stable",
+          "study_id": "X01_engineering_fixture",
+          "source_id": "X01",
+          "provenance_kind": "simulated",
+          "measurement": "sleep_duration",
+          "value": 7.1,
+          "units": "hours",
+          "timestamp_utc": "2026-11-04T07:00:00Z",
+          "quality_state": "valid"
+        },
+        {
+          "subject_id": "X01_stable",
+          "study_id": "X01_engineering_fixture",
+          "source_id": "X01",
+          "provenance_kind": "simulated",
+          "measurement": "sleep_duration",
+          "value": 7.3,
+          "units": "hours",
+          "timestamp_utc": "2026-11-05T07:00:00Z",
+          "quality_state": "valid"
+        },
+        {
+          "subject_id": "X01_stable",
+          "study_id": "X01_engineering_fixture",
+          "source_id": "X01",
+          "provenance_kind": "simulated",
+          "measurement": "sleep_duration",
+          "value": 7.05,
+          "units": "hours",
+          "timestamp_utc": "2026-11-06T07:00:00Z",
+          "quality_state": "valid"
+        },
+        {
+          "subject_id": "X01_stable",
+          "study_id": "X01_engineering_fixture",
+          "source_id": "X01",
+          "provenance_kind": "simulated",
+          "measurement": "sleep_duration",
+          "value": 7.15,
+          "units": "hours",
+          "timestamp_utc": "2026-11-07T07:00:00Z",
+          "quality_state": "valid"
+        },
+        {
+          "subject_id": "X01_stable",
+          "study_id": "X01_engineering_fixture",
+          "source_id": "X01",
+          "provenance_kind": "simulated",
+          "measurement": "sleep_duration",
+          "value": 7.1,
+          "units": "hours",
+          "timestamp_utc": "2026-11-08T07:00:00Z",
+          "quality_state": "valid"
+        },
+        {
+          "subject_id": "X01_stable",
+          "study_id": "X01_engineering_fixture",
+          "source_id": "X01",
+          "provenance_kind": "simulated",
+          "measurement": "sleep_duration",
+          "value": 7.2,
+          "units": "hours",
+          "timestamp_utc": "2026-11-09T07:00:00Z",
+          "quality_state": "valid"
+        }
+      ],
+      "current": {
+        "subject_id": "X01_stable",
+        "study_id": "X01_engineering_fixture",
+        "source_id": "X01",
+        "provenance_kind": "simulated",
+        "measurement": "sleep_duration",
+        "value": 7.1,
+        "units": "hours",
+        "timestamp_utc": "2026-11-10T07:00:00Z",
+        "quality_state": "valid"
+      },
+      "expected_status": "no_persistent_flag"
+    },
+    {
+      "scenario_id": "downward_drift",
+      "source_id": "X01",
+      "provenance_kind": "simulated",
+      "dataset_type": "engineering_fixture_only",
+      "not_real_astronaut_data": true,
+      "history": [
+        {
+          "subject_id": "X01_downward_drift",
+          "study_id": "X01_engineering_fixture",
+          "source_id": "X01",
+          "provenance_kind": "simulated",
+          "measurement": "sleep_duration",
+          "value": 7.0,
+          "units": "hours",
+          "timestamp_utc": "2026-11-01T07:00:00Z",
+          "quality_state": "valid"
+        },
+        {
+          "subject_id": "X01_downward_drift",
+          "study_id": "X01_engineering_fixture",
+          "source_id": "X01",
+          "provenance_kind": "simulated",
+          "measurement": "sleep_duration",
+          "value": 7.2,
+          "units": "hours",
+          "timestamp_utc": "2026-11-02T07:00:00Z",
+          "quality_state": "valid"
+        },
+        {
+          "subject_id": "X01_downward_drift",
+          "study_id": "X01_engineering_fixture",
+          "source_id": "X01",
+          "provenance_kind": "simulated",
+          "measurement": "sleep_duration",
+          "value": 6.9,
+          "units": "hours",
+          "timestamp_utc": "2026-11-03T07:00:00Z",
+          "quality_state": "valid"
+        },
+        {
+          "subject_id": "X01_downward_drift",
+          "study_id": "X01_engineering_fixture",
+          "source_id": "X01",
+          "provenance_kind": "simulated",
+          "measurement": "sleep_duration",
+          "value": 7.1,
+          "units": "hours",
+          "timestamp_utc": "2026-11-04T07:00:00Z",
+          "quality_state": "valid"
+        },
+        {
+          "subject_id": "X01_downward_drift",
+          "study_id": "X01_engineering_fixture",
+          "source_id": "X01",
+          "provenance_kind": "simulated",
+          "measurement": "sleep_duration",
+          "value": 7.3,
+          "units": "hours",
+          "timestamp_utc": "2026-11-05T07:00:00Z",
+          "quality_state": "valid"
+        },
+        {
+          "subject_id": "X01_downward_drift",
+          "study_id": "X01_engineering_fixture",
+          "source_id": "X01",
+          "provenance_kind": "simulated",
+          "measurement": "sleep_duration",
+          "value": 7.05,
+          "units": "hours",
+          "timestamp_utc": "2026-11-06T07:00:00Z",
+          "quality_state": "valid"
+        },
+        {
+          "subject_id": "X01_downward_drift",
+          "study_id": "X01_engineering_fixture",
+          "source_id": "X01",
+          "provenance_kind": "simulated",
+          "measurement": "sleep_duration",
+          "value": 7.15,
+          "units": "hours",
+          "timestamp_utc": "2026-11-07T07:00:00Z",
+          "quality_state": "valid"
+        },
+        {
+          "subject_id": "X01_downward_drift",
+          "study_id": "X01_engineering_fixture",
+          "source_id": "X01",
+          "provenance_kind": "simulated",
+          "measurement": "sleep_duration",
+          "value": 6.5,
+          "units": "hours",
+          "timestamp_utc": "2026-11-08T07:00:00Z",
+          "quality_state": "valid"
+        },
+        {
+          "subject_id": "X01_downward_drift",
+          "study_id": "X01_engineering_fixture",
+          "source_id": "X01",
+          "provenance_kind": "simulated",
+          "measurement": "sleep_duration",
+          "value": 6.0,
+          "units": "hours",
+          "timestamp_utc": "2026-11-09T07:00:00Z",
+          "quality_state": "valid"
+        }
+      ],
+      "current": {
+        "subject_id": "X01_downward_drift",
+        "study_id": "X01_engineering_fixture",
+        "source_id": "X01",
+        "provenance_kind": "simulated",
+        "measurement": "sleep_duration",
+        "value": 5.5,
+        "units": "hours",
+        "timestamp_utc": "2026-11-10T07:00:00Z",
+        "quality_state": "valid"
+      },
+      "expected_status": "review"
+    },
+    {
+      "scenario_id": "missing_observation",
+      "source_id": "X01",
+      "provenance_kind": "simulated",
+      "dataset_type": "engineering_fixture_only",
+      "not_real_astronaut_data": true,
+      "history": [
+        {
+          "subject_id": "X01_missing_observation",
+          "study_id": "X01_engineering_fixture",
+          "source_id": "X01",
+          "provenance_kind": "simulated",
+          "measurement": "sleep_duration",
+          "value": 7.0,
+          "units": "hours",
+          "timestamp_utc": "2026-11-01T07:00:00Z",
+          "quality_state": "valid"
+        },
+        {
+          "subject_id": "X01_missing_observation",
+          "study_id": "X01_engineering_fixture",
+          "source_id": "X01",
+          "provenance_kind": "simulated",
+          "measurement": "sleep_duration",
+          "value": 7.2,
+          "units": "hours",
+          "timestamp_utc": "2026-11-02T07:00:00Z",
+          "quality_state": "valid"
+        },
+        {
+          "subject_id": "X01_missing_observation",
+          "study_id": "X01_engineering_fixture",
+          "source_id": "X01",
+          "provenance_kind": "simulated",
+          "measurement": "sleep_duration",
+          "value": 6.9,
+          "units": "hours",
+          "timestamp_utc": "2026-11-03T07:00:00Z",
+          "quality_state": "valid"
+        },
+        {
+          "subject_id": "X01_missing_observation",
+          "study_id": "X01_engineering_fixture",
+          "source_id": "X01",
+          "provenance_kind": "simulated",
+          "measurement": "sleep_duration",
+          "value": 7.1,
+          "units": "hours",
+          "timestamp_utc": "2026-11-04T07:00:00Z",
+          "quality_state": "valid"
+        },
+        {
+          "subject_id": "X01_missing_observation",
+          "study_id": "X01_engineering_fixture",
+          "source_id": "X01",
+          "provenance_kind": "simulated",
+          "measurement": "sleep_duration",
+          "value": 7.3,
+          "units": "hours",
+          "timestamp_utc": "2026-11-05T07:00:00Z",
+          "quality_state": "valid"
+        },
+        {
+          "subject_id": "X01_missing_observation",
+          "study_id": "X01_engineering_fixture",
+          "source_id": "X01",
+          "provenance_kind": "simulated",
+          "measurement": "sleep_duration",
+          "value": 7.05,
+          "units": "hours",
+          "timestamp_utc": "2026-11-06T07:00:00Z",
+          "quality_state": "valid"
+        },
+        {
+          "subject_id": "X01_missing_observation",
+          "study_id": "X01_engineering_fixture",
+          "source_id": "X01",
+          "provenance_kind": "simulated",
+          "measurement": "sleep_duration",
+          "value": 7.15,
+          "units": "hours",
+          "timestamp_utc": "2026-11-07T07:00:00Z",
+          "quality_state": "valid"
+        },
+        {
+          "subject_id": "X01_missing_observation",
+          "study_id": "X01_engineering_fixture",
+          "source_id": "X01",
+          "provenance_kind": "simulated",
+          "measurement": "sleep_duration",
+          "value": null,
+          "units": "hours",
+          "timestamp_utc": "2026-11-08T07:00:00Z",
+          "quality_state": "missing"
+        },
+        {
+          "subject_id": "X01_missing_observation",
+          "study_id": "X01_engineering_fixture",
+          "source_id": "X01",
+          "provenance_kind": "simulated",
+          "measurement": "sleep_duration",
+          "value": 7.1,
+          "units": "hours",
+          "timestamp_utc": "2026-11-09T07:00:00Z",
+          "quality_state": "valid"
+        },
+        {
+          "subject_id": "X01_missing_observation",
+          "study_id": "X01_engineering_fixture",
+          "source_id": "X01",
+          "provenance_kind": "simulated",
+          "measurement": "sleep_duration",
+          "value": 7.2,
+          "units": "hours",
+          "timestamp_utc": "2026-11-10T07:00:00Z",
+          "quality_state": "valid"
+        }
+      ],
+      "current": {
+        "subject_id": "X01_missing_observation",
+        "study_id": "X01_engineering_fixture",
+        "source_id": "X01",
+        "provenance_kind": "simulated",
+        "measurement": "sleep_duration",
+        "value": 7.0,
+        "units": "hours",
+        "timestamp_utc": "2026-11-11T07:00:00Z",
+        "quality_state": "valid"
+      },
+      "expected_status": "no_persistent_flag"
+    }
+  ]
+}

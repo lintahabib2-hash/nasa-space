@@ -1,5 +1,5 @@
 // Types the Member 3 UI consumes.
-// `BaselineResult` mirrors Member 2's get_baseline_result() output (member2/analytics.py).
+// `BaselineResult` mirrors Member 2's get_baseline_result() output (backend/app/analytics/baseline.py).
 // Fields marked "requested" are extra fields the UI can use but does not require.
 // When Member 6 publishes shared/schemas, move these to src/types/contracts.ts.
 
