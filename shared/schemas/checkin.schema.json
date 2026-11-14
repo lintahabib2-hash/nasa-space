@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "crew-vitals/checkin@1",
+  "title": "Crew Vitals daily check-in record",
+  "description": "One daily check-in (Member 5). Every indicator is an observation envelope (Project Guide §6). Bounds are input-format checks, not health thresholds.",
+  "type": "object",
+  "required": ["schema", "record_id", "subject_id", "timestamp_utc", "local_day", "method", "provenance_kind", "source_id", "indicators"],
+  "additionalProperties": false,
+  "properties": {
+    "schema": { "const": "crew-vitals/checkin@1" },
+    "record_id": { "type": "string", "minLength": 1 },
+    "subject_id": { "type": "string", "pattern": "^[A-Za-z0-9_-]{1,80}$" },
+    "timestamp_utc": { "type": "string", "format": "date-time" },
+    "local_day": { "type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}$", "description": "Local calendar day, used only for streaks" },
+    "method": { "enum": ["self_reported", "device_measured"] },
+    "provenance_kind": { "const": "manually_entered" },
+    "source_id": { "const": "crew-vitals-daily-check-in" },
+    "indicators": {
+      "type": "object",
+      "required": ["sleep_duration", "mood", "stress", "exercise_minutes"],
+      "additionalProperties": false,
+      "properties": {
+        "sleep_duration": { "$ref": "#/$defs/obs", "properties": { "units": { "const": "hours" }, "value": { "minimum": 0, "maximum": 24 } } },
+        "mood": { "$ref": "#/$defs/obs", "properties": { "units": { "const": "score_1_5" }, "value": { "type": "integer", "minimum": 1, "maximum": 5 } } },
+        "stress": { "$ref": "#/$defs/obs", "properties": { "units": { "const": "score_1_5" }, "value": { "type": "integer", "minimum": 1, "maximum": 5 } } },
+        "exercise_minutes": { "$ref": "#/$defs/obs", "properties": { "units": { "const": "minutes" }, "value": { "type": "integer", "minimum": 0, "maximum": 1440 } } },
+        "resting_heart_rate": { "$ref": "#/$defs/obs", "properties": { "units": { "const": "bpm" }, "value": { "type": "integer", "minimum": 20, "maximum": 250 } } },
+        "body_temperature": { "$ref": "#/$defs/obs", "properties": { "units": { "const": "degC" }, "value": { "minimum": 25, "maximum": 45 } } },
+        "oxygen_saturation": { "$ref": "#/$defs/obs", "properties": { "units": { "const": "percent" }, "value": { "type": "integer", "minimum": 50, "maximum": 100 } } },
+        "systolic_bp": { "$ref": "#/$defs/obs", "properties": { "units": { "const": "mmHg" }, "value": { "type": "integer", "minimum": 40, "maximum": 300 } } },
+        "diastolic_bp": { "$ref": "#/$defs/obs", "properties": { "units": { "const": "mmHg" }, "value": { "type": "integer", "minimum": 20, "maximum": 200 } } },
+        "blood_glucose": { "$ref": "#/$defs/obs", "properties": { "units": { "const": "mg/dL" }, "value": { "type": "integer", "minimum": 10, "maximum": 1000 } } },
+        "radiation_badge_daily_dose": { "$ref": "#/$defs/obs", "properties": { "units": { "const": "uSv/day" }, "value": { "minimum": 0, "maximum": 100000 } } }
+      },
+      "dependentRequired": { "systolic_bp": ["diastolic_bp"], "diastolic_bp": ["systolic_bp"] }
+    }
+  },
+  "$defs": {
+    "obs": {
+      "type": "object",
+      "required": ["source_id", "provenance_kind", "subject_id", "study_id", "measurement", "value", "units", "timestamp_utc", "quality_state", "reference_url"],
+      "additionalProperties": false,
+      "properties": {
+        "source_id": { "const": "crew-vitals-daily-check-in" },
+        "provenance_kind": { "const": "manually_entered" },
+        "subject_id": { "type": "string" },
+        "study_id": { "type": "string" },
+        "measurement": { "type": "string" },
+        "value": { "type": "number" },
+        "units": { "type": "string" },
+        "timestamp_utc": { "type": "string", "format": "date-time" },
+        "quality_state": { "const": "valid" },
+        "reference_url": { "type": "null" }
+      }
+    }
+  }
+}

@@ -266,6 +266,17 @@ button, select, input { font: inherit; color: inherit; }
   border-radius: 10px; padding: 7px 14px; cursor: pointer; font-size: 0.875rem; font-weight: 700; color: var(--accent-ink);
 }
 .btn:hover { border-color: var(--orbit-blue); background: #f7faff; }
+.btn:disabled { opacity: 0.55; cursor: default; }
+.btn--primary { background: var(--orbit-blue); border-color: var(--orbit-blue); color: #ffffff; padding: 9px 18px; font-size: 0.95rem; }
+.btn--primary:hover { background: var(--accent-ink); border-color: var(--accent-ink); }
+
+/* ---------- top navigation ---------- */
+.app-nav { display: flex; gap: 4px; background: rgba(255, 255, 255, 0.75); border: 1px solid var(--border); border-radius: 12px; padding: 4px; }
+.app-nav a {
+  text-decoration: none; color: var(--ink-2); font-weight: 700; font-size: 0.92rem; padding: 7px 14px; border-radius: 9px;
+}
+.app-nav a:hover { color: var(--ink); background: rgba(255, 255, 255, 0.9); }
+.app-nav a[aria-current="page"] { background: var(--surface); color: var(--ink); box-shadow: 0 1px 3px rgba(14, 26, 43, 0.12), inset 0 -2px 0 var(--launch-orange); }
 
 .guidance { border-radius: 10px; padding: 10px 14px; margin-top: 10px; font-size: 0.92rem; }
 .guidance--selfcare { background: var(--warning-tint); border: 1px solid var(--warning); }
@@ -317,3 +328,4 @@ details.table-view summary { cursor: pointer; color: var(--ink-2); }
 
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
 @media (forced-colors: active) { .chip, .prov, .region .shape { border: 1px solid CanvasText; } }
+.app-header__nav { flex-basis: 100%; display: flex; }

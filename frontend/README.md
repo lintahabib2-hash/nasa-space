@@ -17,6 +17,9 @@ npm run typecheck
 npm run build        # static build in dist/, deployable to any static host
 ```
 
+Pages: `#/` crew dashboard (Member 3) and `#/checkin` daily check-in (Member 5: check-in form,
+reaction-time activity, reminders, streak; data saved in this browser). Contract: `docs/checkin-schema.md`.
+
 Deep links for the demo video: `?crew=crew_02&env=mars` (crew: `crew_01`, `crew_02`, `crew_03`;
 env: `station`, `spacecraft`, `lunar`, `mars`).
 
@@ -59,6 +62,8 @@ python scripts/make_fixtures.py --analytics /tmp/analytics.py
 | `src/components/evidence-drawer/` | Evidence drawer (sources, provenance, data quality, missing data, limitations) and provenance badge |
 | `src/components/environment-selector/` | ISS / Spacecraft / Lunar / Mars selector and comms-delay banner |
 | `src/features/dashboard/` | Page, data source, types, status display mapping, fixtures, draft knowledge cards |
+| `src/features/checkin/` | Member 5: check-in page, form, validation (`checkinSchema.ts`), local storage, history and export |
+| `src/features/reaction-time/`, `reminders/`, `gamification/` | Member 5: reaction activity, daily reminder, streak |
 
 ## Accessibility checklist
 

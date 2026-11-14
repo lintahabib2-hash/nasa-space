@@ -43,7 +43,7 @@ function HeaderSky() {
   );
 }
 
-export function AppShell({ children }: { children: ReactNode }) {
+export function AppShell({ children, nav }: { children: ReactNode; nav?: ReactNode }) {
   return (
     <>
       <a className="skip-link" href="#main">Skip to main content</a>
@@ -57,6 +57,7 @@ export function AppShell({ children }: { children: ReactNode }) {
             <p className="brand__tag">Daily crew readiness, compared with each astronaut&apos;s own baseline</p>
           </div>
           <span className="brand__event">NASA Space Apps Challenge 2026</span>
+          {nav && <div className="app-header__nav">{nav}</div>}
         </div>
       </header>
       <main id="main" className="page" tabIndex={-1}>
