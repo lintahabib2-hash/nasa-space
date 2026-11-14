@@ -20,21 +20,60 @@ Function:
 
     get_baseline_result(prior_records, current_record)
 
-Each input observation requires:
+Each input observation identifies one series with:
 
 - subject_id
 - study_id
 - source_id
 - provenance_kind
 - measurement
-- value
 - units
-- timestamp_utc
 
-The current record must have a valid timezone-aware timestamp.
+Numerical analysis also requires `value` and a timezone-aware
+`timestamp_utc`, normalized to UTC. Missing current values or
+timestamps produce `status=unknown`; they are never imputed.
+Omitted/null values and omitted/null/empty timestamps are
+treated as absent; other malformed supplied values are rejected.
+
+Series metadata must be non-empty text. The measurement must
+be supported, units must match, and any supplied value must
+be finite and within the documented input-format bounds.
+Any supplied timestamp must be valid. Malformed supplied
+fields raise `ValueError`, even when another field is missing.
+The bounds are form constraints, not clinical reference ranges.
+
+`quality_state` is optional for existing callers. If supplied,
+it must be `valid` or `missing`. A current observation marked
+`missing` produces `unknown` after its supplied fields have
+been validated. Historical observations marked `missing`
+cannot contribute numeric values to the reference.
 
 History is restricted to the same subject, study, source,
 provenance, measurement and units, with earlier timestamps.
+Missing and invalid same-series historical records are excluded
+and counted. Every record in a duplicate timestamp group is
+excluded, so input ordering cannot decide which value wins.
+
+The provisional daily demonstration policy requires the two
+most recent eligible historical observations and the current
+observation to fall on three consecutive UTC calendar dates,
+with no adjacent elapsed-time gap above 48 hours. Same-day
+readings cannot fill daily slots; no daily aggregation is
+performed. Three sparse readings across weeks produce
+`insufficient_persistence_history`, never `review`.
+
+Excluded same-series observations retain a timing barrier:
+missing or invalid records within the candidate persistence
+window prevent a persistence decision. If a same-series
+record has no usable timestamp, its position is unknown and
+persistence cannot be established safely. Older barriers
+outside the candidate window do not interrupt that window.
+
+This timing policy is an engineering convention selected for
+the daily demo, pending agreement with the integration team.
+It is not a NASA-derived or clinically validated threshold.
+The policy does not supply timestamps for date-only research
+records or alter the separate historical research processors.
 
 The result includes statistical status, historical count,
 rejected-history count, reference information, reasons,
@@ -115,8 +154,20 @@ Production suites:
     python -m unittest discover -s backend/tests/unit -p 'test_baseline.py' -q
     python -m unittest discover -s backend/tests/unit -p 'test_member2_adapter_paths.py' -q
     python -m unittest discover -s backend/tests/unit -p 'test_simulated_crew.py' -q
+    python -m unittest discover -s backend/tests/unit -p 'test_review_fixes.py' -q
+    python -m unittest discover -s backend/tests/unit -p 'test_persistence.py' -q
+    python -m unittest discover -s backend/tests/unit -p 'test_validation.py' -q
 
-The dedicated Member 2 workflow executes these suites.
+The dedicated Member 2 workflow checks dependency consistency
+and executes these suites. Frontend verification remains:
+
+    cd frontend
+    npm test
+    npm run typecheck
+    npm run build
+
+Passing these checks does not establish a connected
+check-in-to-FastAPI-to-dashboard flow.
 
 ## Integration boundaries
 

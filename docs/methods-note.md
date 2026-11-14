@@ -28,8 +28,26 @@ A comparison uses only previous observations matching the
 same subject, study, source, provenance, measurement and units.
 
 Observations at or after the current timestamp are excluded.
-Invalid values and duplicate historical timestamps are rejected
-from reference construction and counted separately.
+Missing and invalid same-series historical observations are
+excluded from reference construction and counted separately.
+All records sharing a duplicate historical timestamp are
+excluded; input order cannot select a conflicting value.
+
+Series identifiers must be non-empty text; measurement names
+and units must match the supported input rules. Supplied
+values must be finite and within input-format bounds, and
+supplied timestamps must be valid and timezone-aware. These
+checks apply before the missing-current fallback: malformed
+supplied fields raise `ValueError` even when a different field
+is absent. A genuinely missing current value or timestamp
+produces `unknown` with no statistical score.
+Omitted/null values and omitted/null/empty timestamps are
+treated as absent; other malformed supplied values are rejected.
+
+The optional `quality_state` accepts `valid` or `missing`.
+Omission remains compatible with existing callers. A current
+record marked `missing` produces `unknown`; historical values
+marked `missing` are excluded even if a number was supplied.
 
 The current local check-in API supports sleep duration in
 hours, bounded from 0 to 24.
@@ -45,16 +63,38 @@ For eligible historical values x:
     robust_z = (current - center) / (1.4826 * MAD)
 
 A zero MAD produces `insufficient_scale`, not a forced score.
+An extremely small nonzero spread that produces a non-finite
+score also returns `insufficient_scale` with no score.
 
 When enough history exists, the last two historical readings
 are reserved along with the current reading for persistence
 testing. The reference is calculated without those three
 readings.
 
-The demonstration rule requires three consecutive observations
-on the same side of a robust-z threshold of 3.0.
+The demonstration rule requires all three candidate readings
+on the same side of a robust-z threshold of 3.0. It also
+requires three consecutive UTC calendar dates, with at most
+48 elapsed hours between adjacent readings. Multiple readings
+on one UTC date cannot fill multiple daily slots. The engine
+does not aggregate readings into daily values.
+
+Three readings separated by weeks, a skipped UTC date, or
+same-day candidate readings produce
+`insufficient_persistence_history` instead of a persistence
+decision. Missing or invalid same-series observations retain
+their timing as barriers: a barrier inside the candidate
+window interrupts persistence, while one outside that window
+does not. A same-series record with no usable timestamp cannot
+be located and prevents a safe persistence decision.
+
+This daily cadence and 48-hour maximum are provisional
+engineering conventions selected for the demo, pending team
+coordination. They are not NASA-derived or clinical limits.
+The separate historical research methods retain their original
+time precision; no timestamp is invented for date-only data.
 
 Possible results include:
+- unknown
 - insufficient_history
 - insufficient_scale
 - insufficient_persistence_history
@@ -207,10 +247,11 @@ protections or clinical validation.
 Automated tests cover:
 - subject and study separation
 - valid units and numerical values
-- duplicate and future-record rejection
+- duplicate-group and future-record exclusion
 - missingness preservation
+- malformed supplied fields before missing-current fallback
 - zero-MAD and short-history behavior
-- statistical persistence
+- daily persistence, sparse gaps and interrupted sequences
 - original-source quality flags
 - research provenance checks
 - adapter import compatibility

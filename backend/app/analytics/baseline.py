@@ -4,6 +4,8 @@ from datetime import datetime, timezone
 from math import isfinite
 from statistics import median
 
+from .persistence import persistence_reasons
+
 
 MIN_REFERENCE = 5
 PERSISTENCE_COUNT = 3
@@ -42,60 +44,85 @@ def timestamp(value):
     if not isinstance(value, str):
         raise ValueError("Timestamp must be text")
 
-    dt = datetime.fromisoformat(
-        value.replace("Z", "+00:00")
-    )
+    try:
+        dt = datetime.fromisoformat(value.replace("Z", "+00:00"))
+        if dt.tzinfo is None:
+            raise ValueError("Timestamp must include timezone")
+        return dt.astimezone(timezone.utc)
+    except (ValueError, OverflowError):
+        raise ValueError("Timestamp must be valid and timezone-aware") from None
 
-    if dt.tzinfo is None:
-        raise ValueError("Timestamp must include timezone")
 
-    return dt.astimezone(timezone.utc)
-
-
-def validated(record):
+def _validated_fields(record, *, allow_missing=False):
+    """Validate supplied fields before interpreting genuine missingness."""
     if not isinstance(record, dict):
         raise ValueError("Observation must be an object")
 
-    for field in REQUIRED:
-        if field not in record or record[field] is None:
-            raise ValueError(f"Missing field: {field}")
-
-    if isinstance(record["value"], bool):
-        raise ValueError("Boolean is not a measurement")
-
-    try:
-        value = float(record["value"])
-    except (ValueError, TypeError):
-        raise ValueError("Non-numeric measurement") from None
-
-    if not isfinite(value):
-        raise ValueError("Non-finite measurement")
+    for field in SERIES_ID:
+        if not isinstance(record.get(field), str) or not record[field].strip():
+            raise ValueError(f"Missing or invalid series metadata: {field}")
 
     rule = MEASUREMENT_RULES.get(record["measurement"])
     if rule is None:
         raise ValueError("Unsupported measurement")
 
     units, minimum, maximum, integer = rule
-
     if record["units"] != units:
         raise ValueError("Measurement units mismatch")
 
-    if not minimum <= value <= maximum:
-        raise ValueError("Measurement outside allowed input bounds")
+    if "quality_state" in record and record["quality_state"] not in ("valid", "missing"):
+        raise ValueError("Unsupported observation quality state")
 
-    if integer and not value.is_integer():
-        raise ValueError("Expected an integer measurement")
+    raw_time = record.get("timestamp_utc")
+    when = None if raw_time is None or raw_time == "" else timestamp(raw_time)
 
-    return timestamp(record["timestamp_utc"]), value
+    raw_value = record.get("value")
+    if raw_value is None:
+        value = None
+    else:
+        if isinstance(raw_value, bool):
+            raise ValueError("Boolean is not a measurement")
+
+        try:
+            value = float(raw_value)
+        except (ValueError, TypeError, OverflowError):
+            raise ValueError("Non-numeric measurement") from None
+
+        if not isfinite(value):
+            raise ValueError("Non-finite measurement")
+
+        if not minimum <= value <= maximum:
+            raise ValueError("Measurement outside allowed input bounds")
+
+        if integer and not value.is_integer():
+            raise ValueError("Expected an integer measurement")
+
+    if not allow_missing and (
+        when is None or value is None or record.get("quality_state") == "missing"
+    ):
+        raise ValueError("Measurement or timestamp missing")
+
+    return when, value
 
 
-def get_observations(records, current):
-    """Return valid, prior-only observations of the same series."""
+def validated(record):
+    """Return a usable timestamp/value pair, or raise ValueError."""
+    return _validated_fields(record)
 
-    current_time, _ = validated(current)
+
+def _select_observations(records, current, current_time):
+    """Keep rejected times so filtering cannot manufacture continuity."""
     accepted = []
     rejected = 0
-    seen_times = set()
+    barriers = []
+    by_time = {}
+
+    if isinstance(records, (str, bytes, dict)):
+        raise ValueError("Historical observations must be a collection of records")
+    try:
+        records = iter(records)
+    except TypeError:
+        raise ValueError("Historical observations must be iterable") from None
 
     for record in records:
         if not isinstance(record, dict):
@@ -109,40 +136,52 @@ def get_observations(records, current):
             continue
 
         try:
-            when, value = validated(record)
-        except (ValueError, TypeError, OverflowError):
+            when = timestamp(record.get("timestamp_utc"))
+        except ValueError:
             rejected += 1
+            barriers.append(None)
             continue
 
         if when >= current_time:
             continue
 
-        if when in seen_times:
-            rejected += 1
+        by_time.setdefault(when, []).append(record)
+
+    for when, group in by_time.items():
+        # Exclude every copy, including a valid value paired with an invalid
+        # duplicate. Input order must not decide which observation is used.
+        if len(group) != 1:
+            rejected += len(group)
+            barriers.append(when)
             continue
 
-        seen_times.add(when)
+        try:
+            _, value = validated(group[0])
+        except ValueError:
+            rejected += 1
+            barriers.append(when)
+            continue
         accepted.append((when, value))
 
     accepted.sort(key=lambda item: item[0])
-    return accepted, rejected
+    return accepted, rejected, barriers
+
+
+def get_observations(records, current):
+    """Return valid, prior-only observations of the same series."""
+    current_time, _ = validated(current)
+    history, rejected, _ = _select_observations(records, current, current_time)
+    return history, rejected
 
 
 def get_baseline_result(records, current):
     """Compare a current observation with prior personal history."""
 
-    if not isinstance(current, dict):
-        raise ValueError("Current observation must be an object")
-
-    if any(
-        not isinstance(current.get(key), str) or not current[key]
-        for key in SERIES_ID
-    ):
-        raise ValueError("Missing required series metadata")
+    current_time, current_value = _validated_fields(current, allow_missing=True)
 
     if (
-        current.get("value") is None
-        or not current.get("timestamp_utc")
+        current_value is None
+        or current_time is None
         or current.get("quality_state") == "missing"
     ):
         return {
@@ -165,8 +204,7 @@ def get_baseline_result(records, current):
             "not_medical_diagnosis": True,
         }
 
-    _, current_value = validated(current)
-    history, rejected = get_observations(records, current)
+    history, rejected, barriers = _select_observations(records, current, current_time)
 
     result = {
         "subject_id": current["subject_id"],
@@ -197,7 +235,7 @@ def get_baseline_result(records, current):
     if len(history) >= MIN_REFERENCE + PERSISTENCE_COUNT - 1:
         reference = history[:-2]
         recent = history[-2:] + [
-            (timestamp(current["timestamp_utc"]), current_value)
+            (current_time, current_value)
         ]
     else:
         reference = history
@@ -223,17 +261,26 @@ def get_baseline_result(records, current):
     def score(value):
         return (value - center) / (1.4826 * mad)
 
-    result["robust_z"] = round(score(current_value), 3)
-
-    if not recent:
-        result["status"] = "insufficient_persistence_history"
-        result["quality_state"] = "limited_history"
+    current_score = score(current_value)
+    scores = [score(value) for _, value in recent]
+    if not all(isfinite(z) for z in [current_score, *scores]):
+        result["status"] = "insufficient_scale"
+        result["quality_state"] = "insufficient_scale"
         result["reasons"] = [
-            "More observations needed to assess persistence"
+            "Reference spread is too small to compute finite statistical scores"
         ]
         return result
 
-    scores = [score(value) for _, value in recent]
+    result["robust_z"] = round(current_score, 3)
+
+    cadence_reasons = persistence_reasons(recent, barriers) if recent else []
+    if not recent or cadence_reasons:
+        result["status"] = "insufficient_persistence_history"
+        result["quality_state"] = "limited_history"
+        result["reasons"] = cadence_reasons or [
+            "More observations needed to assess persistence"
+        ]
+        return result
 
     sustained_high = all(
         z >= DEMO_Z_THRESHOLD for z in scores
@@ -248,7 +295,7 @@ def get_baseline_result(records, current):
         direction = "above" if sustained_high else "below"
         result["status"] = "review"
         result["reasons"] = [
-            f"Three consecutive observations {direction} "
+            f"Three observations on consecutive UTC dates {direction} "
             "the personal statistical reference"
         ]
     else:

@@ -1,5 +1,6 @@
-"""Safe states: insufficient history, insufficient scale, unknown
+"""Safe statistical states are returned by baseline.get_baseline_result.
 
-Owner: Member 2 (Data Science & Analytics)
-TODO: implement during the event window.
+Missing current readings produce unknown; limited reference size, zero MAD
+and interrupted daily continuity produce explicit insufficient-data states.
+No values or timestamps are imputed. See docs/methods-note.md.
 """
