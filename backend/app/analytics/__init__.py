@@ -1,5 +1,5 @@
-"""Analytics engine
+"""Crew Vitals non-diagnostic personalized analytics."""
 
-Owner: Member 2 (Data Science & Analytics)
-TODO: implement during the event window.
-"""
+from .baseline import get_baseline_result
+
+__all__ = ["get_baseline_result"]

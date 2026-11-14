@@ -1,5 +1,5 @@
-"""get_observations()
+"""Leakage-safe historical observation selection."""
 
-Owner: Member 2 (Data Science & Analytics)
-TODO: implement during the event window.
-"""
+from .baseline import get_observations
+
+__all__ = ["get_observations"]
