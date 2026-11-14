@@ -143,8 +143,12 @@ describe("CheckInPage", () => {
     expect(localStorage.getItem(STORAGE_KEY)).toBeNull();
   });
 
-  it("explains why each core measurement is taken", () => {
+  it("explains why each core measurement is taken", async () => {
+    // Text comes from Member 1's knowledge file, so read it from there rather than hard-coding it.
+    const { KNOWLEDGE } = await import("../../src/features/dashboard/dataSource");
+    const why = KNOWLEDGE.indicators.sleep_duration.why;
+    expect(why).toBeTruthy();
     render(<CheckInPage />);
-    expect(screen.getByText(/Why: Circadian disruption and fatigue raise error risk/)).toBeInTheDocument();
+    expect(screen.getByText(`Why: ${why}`, { exact: false })).toBeInTheDocument();
   });
 });

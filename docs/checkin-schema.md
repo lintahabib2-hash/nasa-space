@@ -62,6 +62,6 @@ Only complete, valid check-ins are stored. Invalid input shows a message and sav
 
 ## Open integration points
 
-- **Member 2:** `member2/offline_api.py` currently accepts `provenance_kind: "crew_self_report"` and `sleep_duration` only.
+- **Member 2:** `prototypes/offline_research/offline_api.py` currently accepts `provenance_kind: "crew_self_report"` and `sleep_duration` only.
   The check-in uses `manually_entered` (the Project Guide's provenance list). Agree on one value.
 - **Member 6:** sync these local records to the API or IndexedDB, and feed them to the dashboard's analytics.

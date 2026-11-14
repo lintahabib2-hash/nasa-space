@@ -41,3 +41,8 @@ data/external/**
 presentation/video/*.mp4
 presentation/video/*.mov
 frontend/.vite/
+
+# Member 2 offline research prototype
+# Keep local NASA data and generated reports out of Git.
+prototypes/offline_research/data/
+prototypes/offline_research/reports/

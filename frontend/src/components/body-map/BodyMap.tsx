@@ -53,6 +53,9 @@ function SuitDetails() {
       {/* visor */}
       <path className="visor" d="M86 46 Q110 28 134 46 Q136 66 110 72 Q84 66 86 46 Z" fill="url(#visor)" stroke="#8e9bad" strokeWidth="1" />
       <path className="visor" d="M94 44 Q104 36 116 37" fill="none" stroke="#ffffff" strokeWidth="3" strokeLinecap="round" opacity="0.8" />
+      {/* slow light glint across the visor (decorative, stops under reduced motion) */}
+      <path className="visor visor-glint" d="M97 61 L123 45" fill="none" stroke="#ffffff" strokeWidth="5" strokeLinecap="round" pathLength={100} />
+
       {/* chest display and control module */}
       <rect className="suit-detail" x="92" y="112" width="36" height="24" rx="4" />
       <circle className="suit-detail" cx="101" cy="124" r="3.5" />

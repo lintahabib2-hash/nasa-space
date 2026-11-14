@@ -2,11 +2,14 @@ import { render, screen, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, expect, it, vi } from "vitest";
 import { BodyMap } from "../../src/components/body-map/BodyMap";
+import { TrendChart } from "../../src/components/charts/TrendChart";
 import { CommsDelayBanner } from "../../src/components/environment-selector/CommsDelayBanner";
 import { EvidenceDrawer } from "../../src/components/evidence-drawer/EvidenceDrawer";
 import { StatusChip } from "../../src/components/status/StatusChip";
 import { FIXTURE_BUNDLES, KNOWLEDGE } from "../../src/features/dashboard/dataSource";
 import { DashboardPage } from "../../src/features/dashboard/DashboardPage";
+import { ENVIRONMENT_SERIES } from "../../src/features/environment-context/environmentData";
+import { EnvironmentContextCard } from "../../src/features/environment-context/EnvironmentContextCard";
 
 describe("StatusChip", () => {
   it("shows a text label and a tier-specific icon, not colour alone", () => {
@@ -51,6 +54,45 @@ describe("CommsDelayBanner", () => {
   });
 });
 
+describe("TrendChart time axis", () => {
+  const pt = (timestamp_utc: string, value: number | null) => ({ timestamp_utc, value, quality_state: value === null ? "missing" : "valid" });
+
+  it("breaks the line across a long unrecorded gap and lists only real readings", () => {
+    const series = [pt("2026-10-16T06:00:00Z", 7), pt("2026-10-17T06:00:00Z", 7.2), pt("2026-10-18T06:00:00Z", 6.9), pt("2026-11-10T06:00:00Z", 5.1), pt("2026-11-11T06:00:00Z", 5)];
+    const { container } = render(<TrendChart label="Sleep" units="hours" series={series} baseline={7} />);
+    expect(screen.getByText(/Line breaks where no readings were recorded/)).toBeInTheDocument();
+    expect(container.querySelector("[role='img']")?.getAttribute("aria-label")).toMatch(/1 long gap with no readings/);
+    expect(container.querySelectorAll("table tbody tr")).toHaveLength(5);
+  });
+
+  it("shows times, not just dates, for sub-daily instrument data", () => {
+    const series = [pt("2014-09-20T03:59:00Z", 2641), pt("2014-09-20T04:04:00Z", 2646), pt("2014-09-20T04:09:00Z", 2650)];
+    const { container } = render(<TrendChart label="CO2" units="ppm" series={series} baseline={null} />);
+    expect(screen.getByRole("columnheader", { name: /Time \(UTC\)/ })).toBeInTheDocument();
+    expect(container.querySelector("table tbody tr td")?.textContent).toBe("2014-09-20 03:59 UTC");
+  });
+});
+
+describe("EnvironmentContextCard (Member 4, NASA OSDR EDA RR-1)", () => {
+  it("shows real NASA data with attribution and non-personal wording, and no crew status", () => {
+    render(<EnvironmentContextCard data={ENVIRONMENT_SERIES} />);
+    const card = screen.getByTestId("env-card");
+    expect(card.querySelector("[data-provenance='nasa_measured']")).not.toBeNull();
+    expect(within(card).getByRole("link", { name: /NASA OSDR Environmental Data Application/ })).toHaveAttribute("href", "https://visualization.osdr.nasa.gov/eda/");
+    expect(card).toHaveTextContent(/Not this crew member's exposure or dose/);
+    expect(card.querySelectorAll("table tbody tr")).toHaveLength(300);
+    expect(card.querySelector(".chip")).toBeNull();
+    expect(ENVIRONMENT_SERIES.subject_id).toBeNull();
+  });
+
+  it("does not change when the crew member changes", async () => {
+    render(<DashboardPage />);
+    const before = screen.getByTestId("env-card").textContent;
+    await userEvent.click(screen.getByLabelText(/Crew 03/));
+    expect(screen.getByTestId("env-card").textContent).toBe(before);
+  });
+});
+
 describe("EvidenceDrawer", () => {
   const drift = FIXTURE_BUNDLES[1];
   const sleep = drift.indicators.find((i) => i.measurement === "sleep_duration")!;
@@ -75,10 +117,13 @@ describe("DashboardPage (simulated fixtures)", () => {
     render(<DashboardPage />);
     // default subject is crew_01 (stable); switch to the drift scenario
     await userEvent.click(screen.getByLabelText(/Crew 02/));
-    expect(screen.getByTestId("region-panel")).toHaveTextContent("Brain and behavior");
-    expect(screen.getByTestId("comms-banner")).toHaveTextContent("Mars transit");
-    await userEvent.click(screen.getByLabelText("Lunar base"));
-    expect(screen.getByTestId("comms-banner")).toHaveTextContent("1.3 seconds");
+    // Wording comes from Member 1's knowledge file; assert against it, not literal copy.
+    const { mars, lunar } = KNOWLEDGE.environments;
+    expect(screen.getByTestId("region-panel")).toHaveTextContent(KNOWLEDGE.regions.brain.label);
+    expect(screen.getByTestId("comms-banner")).toHaveTextContent(mars.label);
+    await userEvent.click(screen.getByLabelText(lunar.label));
+    expect(screen.getByTestId("comms-banner")).toHaveTextContent(lunar.label);
+    expect(screen.getByTestId("comms-banner")).toHaveTextContent(lunar.one_way_delay);
   });
 
   it("always shows that the scenario is simulated", () => {

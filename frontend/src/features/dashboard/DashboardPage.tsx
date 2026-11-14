@@ -6,6 +6,8 @@ import { EnvironmentSelector } from "../../components/environment-selector/Envir
 import { EvidenceDrawer } from "../../components/evidence-drawer/EvidenceDrawer";
 import { ProvenanceBadge } from "../../components/evidence-drawer/ProvenanceBadge";
 import { StatusChip } from "../../components/status/StatusChip";
+import { ENVIRONMENT_SERIES } from "../environment-context/environmentData";
+import { EnvironmentContextCard } from "../environment-context/EnvironmentContextCard";
 import { configuredMode, FIXTURE_BUNDLES, KNOWLEDGE } from "./dataSource";
 import { fmtValue, humanize } from "./format";
 import { statusDisplay, worstTier, type Tier } from "./statusDisplay";
@@ -88,7 +90,7 @@ export function DashboardPage({ knowledge = KNOWLEDGE }: { knowledge?: Knowledge
         <div className="banner banner--error" role="alert">
           <div>
             <div className="banner__title">Local API unavailable</div>
-            <div className="small">{state.message}. Start member2/offline_api.py, or view the simulated scenarios.</div>
+            <div className="small">{state.message}. Start prototypes/offline_research/offline_api.py, or view the simulated scenarios.</div>
             <button type="button" className="btn" style={{ marginTop: 8 }} onClick={() => setMode("fixtures")}>
               Show simulated scenarios
             </button>
@@ -150,15 +152,8 @@ export function DashboardPage({ knowledge = KNOWLEDGE }: { knowledge?: Knowledge
         </>
       )}
 
-      {/* Member 4 mounts EnvironmentContextCard here. It stays visually separate from crew data. */}
-      <section className="card env-slot" aria-labelledby="env-context-title">
-        <span className="eyebrow">Separate from crew data</span>
-        <h2 id="env-context-title">Historical NASA environment context</h2>
-        <p className="small muted" style={{ margin: 0 }}>
-          Reserved for the NASA-measured environment or radiation panel (Member 4). Historical instrument data, not
-          this crew member's exposure or dose. Never joined to crew readings on timestamp.
-        </p>
-      </section>
+      {/* Member 4: historical NASA environment data. Visually separate, and not driven by the crew selector. */}
+      <EnvironmentContextCard data={ENVIRONMENT_SERIES} />
 
       {evidenceIndicator && (
         <EvidenceDrawer indicator={evidenceIndicator} knowledge={knowledge} onClose={() => setEvidenceFor(null)} />

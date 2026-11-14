@@ -1,7 +1,7 @@
 import { defineConfig } from "vitest/config";
 import react from "@vitejs/plugin-react";
 
-// Member 2's offline API (member2/offline_api.py) listens on 127.0.0.1:8766.
+// Member 2's offline API (prototypes/offline_research/offline_api.py) listens on 127.0.0.1:8766.
 // In `api` data mode the dev server proxies /api there so requests stay same-origin.
 const API_TARGET = process.env.CREW_VITALS_API ?? "http://127.0.0.1:8766";
 

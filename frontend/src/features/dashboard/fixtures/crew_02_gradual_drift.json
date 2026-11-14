@@ -8,7 +8,7 @@
  "provenance_kind": "simulated",
  "study_id": "demo-001",
  "as_of_utc": "2026-11-14T06:00:00Z",
- "generated_by": "frontend/scripts/make_fixtures.py (seeded) + member2/analytics.py get_baseline_result()",
+ "generated_by": "frontend/scripts/make_fixtures.py (seeded) + backend/app/analytics/baseline.py get_baseline_result()",
  "notice": "SIMULATED demo data. Not NASA data and not a real astronaut record.",
  "indicators": [
   {
@@ -32,7 +32,7 @@
     "status": "review",
     "quality_state": "adequate_for_demo",
     "reasons": [
-     "Three consecutive observations below the personal statistical reference"
+     "Three observations on consecutive UTC dates below the personal statistical reference"
     ],
     "severity_basis": "unvalidated_demo_statistical_rule",
     "not_medical_diagnosis": true,
@@ -40,7 +40,7 @@
     "reference_start_utc": "2026-10-16T06:00:00+00:00",
     "reference_end_utc": "2026-11-11T06:00:00+00:00",
     "timestamp_utc": "2026-11-14T06:00:00Z",
-    "result_origin": "member2/analytics.py get_baseline_result()",
+    "result_origin": "backend/app/analytics/baseline.py get_baseline_result()",
     "reference_band": {
      "low": 6.555,
      "high": 7.445,
@@ -229,7 +229,7 @@
     "reference_start_utc": "2026-10-16T06:00:00+00:00",
     "reference_end_utc": "2026-11-11T06:00:00+00:00",
     "timestamp_utc": "2026-11-14T06:00:00Z",
-    "result_origin": "member2/analytics.py get_baseline_result()"
+    "result_origin": "backend/app/analytics/baseline.py get_baseline_result()"
    },
    "series": [
     {
@@ -413,7 +413,7 @@
     "reference_start_utc": "2026-10-16T06:00:00+00:00",
     "reference_end_utc": "2026-11-11T06:00:00+00:00",
     "timestamp_utc": "2026-11-14T06:00:00Z",
-    "result_origin": "member2/analytics.py get_baseline_result()",
+    "result_origin": "backend/app/analytics/baseline.py get_baseline_result()",
     "reference_band": {
      "low": -2.448,
      "high": 6.448,
@@ -594,7 +594,7 @@
     "status": "review",
     "quality_state": "adequate_for_demo",
     "reasons": [
-     "Three consecutive observations above the personal statistical reference"
+     "Three observations on consecutive UTC dates above the personal statistical reference"
     ],
     "severity_basis": "unvalidated_demo_statistical_rule",
     "not_medical_diagnosis": true,
@@ -602,7 +602,7 @@
     "reference_start_utc": "2026-10-16T06:00:00+00:00",
     "reference_end_utc": "2026-11-11T06:00:00+00:00",
     "timestamp_utc": "2026-11-14T06:00:00Z",
-    "result_origin": "member2/analytics.py get_baseline_result()",
+    "result_origin": "backend/app/analytics/baseline.py get_baseline_result()",
     "reference_band": {
      "low": 49.104,
      "high": 66.896,
@@ -791,7 +791,7 @@
     "reference_start_utc": "2026-10-16T06:00:00+00:00",
     "reference_end_utc": "2026-11-11T06:00:00+00:00",
     "timestamp_utc": "2026-11-14T06:00:00Z",
-    "result_origin": "member2/analytics.py get_baseline_result()",
+    "result_origin": "backend/app/analytics/baseline.py get_baseline_result()",
     "reference_band": {
      "low": 101.657,
      "high": 128.343,
@@ -980,7 +980,7 @@
     "reference_start_utc": "2026-10-16T06:00:00+00:00",
     "reference_end_utc": "2026-11-11T06:00:00+00:00",
     "timestamp_utc": "2026-11-14T06:00:00Z",
-    "result_origin": "member2/analytics.py get_baseline_result()",
+    "result_origin": "backend/app/analytics/baseline.py get_baseline_result()",
     "reference_band": {
      "low": 61.657,
      "high": 88.343,
@@ -1169,7 +1169,7 @@
     "reference_start_utc": "2026-10-16T06:00:00+00:00",
     "reference_end_utc": "2026-11-11T06:00:00+00:00",
     "timestamp_utc": "2026-11-14T06:00:00Z",
-    "result_origin": "member2/analytics.py get_baseline_result()",
+    "result_origin": "backend/app/analytics/baseline.py get_baseline_result()",
     "reference_band": {
      "low": 80.657,
      "high": 107.343,
@@ -1358,7 +1358,7 @@
     "reference_start_utc": "2026-10-16T06:00:00+00:00",
     "reference_end_utc": "2026-11-11T06:00:00+00:00",
     "timestamp_utc": "2026-11-14T06:00:00Z",
-    "result_origin": "member2/analytics.py get_baseline_result()",
+    "result_origin": "backend/app/analytics/baseline.py get_baseline_result()",
     "reference_band": {
      "low": 36.255,
      "high": 37.145,
@@ -1547,7 +1547,7 @@
     "reference_start_utc": "2026-10-16T06:00:00+00:00",
     "reference_end_utc": "2026-11-11T06:00:00+00:00",
     "timestamp_utc": "2026-11-14T06:00:00Z",
-    "result_origin": "member2/analytics.py get_baseline_result()",
+    "result_origin": "backend/app/analytics/baseline.py get_baseline_result()",
     "reference_band": {
      "low": 361.044,
      "high": 538.956,
@@ -1728,7 +1728,7 @@
     "status": "review",
     "quality_state": "adequate_for_demo",
     "reasons": [
-     "Three consecutive observations below the personal statistical reference"
+     "Three observations on consecutive UTC dates below the personal statistical reference"
     ],
     "severity_basis": "unvalidated_demo_statistical_rule",
     "not_medical_diagnosis": true,
@@ -1736,7 +1736,7 @@
     "reference_start_utc": "2026-10-16T06:00:00+00:00",
     "reference_end_utc": "2026-11-11T06:00:00+00:00",
     "timestamp_utc": "2026-11-14T06:00:00Z",
-    "result_origin": "member2/analytics.py get_baseline_result()",
+    "result_origin": "backend/app/analytics/baseline.py get_baseline_result()",
     "reference_band": {
      "low": 83.418,
      "high": 154.582,

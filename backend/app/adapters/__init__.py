@@ -1,5 +1,7 @@
-"""Import adapters producing the shared envelope
+"""Source-aware NASA research adapters.
 
-Owner: Member 2 (Data Science & Analytics)
-TODO: implement during the event window.
+Historical datasets retain their original study populations,
+measurement units, time precision and provenance.
+
+These modules do not provide clinical diagnoses.
 """

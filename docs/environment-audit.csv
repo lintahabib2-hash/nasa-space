@@ -1,0 +1,38 @@
+﻿check,result,details,status
+API response,200,HTTP request successful,PASS
+Raw data file,radlab_probe_20261114T033942Z.csv,Original response bytes saved unchanged,PASS
+Total records,180,84 DosTel1 and 96 DosTel2,PASS
+Total columns,11,11 fields detected in CSV,PASS
+Missing values,0,No missing values in any column,PASS
+Exact duplicate rows,0,No exact duplicate rows,PASS
+Invalid timestamps,0,All timestamps parsed successfully,PASS
+Non-finite numerical values,0,No NaN or Infinity in numerical columns,PASS
+Negative absorbed dose rate,0,No negative values,PASS
+Negative flux,0,No negative values,PASS
+Zero absorbed dose rate,0,No zero values,PASS
+Invalid latitude,0,All values within -90 to 90 degrees,PASS
+Invalid longitude,0,All values within -180 to 180 degrees,PASS
+Repeated instrument timestamps,0,No repeated timestamps within the same instrument,PASS
+Sampling interval,100 seconds median for both instruments,Intervals are variable; minimum and maximum differ,REVIEW
+Large time gaps,4,DosTel1: 1055 185 154 seconds; DosTel2: 195 seconds,REVIEW
+Timestamp coverage,2022-04-01 23:00:00 to 2022-04-02 01:04:33 UTC,Common coverage duration 2 hours 4 minutes 33 seconds,VERIFIED
+Records within common coverage,179,83 DosTel1 and 96 DosTel2,VERIFIED
+Scientific validation,Not performed,Basic data-quality checks do not establish scientific accuracy,NOT_DONE
+EDA telemetry raw file,RR-1_EDA_Telemetry_table.csv,Original CSV copied into data/raw,PASS
+EDA telemetry dimensions,12087 rows x 7 columns,Column structure inspected,PASS
+EDA telemetry missing values,0,No missing values in any telemetry column,PASS
+EDA telemetry timestamps,0 invalid; 0 duplicates; sorted,All timestamps parsed successfully and are ordered,PASS
+EDA telemetry sampling interval,300 seconds for 12071 intervals,15 intervals differ from the typical 5-minute cadence,REVIEW
+EDA telemetry large gaps,9 intervals greater than 5 minutes,Includes 20-minute and 33-minute gaps; other gaps are 6 or 8 minutes,REVIEW
+EDA radiation raw file,RR-1_EDA_Radiation_table.csv,39 daily records; original CSV copied intodata/raw,PASS
+EDA radiation date coverage,2014-09-21 to 2014-10-29,"39 unique, sorted dates with one-day intervals",PASS
+EDA radiation missing values,0,No missing values in radiation table,PASS
+EDA radiation dose arithmetic,Maximum difference 0.01 for Total; 0.02 for Accumulated,"Total approximately equals GCR + SAA; Accumulated approximately equals cumulative Total, allowing rounding",REVIEW
+EDA summary verification,6 of 6 metrics matched,"Max, Min, Mean and Median recalculated from telemetry and matched to displayed summary after rounding",VERIFIED
+EDA repeated telemetry readings,Long identical-value runs detected,"ISS CO2, ISS temperature and humidity, and Ground humidity include repeated-value plateaus; causes unknown",REVIEW
+EDA Ground CO2 transition,Mean 754.20 before; 3303.90 after,Boundary 2014-09-27 13:50; 2134 records before and 9953 after; cause unknown,REVIEW
+EDA mission timeline boundaries,Launch and LAR Return timestamps match NASA EDA milestones,Launch: 2014-09-21 09:49; LAR Return: 2014-10-25 19:36. Counts were verified using these official boundaries.,VERIFIED
+EDA radiation accumulated column meaning,Values consistent with cumulative sum of Total,Columnlabel includes mGy_d; official definition and tooltip interpretation require confirmation,REVIEW
+EDA telemetry series context,NASA identifies ISS cabin/flight hardware and ground-control telemetry,EDA overview confirms cabin and hardware telemetry; temperature and RH include flight andground hardware units. Exact sensor mapping for each column is not specified.,VERIFIED
+EDA reuse terms,Public data view/download; redistribution under NASA SMD Science Information Policy,OSDR public access and redistribution guidance reviewed. Preserve dataset-specific citation. This does not establish a blanket license for every dataset.,VERIFIED
+EDA scientific validation,Not performed,Structural and numerical checks do not establish sensor accuracy or scientific validity,NOT_DONE

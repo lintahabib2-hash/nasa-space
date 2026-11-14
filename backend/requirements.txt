@@ -1,1 +1,4 @@
 # Runtime dependencies (Owner: Member 6 (Backend, Integration, QA & Deployment))
+
+# NASA research preprocessing adapters
+pandas>=2.2,<4
