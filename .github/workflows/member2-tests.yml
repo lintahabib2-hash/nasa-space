@@ -16,7 +16,7 @@ jobs:
           python-version: '3.11'
 
       - name: Install dependencies
-        run: python -m pip install pandas
+        run: python -m pip install -r backend/requirements.txt
 
       - name: Run Member 2 legacy tests
         run: python -m unittest discover -s prototypes/offline_research/tests -v
@@ -26,3 +26,4 @@ jobs:
           python -m unittest discover -s backend/tests/unit -p 'test_baseline.py' -v
           python -m unittest discover -s backend/tests/unit -p 'test_member2_adapter_paths.py' -v
           python -m unittest discover -s backend/tests/unit -p 'test_simulated_crew.py' -v
+          python -m unittest discover -s backend/tests/unit -p 'test_review_fixes.py' -v

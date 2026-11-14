@@ -21,6 +21,23 @@ SERIES_ID = (
 )
 
 
+# Input-format bounds shared with Member 5's check-in form.
+# These are NOT clinical reference ranges or alert thresholds.
+MEASUREMENT_RULES = {
+    "sleep_duration": ("hours", 0, 24, False),
+    "mood": ("score_1_5", 1, 5, True),
+    "stress": ("score_1_5", 1, 5, True),
+    "exercise_minutes": ("minutes", 0, 1440, True),
+    "resting_heart_rate": ("bpm", 20, 250, True),
+    "body_temperature": ("degC", 25, 45, False),
+    "oxygen_saturation": ("percent", 50, 100, True),
+    "systolic_bp": ("mmHg", 40, 300, True),
+    "diastolic_bp": ("mmHg", 20, 200, True),
+    "blood_glucose": ("mg/dL", 10, 1000, True),
+    "radiation_badge_daily_dose": ("uSv/day", 0, 100000, False),
+}
+
+
 def timestamp(value):
     if not isinstance(value, str):
         raise ValueError("Timestamp must be text")
@@ -54,11 +71,20 @@ def validated(record):
     if not isfinite(value):
         raise ValueError("Non-finite measurement")
 
-    if record["measurement"] == "sleep_duration":
-        if record["units"] != "hours":
-            raise ValueError("Sleep duration requires hours")
-        if not 0 <= value <= 24:
-            raise ValueError("Invalid sleep duration")
+    rule = MEASUREMENT_RULES.get(record["measurement"])
+    if rule is None:
+        raise ValueError("Unsupported measurement")
+
+    units, minimum, maximum, integer = rule
+
+    if record["units"] != units:
+        raise ValueError("Measurement units mismatch")
+
+    if not minimum <= value <= maximum:
+        raise ValueError("Measurement outside allowed input bounds")
+
+    if integer and not value.is_integer():
+        raise ValueError("Expected an integer measurement")
 
     return timestamp(record["timestamp_utc"]), value
 
@@ -104,6 +130,40 @@ def get_observations(records, current):
 
 def get_baseline_result(records, current):
     """Compare a current observation with prior personal history."""
+
+    if not isinstance(current, dict):
+        raise ValueError("Current observation must be an object")
+
+    if any(
+        not isinstance(current.get(key), str) or not current[key]
+        for key in SERIES_ID
+    ):
+        raise ValueError("Missing required series metadata")
+
+    if (
+        current.get("value") is None
+        or not current.get("timestamp_utc")
+        or current.get("quality_state") == "missing"
+    ):
+        return {
+            "subject_id": current["subject_id"],
+            "study_id": current["study_id"],
+            "source_id": current["source_id"],
+            "provenance_kind": current["provenance_kind"],
+            "measurement": current["measurement"],
+            "units": current["units"],
+            "timestamp_utc": current.get("timestamp_utc"),
+            "current_value": None,
+            "history_count": 0,
+            "rejected_history_count": 0,
+            "baseline_value": None,
+            "robust_z": None,
+            "status": "unknown",
+            "quality_state": "missing",
+            "reasons": ["Latest measurement or timestamp missing"],
+            "severity_basis": "unvalidated_demo_statistical_rule",
+            "not_medical_diagnosis": True,
+        }
 
     _, current_value = validated(current)
     history, rejected = get_observations(records, current)
