@@ -40,8 +40,9 @@ data/external/**
 # Presentation media: link large videos instead of committing them
 presentation/video/*.mp4
 presentation/video/*.mov
+frontend/.vite/
 
 # Member 2 offline research prototype
-# Keep locally acquired NASA files and generated reports out of Git.
+# Keep local NASA data and generated reports out of Git.
 member2/data/
 member2/reports/

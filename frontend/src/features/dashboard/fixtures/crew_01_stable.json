@@ -1,0 +1,1895 @@
+{
+ "schema": "crew-vitals/ui-bundle@0.1",
+ "subject_id": "crew_01",
+ "display_name": "Crew 01",
+ "scenario": "stable",
+ "scenario_label": "Stable, with one noisy heart-rate reading today",
+ "source_id": "X01",
+ "provenance_kind": "simulated",
+ "study_id": "demo-001",
+ "as_of_utc": "2026-11-14T06:00:00Z",
+ "generated_by": "frontend/scripts/make_fixtures.py (seeded) + member2/analytics.py get_baseline_result()",
+ "notice": "SIMULATED demo data. Not NASA data and not a real astronaut record.",
+ "indicators": [
+  {
+   "measurement": "sleep_duration",
+   "units": "hours",
+   "source_id": "X01",
+   "provenance_kind": "simulated",
+   "study_id": "demo-001",
+   "result": {
+    "subject_id": "crew_01",
+    "measurement": "sleep_duration",
+    "current_value": 7.1,
+    "units": "hours",
+    "source_id": "X01",
+    "study_id": "demo-001",
+    "provenance_kind": "simulated",
+    "history_count": 29,
+    "rejected_history_count": 0,
+    "baseline_value": 7.3,
+    "robust_z": -0.45,
+    "status": "no_persistent_flag",
+    "quality_state": "adequate_for_demo",
+    "reasons": [
+     "No sustained deviation under the demonstration rule"
+    ],
+    "severity_basis": "unvalidated_demo_statistical_rule",
+    "not_medical_diagnosis": true,
+    "reference_count": 27,
+    "reference_start_utc": "2026-10-16T06:00:00+00:00",
+    "reference_end_utc": "2026-11-11T06:00:00+00:00",
+    "timestamp_utc": "2026-11-14T06:00:00Z",
+    "result_origin": "member2/analytics.py get_baseline_result()",
+    "reference_band": {
+     "low": 5.966,
+     "high": 8.634,
+     "basis": "median ± 3 × 1.4826 × MAD of the reference readings (demo statistical rule)"
+    }
+   },
+   "series": [
+    {
+     "timestamp_utc": "2026-10-16T06:00:00Z",
+     "value": 7.6,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-10-17T06:00:00Z",
+     "value": 7.4,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-10-18T06:00:00Z",
+     "value": 7.6,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-10-19T06:00:00Z",
+     "value": 7.0,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-10-20T06:00:00Z",
+     "value": 7.3,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-10-21T06:00:00Z",
+     "value": 7.3,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-10-22T06:00:00Z",
+     "value": 7.3,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-10-23T06:00:00Z",
+     "value": 6.9,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-10-24T06:00:00Z",
+     "value": 7.4,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-10-25T06:00:00Z",
+     "value": 7.2,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-10-26T06:00:00Z",
+     "value": 7.6,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-10-27T06:00:00Z",
+     "value": 6.7,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-10-28T06:00:00Z",
+     "value": 7.0,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-10-29T06:00:00Z",
+     "value": 6.8,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-10-30T06:00:00Z",
+     "value": 7.0,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-10-31T06:00:00Z",
+     "value": 7.4,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-11-01T06:00:00Z",
+     "value": 7.2,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-11-02T06:00:00Z",
+     "value": 7.4,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-11-03T06:00:00Z",
+     "value": 7.6,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-11-04T06:00:00Z",
+     "value": 7.0,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-11-05T06:00:00Z",
+     "value": 7.7,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-11-06T06:00:00Z",
+     "value": 6.8,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-11-07T06:00:00Z",
+     "value": 7.5,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-11-08T06:00:00Z",
+     "value": 7.0,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-11-09T06:00:00Z",
+     "value": 6.6,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-11-10T06:00:00Z",
+     "value": 7.3,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-11-11T06:00:00Z",
+     "value": 7.1,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-11-12T06:00:00Z",
+     "value": 6.7,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-11-13T06:00:00Z",
+     "value": 8.1,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-11-14T06:00:00Z",
+     "value": 7.1,
+     "quality_state": "valid"
+    }
+   ]
+  },
+  {
+   "measurement": "mood",
+   "units": "score_1_5",
+   "source_id": "X01",
+   "provenance_kind": "simulated",
+   "study_id": "demo-001",
+   "result": {
+    "subject_id": "crew_01",
+    "measurement": "mood",
+    "current_value": 3.0,
+    "units": "score_1_5",
+    "source_id": "X01",
+    "study_id": "demo-001",
+    "provenance_kind": "simulated",
+    "history_count": 29,
+    "rejected_history_count": 0,
+    "baseline_value": 4.0,
+    "robust_z": null,
+    "status": "insufficient_scale",
+    "quality_state": "insufficient_scale",
+    "reasons": [
+     "Reference readings have zero median absolute deviation"
+    ],
+    "severity_basis": "unvalidated_demo_statistical_rule",
+    "not_medical_diagnosis": true,
+    "reference_count": 27,
+    "reference_start_utc": "2026-10-16T06:00:00+00:00",
+    "reference_end_utc": "2026-11-11T06:00:00+00:00",
+    "timestamp_utc": "2026-11-14T06:00:00Z",
+    "result_origin": "member2/analytics.py get_baseline_result()"
+   },
+   "series": [
+    {
+     "timestamp_utc": "2026-10-16T06:00:00Z",
+     "value": 4,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-10-17T06:00:00Z",
+     "value": 4,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-10-18T06:00:00Z",
+     "value": 4,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-10-19T06:00:00Z",
+     "value": 4,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-10-20T06:00:00Z",
+     "value": 4,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-10-21T06:00:00Z",
+     "value": 4,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-10-22T06:00:00Z",
+     "value": 4,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-10-23T06:00:00Z",
+     "value": 4,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-10-24T06:00:00Z",
+     "value": 5,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-10-25T06:00:00Z",
+     "value": 4,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-10-26T06:00:00Z",
+     "value": 5,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-10-27T06:00:00Z",
+     "value": 4,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-10-28T06:00:00Z",
+     "value": 4,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-10-29T06:00:00Z",
+     "value": 4,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-10-30T06:00:00Z",
+     "value": 4,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-10-31T06:00:00Z",
+     "value": 4,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-11-01T06:00:00Z",
+     "value": 5,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-11-02T06:00:00Z",
+     "value": 5,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-11-03T06:00:00Z",
+     "value": 4,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-11-04T06:00:00Z",
+     "value": 4,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-11-05T06:00:00Z",
+     "value": 5,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-11-06T06:00:00Z",
+     "value": 4,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-11-07T06:00:00Z",
+     "value": 3,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-11-08T06:00:00Z",
+     "value": 4,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-11-09T06:00:00Z",
+     "value": 3,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-11-10T06:00:00Z",
+     "value": 3,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-11-11T06:00:00Z",
+     "value": 4,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-11-12T06:00:00Z",
+     "value": 4,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-11-13T06:00:00Z",
+     "value": 4,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-11-14T06:00:00Z",
+     "value": 3,
+     "quality_state": "valid"
+    }
+   ]
+  },
+  {
+   "measurement": "stress",
+   "units": "score_1_5",
+   "source_id": "X01",
+   "provenance_kind": "simulated",
+   "study_id": "demo-001",
+   "result": {
+    "subject_id": "crew_01",
+    "measurement": "stress",
+    "current_value": 1.0,
+    "units": "score_1_5",
+    "source_id": "X01",
+    "study_id": "demo-001",
+    "provenance_kind": "simulated",
+    "history_count": 29,
+    "rejected_history_count": 0,
+    "baseline_value": 2.0,
+    "robust_z": null,
+    "status": "insufficient_scale",
+    "quality_state": "insufficient_scale",
+    "reasons": [
+     "Reference readings have zero median absolute deviation"
+    ],
+    "severity_basis": "unvalidated_demo_statistical_rule",
+    "not_medical_diagnosis": true,
+    "reference_count": 27,
+    "reference_start_utc": "2026-10-16T06:00:00+00:00",
+    "reference_end_utc": "2026-11-11T06:00:00+00:00",
+    "timestamp_utc": "2026-11-14T06:00:00Z",
+    "result_origin": "member2/analytics.py get_baseline_result()"
+   },
+   "series": [
+    {
+     "timestamp_utc": "2026-10-16T06:00:00Z",
+     "value": 4,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-10-17T06:00:00Z",
+     "value": 1,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-10-18T06:00:00Z",
+     "value": 2,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-10-19T06:00:00Z",
+     "value": 2,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-10-20T06:00:00Z",
+     "value": 2,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-10-21T06:00:00Z",
+     "value": 2,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-10-22T06:00:00Z",
+     "value": 2,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-10-23T06:00:00Z",
+     "value": 1,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-10-24T06:00:00Z",
+     "value": 2,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-10-25T06:00:00Z",
+     "value": 1,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-10-26T06:00:00Z",
+     "value": 2,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-10-27T06:00:00Z",
+     "value": 1,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-10-28T06:00:00Z",
+     "value": 2,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-10-29T06:00:00Z",
+     "value": 3,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-10-30T06:00:00Z",
+     "value": 1,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-10-31T06:00:00Z",
+     "value": 2,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-11-01T06:00:00Z",
+     "value": 3,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-11-02T06:00:00Z",
+     "value": 2,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-11-03T06:00:00Z",
+     "value": 2,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-11-04T06:00:00Z",
+     "value": 1,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-11-05T06:00:00Z",
+     "value": 2,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-11-06T06:00:00Z",
+     "value": 1,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-11-07T06:00:00Z",
+     "value": 3,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-11-08T06:00:00Z",
+     "value": 1,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-11-09T06:00:00Z",
+     "value": 2,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-11-10T06:00:00Z",
+     "value": 2,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-11-11T06:00:00Z",
+     "value": 2,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-11-12T06:00:00Z",
+     "value": 2,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-11-13T06:00:00Z",
+     "value": 2,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-11-14T06:00:00Z",
+     "value": 1,
+     "quality_state": "valid"
+    }
+   ]
+  },
+  {
+   "measurement": "resting_heart_rate",
+   "units": "bpm",
+   "source_id": "X01",
+   "provenance_kind": "simulated",
+   "study_id": "demo-001",
+   "result": {
+    "subject_id": "crew_01",
+    "measurement": "resting_heart_rate",
+    "current_value": 76.0,
+    "units": "bpm",
+    "source_id": "X01",
+    "study_id": "demo-001",
+    "provenance_kind": "simulated",
+    "history_count": 29,
+    "rejected_history_count": 0,
+    "baseline_value": 58.0,
+    "robust_z": 12.141,
+    "status": "no_persistent_flag",
+    "quality_state": "adequate_for_demo",
+    "reasons": [
+     "No sustained deviation under the demonstration rule"
+    ],
+    "severity_basis": "unvalidated_demo_statistical_rule",
+    "not_medical_diagnosis": true,
+    "reference_count": 27,
+    "reference_start_utc": "2026-10-16T06:00:00+00:00",
+    "reference_end_utc": "2026-11-11T06:00:00+00:00",
+    "timestamp_utc": "2026-11-14T06:00:00Z",
+    "result_origin": "member2/analytics.py get_baseline_result()",
+    "reference_band": {
+     "low": 53.552,
+     "high": 62.448,
+     "basis": "median ± 3 × 1.4826 × MAD of the reference readings (demo statistical rule)"
+    }
+   },
+   "series": [
+    {
+     "timestamp_utc": "2026-10-16T06:00:00Z",
+     "value": 58,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-10-17T06:00:00Z",
+     "value": 58,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-10-18T06:00:00Z",
+     "value": 55,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-10-19T06:00:00Z",
+     "value": 60,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-10-20T06:00:00Z",
+     "value": 57,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-10-21T06:00:00Z",
+     "value": 56,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-10-22T06:00:00Z",
+     "value": 59,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-10-23T06:00:00Z",
+     "value": 59,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-10-24T06:00:00Z",
+     "value": 60,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-10-25T06:00:00Z",
+     "value": 56,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-10-26T06:00:00Z",
+     "value": 58,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-10-27T06:00:00Z",
+     "value": 56,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-10-28T06:00:00Z",
+     "value": 60,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-10-29T06:00:00Z",
+     "value": 56,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-10-30T06:00:00Z",
+     "value": 57,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-10-31T06:00:00Z",
+     "value": 61,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-11-01T06:00:00Z",
+     "value": 58,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-11-02T06:00:00Z",
+     "value": 56,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-11-03T06:00:00Z",
+     "value": 59,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-11-04T06:00:00Z",
+     "value": 58,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-11-05T06:00:00Z",
+     "value": 58,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-11-06T06:00:00Z",
+     "value": 58,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-11-07T06:00:00Z",
+     "value": 57,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-11-08T06:00:00Z",
+     "value": 60,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-11-09T06:00:00Z",
+     "value": 59,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-11-10T06:00:00Z",
+     "value": 58,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-11-11T06:00:00Z",
+     "value": 61,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-11-12T06:00:00Z",
+     "value": 55,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-11-13T06:00:00Z",
+     "value": 58,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-11-14T06:00:00Z",
+     "value": 76,
+     "quality_state": "valid"
+    }
+   ]
+  },
+  {
+   "measurement": "systolic_bp",
+   "units": "mmHg",
+   "source_id": "X01",
+   "provenance_kind": "simulated",
+   "study_id": "demo-001",
+   "result": {
+    "subject_id": "crew_01",
+    "measurement": "systolic_bp",
+    "current_value": 119.0,
+    "units": "mmHg",
+    "source_id": "X01",
+    "study_id": "demo-001",
+    "provenance_kind": "simulated",
+    "history_count": 29,
+    "rejected_history_count": 0,
+    "baseline_value": 116.0,
+    "robust_z": 1.012,
+    "status": "no_persistent_flag",
+    "quality_state": "adequate_for_demo",
+    "reasons": [
+     "No sustained deviation under the demonstration rule"
+    ],
+    "severity_basis": "unvalidated_demo_statistical_rule",
+    "not_medical_diagnosis": true,
+    "reference_count": 27,
+    "reference_start_utc": "2026-10-16T06:00:00+00:00",
+    "reference_end_utc": "2026-11-11T06:00:00+00:00",
+    "timestamp_utc": "2026-11-14T06:00:00Z",
+    "result_origin": "member2/analytics.py get_baseline_result()",
+    "reference_band": {
+     "low": 107.104,
+     "high": 124.896,
+     "basis": "median ± 3 × 1.4826 × MAD of the reference readings (demo statistical rule)"
+    }
+   },
+   "series": [
+    {
+     "timestamp_utc": "2026-10-16T06:00:00Z",
+     "value": 120,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-10-17T06:00:00Z",
+     "value": 119,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-10-18T06:00:00Z",
+     "value": 111,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-10-19T06:00:00Z",
+     "value": 118,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-10-20T06:00:00Z",
+     "value": 115,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-10-21T06:00:00Z",
+     "value": 111,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-10-22T06:00:00Z",
+     "value": 118,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-10-23T06:00:00Z",
+     "value": 117,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-10-24T06:00:00Z",
+     "value": 115,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-10-25T06:00:00Z",
+     "value": 120,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-10-26T06:00:00Z",
+     "value": 119,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-10-27T06:00:00Z",
+     "value": 117,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-10-28T06:00:00Z",
+     "value": 110,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-10-29T06:00:00Z",
+     "value": 114,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-10-30T06:00:00Z",
+     "value": 115,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-10-31T06:00:00Z",
+     "value": 111,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-11-01T06:00:00Z",
+     "value": 114,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-11-02T06:00:00Z",
+     "value": 123,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-11-03T06:00:00Z",
+     "value": 117,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-11-04T06:00:00Z",
+     "value": 118,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-11-05T06:00:00Z",
+     "value": 116,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-11-06T06:00:00Z",
+     "value": 122,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-11-07T06:00:00Z",
+     "value": 116,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-11-08T06:00:00Z",
+     "value": 115,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-11-09T06:00:00Z",
+     "value": 119,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-11-10T06:00:00Z",
+     "value": 116,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-11-11T06:00:00Z",
+     "value": 115,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-11-12T06:00:00Z",
+     "value": 119,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-11-13T06:00:00Z",
+     "value": 109,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-11-14T06:00:00Z",
+     "value": 119,
+     "quality_state": "valid"
+    }
+   ]
+  },
+  {
+   "measurement": "diastolic_bp",
+   "units": "mmHg",
+   "source_id": "X01",
+   "provenance_kind": "simulated",
+   "study_id": "demo-001",
+   "result": {
+    "subject_id": "crew_01",
+    "measurement": "diastolic_bp",
+    "current_value": 71.0,
+    "units": "mmHg",
+    "source_id": "X01",
+    "study_id": "demo-001",
+    "provenance_kind": "simulated",
+    "history_count": 29,
+    "rejected_history_count": 0,
+    "baseline_value": 74.0,
+    "robust_z": -1.012,
+    "status": "no_persistent_flag",
+    "quality_state": "adequate_for_demo",
+    "reasons": [
+     "No sustained deviation under the demonstration rule"
+    ],
+    "severity_basis": "unvalidated_demo_statistical_rule",
+    "not_medical_diagnosis": true,
+    "reference_count": 27,
+    "reference_start_utc": "2026-10-16T06:00:00+00:00",
+    "reference_end_utc": "2026-11-11T06:00:00+00:00",
+    "timestamp_utc": "2026-11-14T06:00:00Z",
+    "result_origin": "member2/analytics.py get_baseline_result()",
+    "reference_band": {
+     "low": 65.104,
+     "high": 82.896,
+     "basis": "median ± 3 × 1.4826 × MAD of the reference readings (demo statistical rule)"
+    }
+   },
+   "series": [
+    {
+     "timestamp_utc": "2026-10-16T06:00:00Z",
+     "value": 76,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-10-17T06:00:00Z",
+     "value": 74,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-10-18T06:00:00Z",
+     "value": 80,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-10-19T06:00:00Z",
+     "value": 76,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-10-20T06:00:00Z",
+     "value": 72,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-10-21T06:00:00Z",
+     "value": 76,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-10-22T06:00:00Z",
+     "value": 74,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-10-23T06:00:00Z",
+     "value": 78,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-10-24T06:00:00Z",
+     "value": 71,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-10-25T06:00:00Z",
+     "value": 73,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-10-26T06:00:00Z",
+     "value": 73,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-10-27T06:00:00Z",
+     "value": 75,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-10-28T06:00:00Z",
+     "value": 73,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-10-29T06:00:00Z",
+     "value": 77,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-10-30T06:00:00Z",
+     "value": 72,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-10-31T06:00:00Z",
+     "value": 69,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-11-01T06:00:00Z",
+     "value": 70,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-11-02T06:00:00Z",
+     "value": 75,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-11-03T06:00:00Z",
+     "value": 76,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-11-04T06:00:00Z",
+     "value": 72,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-11-05T06:00:00Z",
+     "value": 72,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-11-06T06:00:00Z",
+     "value": 75,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-11-07T06:00:00Z",
+     "value": 76,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-11-08T06:00:00Z",
+     "value": 79,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-11-09T06:00:00Z",
+     "value": 71,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-11-10T06:00:00Z",
+     "value": 70,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-11-11T06:00:00Z",
+     "value": 70,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-11-12T06:00:00Z",
+     "value": 76,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-11-13T06:00:00Z",
+     "value": 71,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-11-14T06:00:00Z",
+     "value": 71,
+     "quality_state": "valid"
+    }
+   ]
+  },
+  {
+   "measurement": "blood_glucose",
+   "units": "mg/dL",
+   "source_id": "X01",
+   "provenance_kind": "simulated",
+   "study_id": "demo-001",
+   "result": {
+    "subject_id": "crew_01",
+    "measurement": "blood_glucose",
+    "current_value": 93.0,
+    "units": "mg/dL",
+    "source_id": "X01",
+    "study_id": "demo-001",
+    "provenance_kind": "simulated",
+    "history_count": 29,
+    "rejected_history_count": 0,
+    "baseline_value": 94.0,
+    "robust_z": -0.225,
+    "status": "no_persistent_flag",
+    "quality_state": "adequate_for_demo",
+    "reasons": [
+     "No sustained deviation under the demonstration rule"
+    ],
+    "severity_basis": "unvalidated_demo_statistical_rule",
+    "not_medical_diagnosis": true,
+    "reference_count": 27,
+    "reference_start_utc": "2026-10-16T06:00:00+00:00",
+    "reference_end_utc": "2026-11-11T06:00:00+00:00",
+    "timestamp_utc": "2026-11-14T06:00:00Z",
+    "result_origin": "member2/analytics.py get_baseline_result()",
+    "reference_band": {
+     "low": 80.657,
+     "high": 107.343,
+     "basis": "median ± 3 × 1.4826 × MAD of the reference readings (demo statistical rule)"
+    }
+   },
+   "series": [
+    {
+     "timestamp_utc": "2026-10-16T06:00:00Z",
+     "value": 87,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-10-17T06:00:00Z",
+     "value": 94,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-10-18T06:00:00Z",
+     "value": 97,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-10-19T06:00:00Z",
+     "value": 92,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-10-20T06:00:00Z",
+     "value": 87,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-10-21T06:00:00Z",
+     "value": 98,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-10-22T06:00:00Z",
+     "value": 94,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-10-23T06:00:00Z",
+     "value": 94,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-10-24T06:00:00Z",
+     "value": 90,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-10-25T06:00:00Z",
+     "value": 91,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-10-26T06:00:00Z",
+     "value": 89,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-10-27T06:00:00Z",
+     "value": 89,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-10-28T06:00:00Z",
+     "value": 93,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-10-29T06:00:00Z",
+     "value": 87,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-10-30T06:00:00Z",
+     "value": 97,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-10-31T06:00:00Z",
+     "value": 95,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-11-01T06:00:00Z",
+     "value": 103,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-11-02T06:00:00Z",
+     "value": 92,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-11-03T06:00:00Z",
+     "value": 91,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-11-04T06:00:00Z",
+     "value": 100,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-11-05T06:00:00Z",
+     "value": 96,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-11-06T06:00:00Z",
+     "value": 94,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-11-07T06:00:00Z",
+     "value": 82,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-11-08T06:00:00Z",
+     "value": 100,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-11-09T06:00:00Z",
+     "value": 90,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-11-10T06:00:00Z",
+     "value": 99,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-11-11T06:00:00Z",
+     "value": 97,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-11-12T06:00:00Z",
+     "value": 89,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-11-13T06:00:00Z",
+     "value": 92,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-11-14T06:00:00Z",
+     "value": 93,
+     "quality_state": "valid"
+    }
+   ]
+  },
+  {
+   "measurement": "body_temperature",
+   "units": "degC",
+   "source_id": "X01",
+   "provenance_kind": "simulated",
+   "study_id": "demo-001",
+   "result": {
+    "subject_id": "crew_01",
+    "measurement": "body_temperature",
+    "current_value": 36.9,
+    "units": "degC",
+    "source_id": "X01",
+    "study_id": "demo-001",
+    "provenance_kind": "simulated",
+    "history_count": 29,
+    "rejected_history_count": 0,
+    "baseline_value": 36.8,
+    "robust_z": 0.674,
+    "status": "no_persistent_flag",
+    "quality_state": "adequate_for_demo",
+    "reasons": [
+     "No sustained deviation under the demonstration rule"
+    ],
+    "severity_basis": "unvalidated_demo_statistical_rule",
+    "not_medical_diagnosis": true,
+    "reference_count": 27,
+    "reference_start_utc": "2026-10-16T06:00:00+00:00",
+    "reference_end_utc": "2026-11-11T06:00:00+00:00",
+    "timestamp_utc": "2026-11-14T06:00:00Z",
+    "result_origin": "member2/analytics.py get_baseline_result()",
+    "reference_band": {
+     "low": 36.355,
+     "high": 37.245,
+     "basis": "median ± 3 × 1.4826 × MAD of the reference readings (demo statistical rule)"
+    }
+   },
+   "series": [
+    {
+     "timestamp_utc": "2026-10-16T06:00:00Z",
+     "value": 36.7,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-10-17T06:00:00Z",
+     "value": 36.8,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-10-18T06:00:00Z",
+     "value": 36.7,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-10-19T06:00:00Z",
+     "value": 36.6,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-10-20T06:00:00Z",
+     "value": 36.9,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-10-21T06:00:00Z",
+     "value": 36.8,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-10-22T06:00:00Z",
+     "value": 36.9,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-10-23T06:00:00Z",
+     "value": 36.4,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-10-24T06:00:00Z",
+     "value": 36.8,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-10-25T06:00:00Z",
+     "value": 36.8,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-10-26T06:00:00Z",
+     "value": 36.6,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-10-27T06:00:00Z",
+     "value": 37.0,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-10-28T06:00:00Z",
+     "value": 36.6,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-10-29T06:00:00Z",
+     "value": 36.6,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-10-30T06:00:00Z",
+     "value": 36.6,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-10-31T06:00:00Z",
+     "value": 36.8,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-11-01T06:00:00Z",
+     "value": 36.8,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-11-02T06:00:00Z",
+     "value": 36.8,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-11-03T06:00:00Z",
+     "value": 37.0,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-11-04T06:00:00Z",
+     "value": 36.9,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-11-05T06:00:00Z",
+     "value": 36.4,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-11-06T06:00:00Z",
+     "value": 36.8,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-11-07T06:00:00Z",
+     "value": 36.6,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-11-08T06:00:00Z",
+     "value": 36.8,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-11-09T06:00:00Z",
+     "value": 36.9,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-11-10T06:00:00Z",
+     "value": 36.6,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-11-11T06:00:00Z",
+     "value": 36.7,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-11-12T06:00:00Z",
+     "value": 36.5,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-11-13T06:00:00Z",
+     "value": 36.7,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-11-14T06:00:00Z",
+     "value": 36.9,
+     "quality_state": "valid"
+    }
+   ]
+  },
+  {
+   "measurement": "radiation_badge_daily_dose",
+   "units": "uSv/day",
+   "source_id": "X01",
+   "provenance_kind": "simulated",
+   "study_id": "demo-001",
+   "result": {
+    "subject_id": "crew_01",
+    "measurement": "radiation_badge_daily_dose",
+    "current_value": 503.0,
+    "units": "uSv/day",
+    "source_id": "X01",
+    "study_id": "demo-001",
+    "provenance_kind": "simulated",
+    "history_count": 29,
+    "rejected_history_count": 0,
+    "baseline_value": 450.0,
+    "robust_z": 2.234,
+    "status": "no_persistent_flag",
+    "quality_state": "adequate_for_demo",
+    "reasons": [
+     "No sustained deviation under the demonstration rule"
+    ],
+    "severity_basis": "unvalidated_demo_statistical_rule",
+    "not_medical_diagnosis": true,
+    "reference_count": 27,
+    "reference_start_utc": "2026-10-16T06:00:00+00:00",
+    "reference_end_utc": "2026-11-11T06:00:00+00:00",
+    "timestamp_utc": "2026-11-14T06:00:00Z",
+    "result_origin": "member2/analytics.py get_baseline_result()",
+    "reference_band": {
+     "low": 378.835,
+     "high": 521.165,
+     "basis": "median ± 3 × 1.4826 × MAD of the reference readings (demo statistical rule)"
+    }
+   },
+   "series": [
+    {
+     "timestamp_utc": "2026-10-16T06:00:00Z",
+     "value": 513,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-10-17T06:00:00Z",
+     "value": 441,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-10-18T06:00:00Z",
+     "value": 470,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-10-19T06:00:00Z",
+     "value": 438,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-10-20T06:00:00Z",
+     "value": 460,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-10-21T06:00:00Z",
+     "value": 437,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-10-22T06:00:00Z",
+     "value": 451,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-10-23T06:00:00Z",
+     "value": 495,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-10-24T06:00:00Z",
+     "value": 407,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-10-25T06:00:00Z",
+     "value": 466,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-10-26T06:00:00Z",
+     "value": 428,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-10-27T06:00:00Z",
+     "value": 484,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-10-28T06:00:00Z",
+     "value": 445,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-10-29T06:00:00Z",
+     "value": 470,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-10-30T06:00:00Z",
+     "value": 437,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-10-31T06:00:00Z",
+     "value": 420,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-11-01T06:00:00Z",
+     "value": 441,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-11-02T06:00:00Z",
+     "value": 427,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-11-03T06:00:00Z",
+     "value": 499,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-11-04T06:00:00Z",
+     "value": 434,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-11-05T06:00:00Z",
+     "value": 476,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-11-06T06:00:00Z",
+     "value": 450,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-11-07T06:00:00Z",
+     "value": 452,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-11-08T06:00:00Z",
+     "value": 462,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-11-09T06:00:00Z",
+     "value": 454,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-11-10T06:00:00Z",
+     "value": 442,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-11-11T06:00:00Z",
+     "value": 413,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-11-12T06:00:00Z",
+     "value": 456,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-11-13T06:00:00Z",
+     "value": 452,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-11-14T06:00:00Z",
+     "value": 503,
+     "quality_state": "valid"
+    }
+   ]
+  },
+  {
+   "measurement": "exercise_minutes",
+   "units": "minutes",
+   "source_id": "X01",
+   "provenance_kind": "simulated",
+   "study_id": "demo-001",
+   "result": {
+    "subject_id": "crew_01",
+    "measurement": "exercise_minutes",
+    "current_value": 117.0,
+    "units": "minutes",
+    "source_id": "X01",
+    "study_id": "demo-001",
+    "provenance_kind": "simulated",
+    "history_count": 29,
+    "rejected_history_count": 0,
+    "baseline_value": 122.0,
+    "robust_z": -0.482,
+    "status": "no_persistent_flag",
+    "quality_state": "adequate_for_demo",
+    "reasons": [
+     "No sustained deviation under the demonstration rule"
+    ],
+    "severity_basis": "unvalidated_demo_statistical_rule",
+    "not_medical_diagnosis": true,
+    "reference_count": 27,
+    "reference_start_utc": "2026-10-16T06:00:00+00:00",
+    "reference_end_utc": "2026-11-11T06:00:00+00:00",
+    "timestamp_utc": "2026-11-14T06:00:00Z",
+    "result_origin": "member2/analytics.py get_baseline_result()",
+    "reference_band": {
+     "low": 90.865,
+     "high": 153.135,
+     "basis": "median ± 3 × 1.4826 × MAD of the reference readings (demo statistical rule)"
+    }
+   },
+   "series": [
+    {
+     "timestamp_utc": "2026-10-16T06:00:00Z",
+     "value": 139,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-10-17T06:00:00Z",
+     "value": 132,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-10-18T06:00:00Z",
+     "value": 119,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-10-19T06:00:00Z",
+     "value": 111,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-10-20T06:00:00Z",
+     "value": 117,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-10-21T06:00:00Z",
+     "value": 128,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-10-22T06:00:00Z",
+     "value": 132,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-10-23T06:00:00Z",
+     "value": 108,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-10-24T06:00:00Z",
+     "value": 96,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-10-25T06:00:00Z",
+     "value": 116,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-10-26T06:00:00Z",
+     "value": 121,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-10-27T06:00:00Z",
+     "value": 117,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-10-28T06:00:00Z",
+     "value": 136,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-10-29T06:00:00Z",
+     "value": 122,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-10-30T06:00:00Z",
+     "value": 109,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-10-31T06:00:00Z",
+     "value": 130,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-11-01T06:00:00Z",
+     "value": 115,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-11-02T06:00:00Z",
+     "value": 134,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-11-03T06:00:00Z",
+     "value": 96,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-11-04T06:00:00Z",
+     "value": 126,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-11-05T06:00:00Z",
+     "value": 127,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-11-06T06:00:00Z",
+     "value": 120,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-11-07T06:00:00Z",
+     "value": 128,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-11-08T06:00:00Z",
+     "value": 127,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-11-09T06:00:00Z",
+     "value": 155,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-11-10T06:00:00Z",
+     "value": 125,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-11-11T06:00:00Z",
+     "value": 115,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-11-12T06:00:00Z",
+     "value": 123,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-11-13T06:00:00Z",
+     "value": 117,
+     "quality_state": "valid"
+    },
+    {
+     "timestamp_utc": "2026-11-14T06:00:00Z",
+     "value": 117,
+     "quality_state": "valid"
+    }
+   ]
+  }
+ ]
+}
