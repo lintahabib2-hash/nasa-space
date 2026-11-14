@@ -8,7 +8,7 @@
   "C03": { "title": "NASA Human Research Program: Ongoing research", "url": "https://www.nasa.gov/hrp/", "publisher": "NASA" },
   "C04": { "title": "CSA: Monitoring Radiation for Astronaut Health", "url": null, "publisher": "Canadian Space Agency", "url_note": "Link pending: Member 1 source registry" },
   "C05": { "title": "CSA: Why Conduct Science in Space?", "url": null, "publisher": "Canadian Space Agency", "url_note": "Link pending: Member 1 source registry" },
-  "X01": { "title": "Crew Vitals simulated crew traces (team-created demo data)", "url": null, "publisher": "Crew Vitals team", "url_note": "Simulated. Not NASA data." }
+  "X01": { "title": "NASA Space Health Monitoring Agent simulated crew traces (team-created demo data)", "url": null, "publisher": "Space Apps project team", "url_note": "Simulated. Not NASA data." }
  },
  "hazards": {
   "radiation": "Space radiation",

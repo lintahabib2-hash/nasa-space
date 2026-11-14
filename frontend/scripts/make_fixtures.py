@@ -1,4 +1,4 @@
-"""Generate SIMULATED UI fixtures for the Crew Vitals dashboard (Member 3).
+"""Generate SIMULATED UI fixtures for the NASA Space Health Monitoring Agent (Member 3).
 
 Every value written here is simulated (source_id X01, provenance_kind "simulated").
 Nothing is NASA data. Status, reasons, baseline and robust z come from Member 2's
