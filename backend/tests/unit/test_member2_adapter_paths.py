@@ -9,7 +9,7 @@ from backend.app.adapters import (
     cft70_nutrition,
 )
 
-from member2 import (
+from prototypes.offline_research import (
     bedrest_adapter,
     bedrest_preview_export,
     retrospective_trends,

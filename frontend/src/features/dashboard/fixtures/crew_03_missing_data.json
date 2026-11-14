@@ -8,7 +8,7 @@
  "provenance_kind": "simulated",
  "study_id": "demo-001",
  "as_of_utc": "2026-11-14T06:00:00Z",
- "generated_by": "frontend/scripts/make_fixtures.py (seeded) + member2/analytics.py get_baseline_result()",
+ "generated_by": "frontend/scripts/make_fixtures.py (seeded) + backend/app/analytics/baseline.py get_baseline_result()",
  "notice": "SIMULATED demo data. Not NASA data and not a real astronaut record.",
  "indicators": [
   {
@@ -221,7 +221,7 @@
     "reference_start_utc": "2026-10-16T06:00:00+00:00",
     "reference_end_utc": "2026-11-11T06:00:00+00:00",
     "timestamp_utc": "2026-11-14T06:00:00Z",
-    "result_origin": "member2/analytics.py get_baseline_result()"
+    "result_origin": "backend/app/analytics/baseline.py get_baseline_result()"
    },
    "series": [
     {
@@ -405,7 +405,7 @@
     "reference_start_utc": "2026-10-16T06:00:00+00:00",
     "reference_end_utc": "2026-11-11T06:00:00+00:00",
     "timestamp_utc": "2026-11-14T06:00:00Z",
-    "result_origin": "member2/analytics.py get_baseline_result()"
+    "result_origin": "backend/app/analytics/baseline.py get_baseline_result()"
    },
    "series": [
     {
@@ -589,7 +589,7 @@
     "reference_start_utc": "2026-10-16T06:00:00+00:00",
     "reference_end_utc": "2026-11-11T06:00:00+00:00",
     "timestamp_utc": "2026-11-14T06:00:00Z",
-    "result_origin": "member2/analytics.py get_baseline_result()",
+    "result_origin": "backend/app/analytics/baseline.py get_baseline_result()",
     "reference_band": {
      "low": 53.552,
      "high": 62.448,
@@ -778,7 +778,7 @@
     "reference_start_utc": "2026-10-16T06:00:00+00:00",
     "reference_end_utc": "2026-11-11T06:00:00+00:00",
     "timestamp_utc": "2026-11-14T06:00:00Z",
-    "result_origin": "member2/analytics.py get_baseline_result()",
+    "result_origin": "backend/app/analytics/baseline.py get_baseline_result()",
     "reference_band": {
      "low": 102.657,
      "high": 129.343,
@@ -967,7 +967,7 @@
     "reference_start_utc": "2026-10-16T06:00:00+00:00",
     "reference_end_utc": "2026-11-11T06:00:00+00:00",
     "timestamp_utc": "2026-11-14T06:00:00Z",
-    "result_origin": "member2/analytics.py get_baseline_result()",
+    "result_origin": "backend/app/analytics/baseline.py get_baseline_result()",
     "reference_band": {
      "low": 66.104,
      "high": 83.896,
@@ -1153,7 +1153,7 @@
     "severity_basis": "unvalidated_demo_statistical_rule",
     "not_medical_diagnosis": true,
     "timestamp_utc": "2026-11-14T06:00:00Z",
-    "result_origin": "member2/analytics.py get_baseline_result()"
+    "result_origin": "backend/app/analytics/baseline.py get_baseline_result()"
    },
    "series": [
     {
@@ -1337,7 +1337,7 @@
     "reference_start_utc": "2026-10-16T06:00:00+00:00",
     "reference_end_utc": "2026-11-08T06:00:00+00:00",
     "timestamp_utc": "2026-11-14T06:00:00Z",
-    "result_origin": "member2/analytics.py get_baseline_result()",
+    "result_origin": "backend/app/analytics/baseline.py get_baseline_result()",
     "reference_band": {
      "low": 36.478,
      "high": 36.922,
@@ -1526,7 +1526,7 @@
     "reference_start_utc": "2026-10-16T06:00:00+00:00",
     "reference_end_utc": "2026-11-11T06:00:00+00:00",
     "timestamp_utc": "2026-11-14T06:00:00Z",
-    "result_origin": "member2/analytics.py get_baseline_result()",
+    "result_origin": "backend/app/analytics/baseline.py get_baseline_result()",
     "reference_band": {
      "low": 382.731,
      "high": 507.269,
@@ -1715,7 +1715,7 @@
     "reference_start_utc": "2026-10-16T06:00:00+00:00",
     "reference_end_utc": "2026-11-11T06:00:00+00:00",
     "timestamp_utc": "2026-11-14T06:00:00Z",
-    "result_origin": "member2/analytics.py get_baseline_result()",
+    "result_origin": "backend/app/analytics/baseline.py get_baseline_result()",
     "reference_band": {
      "low": 93.313,
      "high": 146.687,

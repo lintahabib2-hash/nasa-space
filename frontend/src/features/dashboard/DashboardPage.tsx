@@ -88,7 +88,7 @@ export function DashboardPage({ knowledge = KNOWLEDGE }: { knowledge?: Knowledge
         <div className="banner banner--error" role="alert">
           <div>
             <div className="banner__title">Local API unavailable</div>
-            <div className="small">{state.message}. Start member2/offline_api.py, or view the simulated scenarios.</div>
+            <div className="small">{state.message}. Start prototypes/offline_research/offline_api.py, or view the simulated scenarios.</div>
             <button type="button" className="btn" style={{ marginTop: 8 }} onClick={() => setMode("fixtures")}>
               Show simulated scenarios
             </button>

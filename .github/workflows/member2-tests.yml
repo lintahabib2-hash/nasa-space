@@ -19,7 +19,7 @@ jobs:
         run: python -m pip install pandas
 
       - name: Run Member 2 legacy tests
-        run: python -m unittest discover -s member2/tests -v
+        run: python -m unittest discover -s prototypes/offline_research/tests -v
 
       - name: Run Member 2 production tests
         run: |

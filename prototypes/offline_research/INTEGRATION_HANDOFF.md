@@ -14,8 +14,8 @@ First prepare actual research files using the existing Member 2 scripts (already
 
 ```bash
 cd ~/Projects/NASA_SpaceApps_Hackathon/nasa-space
-python -m unittest discover -s member2/tests -v
-python member2/offline_api.py \
+python -m unittest discover -s prototypes/offline_research/tests -v
+python prototypes/offline_research/offline_api.py \
   --db ../member2/reports/crew_checkins.sqlite3 \
   --bedrest-json ../member2/reports/bedrest_trends.json \
   --eda-csv ../member2/data/raw/RR-1_EDA_Telemetry_table.csv
@@ -72,7 +72,7 @@ This small API intentionally accepts **sleep duration only**. It does not claim 
 
 ## Reproducibility / acceptance checklist
 
-- `python -m unittest discover -s member2/tests -v` passes.
+- `python -m unittest discover -s prototypes/offline_research/tests -v` passes.
 - `GET /api/health` shows `mode: local_offline`.
 - Research endpoints work offline with the two already-downloaded datasets.
 - A new local check-in is persisted to SQLite and returned by `GET /api/checkins`.

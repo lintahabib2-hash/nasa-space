@@ -2,12 +2,11 @@
 
 Every value written here is simulated (source_id X01, provenance_kind "simulated").
 Nothing is NASA data. Status, reasons, baseline and robust z come from Member 2's
-real engine, ``get_baseline_result()`` in ``member2/analytics.py``. The UI never computes
+real engine, ``get_baseline_result()`` in ``backend/app/analytics/baseline.py``. The UI never computes
 a status itself.
 
 Usage (from frontend/):
-    git show origin/feature/member2-analytics:member2/analytics.py > /tmp/analytics.py
-    python scripts/make_fixtures.py --analytics /tmp/analytics.py
+    python scripts/make_fixtures.py --analytics ../backend/app/analytics/baseline.py
 
 The script is deterministic (fixed seed and fixed as-of date). Member 2's seed script
 (backend/scripts/seed_simulated_crew.py) should replace this once it is merged.
@@ -148,7 +147,7 @@ def analyse(m2, subject_id, measurement, units, series):
     current = valid[-1]
     result = m2.get_baseline_result(valid[:-1], current)
     result["timestamp_utc"] = current["timestamp_utc"]
-    result["result_origin"] = "member2/analytics.py get_baseline_result()"
+    result["result_origin"] = "backend/app/analytics/baseline.py get_baseline_result()"
     band = reference_band(result, valid[:-1])
     if band:
         result["reference_band"] = band
@@ -186,7 +185,7 @@ def main():
             "provenance_kind": "simulated",
             "study_id": "demo-001",
             "as_of_utc": iso(AS_OF),
-            "generated_by": "frontend/scripts/make_fixtures.py (seeded) + member2/analytics.py get_baseline_result()",
+            "generated_by": "frontend/scripts/make_fixtures.py (seeded) + backend/app/analytics/baseline.py get_baseline_result()",
             "notice": "SIMULATED demo data. Not NASA data and not a real astronaut record.",
             "indicators": indicators,
         }

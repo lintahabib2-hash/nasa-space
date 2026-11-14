@@ -64,7 +64,7 @@ person's longitudinal record.
 
 Existing entry point:
 
-    python member2/offline_api.py --help
+    python prototypes/offline_research/offline_api.py --help
 
 The application uses Python's ThreadingHTTPServer and
 SQLite, not FastAPI.
@@ -108,7 +108,7 @@ displaying invented fallback measurements.
 
 Legacy suite:
 
-    python -m unittest discover -s member2/tests -q
+    python -m unittest discover -s prototypes/offline_research/tests -q
 
 Production suites:
 
@@ -132,7 +132,7 @@ The frontend must not turn research comparisons into
 medical diagnoses, crew readiness scores or individual
 radiation exposure claims.
 
-The member2/ directory provides a working compatibility
+The prototypes/offline_research/ directory provides a working compatibility
 reference. Do not delete it until production imports,
 data contracts, offline behavior and regression tests have
 been verified in the integrated app.

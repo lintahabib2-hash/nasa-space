@@ -2,7 +2,7 @@ import unittest
 
 from backend.app.analytics.baseline import get_baseline_result
 from backend.app.analytics.validation import validated
-from member2.analytics import get_baseline_result as legacy_result
+from prototypes.offline_research.analytics import get_baseline_result as legacy_result
 
 
 def observation(day, value):
