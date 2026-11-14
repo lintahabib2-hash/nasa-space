@@ -23,7 +23,7 @@ export function readRecords(storage: Storage = localStorage): LocalRecords {
   try {
     const parsed = JSON.parse(raw) as LocalRecords;
     if (!parsed || !Array.isArray(parsed.checkins) || !Array.isArray(parsed.reactionTests)) {
-      throw new Error("Stored data does not match the Crew Vitals format.");
+      throw new Error("Stored data does not match the NASA Space Health Monitoring Agent format.");
     }
     return parsed;
   } catch (e) {

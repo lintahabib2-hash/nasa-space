@@ -52,7 +52,7 @@ export function Reminders({ prompt, onPrompt }: { prompt: string; onPrompt: (tex
         onPrompt("Your daily check-in is ready whenever you are.");
         setNote("Your daily check-in is ready.");
         if ("Notification" in window && Notification.permission === "granted") {
-          new Notification("Crew Vitals", { body: "Your daily check-in is ready whenever you are." });
+          new Notification("NASA Space Health Monitoring Agent", { body: "Your daily check-in is ready whenever you are." });
         }
       }
       setTick((t) => t + 1); // schedule the next day
