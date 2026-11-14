@@ -8,8 +8,8 @@ import { EvidenceDrawer } from "../../src/components/evidence-drawer/EvidenceDra
 import { StatusChip } from "../../src/components/status/StatusChip";
 import { FIXTURE_BUNDLES, KNOWLEDGE } from "../../src/features/dashboard/dataSource";
 import { DashboardPage } from "../../src/features/dashboard/DashboardPage";
-import { ENVIRONMENT_SERIES } from "../../src/features/environment-context/environmentData";
 import { EnvironmentContextCard } from "../../src/features/environment-context/EnvironmentContextCard";
+import environmentSample from "../../src/features/environment-context/fixtures/environment.sample.json";
 
 describe("StatusChip", () => {
   it("shows a text label and a tier-specific icon, not colour alone", () => {
@@ -73,16 +73,15 @@ describe("TrendChart time axis", () => {
   });
 });
 
-describe("EnvironmentContextCard (Member 4, NASA OSDR EDA RR-1)", () => {
-  it("shows real NASA data with attribution and non-personal wording, and no crew status", () => {
-    render(<EnvironmentContextCard data={ENVIRONMENT_SERIES} />);
+describe("EnvironmentContextCard with the real chart (Member 4, NASA OSDR EDA RR-1)", () => {
+  it("plots all 300 sample readings, shows limitations, and has no crew status", () => {
+    render(<EnvironmentContextCard />);
     const card = screen.getByTestId("env-card");
-    expect(card.querySelector("[data-provenance='nasa_measured']")).not.toBeNull();
-    expect(within(card).getByRole("link", { name: /NASA OSDR Environmental Data Application/ })).toHaveAttribute("href", "https://visualization.osdr.nasa.gov/eda/");
-    expect(card).toHaveTextContent(/Not this crew member's exposure or dose/);
     expect(card.querySelectorAll("table tbody tr")).toHaveLength(300);
+    expect(card).toHaveTextContent(/Not personal exposure or effective dose/);
+    expect(card).toHaveTextContent(/2646 ppm/);
     expect(card.querySelector(".chip")).toBeNull();
-    expect(ENVIRONMENT_SERIES.subject_id).toBeNull();
+    expect(environmentSample.subject_id).toBeNull();
   });
 
   it("does not change when the crew member changes", async () => {

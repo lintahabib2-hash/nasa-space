@@ -9,9 +9,13 @@ Owner: Member 4 (Environment & Radiation).
 
 ## What is committed
 
-Only the 300-point display sample the app uses:
-`frontend/src/features/environment-context/fixtures/environment.sample.json`.
-The full exports are not committed (re-use terms; repository policy: small snapshots only).
+- The 300-point display sample the app uses:
+  `frontend/src/features/environment-context/fixtures/environment.sample.json`.
+- The two small RR-1 tables: `RR-1_EDA_Radiation_table.csv` (39 rows) and `RR-1_EDA_Summary_table.csv` (10 rows).
+
+The full 12,087-row telemetry export is not committed (re-use terms; repository policy: small snapshots
+only). Member 4: if the EDA terms allow redistributing it, record that in docs/licensing-notes.md and it can
+be added back.
 
 ## Rebuilding the sample
 

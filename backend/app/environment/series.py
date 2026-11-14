@@ -1,53 +1,44 @@
-"""get_environment_series(): source_id, instrument, units, quality_state
+﻿"""Common environment series wrappers: get_environment_series()
 
-Owner: Member 4 (Environment & Radiation).
+Owner: Member 4 (Environment & Radiation)
 
-Returns one historical NASA environment series with its metadata. By default it reads the committed
-sample snapshot (works offline and from a clean checkout); pass ``raw_csv`` to rebuild from a local
-copy of the full RR-1 EDA export instead.
+Returns source_id, instrument, units and quality for the primary NASA environment series,
+after checking the contract the dashboard relies on.
 """
 
-from __future__ import annotations
-
-import json
 import math
-from pathlib import Path
-from typing import Dict, Optional
+from typing import Any, Dict
 
-from . import osdr_eda
+from .osdr_eda import get_environment_series as get_eda_series
 
 REQUIRED_KEYS = ("source_id", "citation", "provenance_kind", "instrument", "series", "limitations")
 
 
-def get_environment_series(raw_csv: Optional[Path] = None, snapshot: Path = osdr_eda.SNAPSHOT_PATH) -> Dict[str, object]:
-    if raw_csv is not None:
-        rows, duplicates = osdr_eda.load_rows(Path(raw_csv))
-        data = osdr_eda.build_sample(rows, duplicates)
-    else:
-        with Path(snapshot).open(encoding="utf-8") as f:
-            data = json.load(f)
+def get_environment_series() -> Dict[str, Any]:
+    """Return the primary NASA RR-1 EDA environment series."""
+    data = get_eda_series()
     validate(data)
     return data
 
 
-def validate(data: Dict[str, object]) -> None:
-    """Contract checks the dashboard relies on. Raises ValueError on a broken series."""
+def validate(data: Dict[str, Any]) -> None:
+    """Raise ValueError if the series breaks the environment contract."""
     for key in REQUIRED_KEYS:
         if key not in data:
             raise ValueError(f"Environment series missing {key}")
     if data.get("subject_id") is not None:
         raise ValueError("Environment data must not carry a crew subject_id")
-    for s in data["series"]:  # type: ignore[union-attr]
+    for series in data["series"]:
         for key in ("measurement", "units", "points"):
-            if key not in s:
+            if key not in series:
                 raise ValueError(f"Series missing {key}")
         previous = None
-        for p in s["points"]:
-            v = p["value"]
-            if v is not None and (not isinstance(v, (int, float)) or not math.isfinite(v)):
+        for point in series["points"]:
+            value = point["value"]
+            if value is not None and (not isinstance(value, (int, float)) or not math.isfinite(value)):
                 raise ValueError("Non-finite environment value")
-            if v is None and p["quality_state"] == "valid":
+            if value is None and point["quality_state"] == "valid":
                 raise ValueError("Missing value marked valid")
-            if previous is not None and p["timestamp_utc"] < previous:
+            if previous is not None and point["timestamp_utc"] < previous:
                 raise ValueError("Environment timestamps not in order")
-            previous = p["timestamp_utc"]
+            previous = point["timestamp_utc"]

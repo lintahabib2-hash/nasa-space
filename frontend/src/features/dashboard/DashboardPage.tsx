@@ -6,7 +6,6 @@ import { EnvironmentSelector } from "../../components/environment-selector/Envir
 import { EvidenceDrawer } from "../../components/evidence-drawer/EvidenceDrawer";
 import { ProvenanceBadge } from "../../components/evidence-drawer/ProvenanceBadge";
 import { StatusChip } from "../../components/status/StatusChip";
-import { ENVIRONMENT_SERIES } from "../environment-context/environmentData";
 import { EnvironmentContextCard } from "../environment-context/EnvironmentContextCard";
 import { configuredMode, FIXTURE_BUNDLES, KNOWLEDGE } from "./dataSource";
 import { fmtValue, humanize } from "./format";
@@ -152,8 +151,7 @@ export function DashboardPage({ knowledge = KNOWLEDGE }: { knowledge?: Knowledge
         </>
       )}
 
-      {/* Member 4: historical NASA environment data. Visually separate, and not driven by the crew selector. */}
-      <EnvironmentContextCard data={ENVIRONMENT_SERIES} />
+      <EnvironmentContextCard />
 
       {evidenceIndicator && (
         <EvidenceDrawer indicator={evidenceIndicator} knowledge={knowledge} onClose={() => setEvidenceFor(null)} />
