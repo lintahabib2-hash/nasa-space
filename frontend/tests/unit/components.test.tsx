@@ -8,6 +8,8 @@ import { EvidenceDrawer } from "../../src/components/evidence-drawer/EvidenceDra
 import { StatusChip } from "../../src/components/status/StatusChip";
 import { FIXTURE_BUNDLES, KNOWLEDGE } from "../../src/features/dashboard/dataSource";
 import { DashboardPage } from "../../src/features/dashboard/DashboardPage";
+import { ENVIRONMENT_SERIES } from "../../src/features/environment-context/environmentData";
+import { EnvironmentContextCard } from "../../src/features/environment-context/EnvironmentContextCard";
 
 describe("StatusChip", () => {
   it("shows a text label and a tier-specific icon, not colour alone", () => {
@@ -68,6 +70,26 @@ describe("TrendChart time axis", () => {
     const { container } = render(<TrendChart label="CO2" units="ppm" series={series} baseline={null} />);
     expect(screen.getByRole("columnheader", { name: /Time \(UTC\)/ })).toBeInTheDocument();
     expect(container.querySelector("table tbody tr td")?.textContent).toBe("2014-09-20 03:59 UTC");
+  });
+});
+
+describe("EnvironmentContextCard (Member 4, NASA OSDR EDA RR-1)", () => {
+  it("shows real NASA data with attribution and non-personal wording, and no crew status", () => {
+    render(<EnvironmentContextCard data={ENVIRONMENT_SERIES} />);
+    const card = screen.getByTestId("env-card");
+    expect(card.querySelector("[data-provenance='nasa_measured']")).not.toBeNull();
+    expect(within(card).getByRole("link", { name: /NASA OSDR Environmental Data Application/ })).toHaveAttribute("href", "https://visualization.osdr.nasa.gov/eda/");
+    expect(card).toHaveTextContent(/Not this crew member's exposure or dose/);
+    expect(card.querySelectorAll("table tbody tr")).toHaveLength(300);
+    expect(card.querySelector(".chip")).toBeNull();
+    expect(ENVIRONMENT_SERIES.subject_id).toBeNull();
+  });
+
+  it("does not change when the crew member changes", async () => {
+    render(<DashboardPage />);
+    const before = screen.getByTestId("env-card").textContent;
+    await userEvent.click(screen.getByLabelText(/Crew 03/));
+    expect(screen.getByTestId("env-card").textContent).toBe(before);
   });
 });
 
