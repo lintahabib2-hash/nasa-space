@@ -9,7 +9,7 @@
 - **Version Status:** Not displayed in the EDA pages checked.
 
 ### Attribution
-Data and visualizations are courtesy of the Environmental Data Application (EDA) (https://visualization.osdr.nasa.gov/eda/).
+Data and visualizations are courtesy of the Environmental Data Application (EDA) (https://visualization.osdr.nasa.gov/eda/). Version: not displayed on the site (accessed 14 Nov 2026).
 
 ### Repository Data Policy & Sample Note
 - Due to re-use terms, only an approved small sample dataset is stored in this repository. 
@@ -190,6 +190,7 @@ The M4 environment adapter uses the NASA EDA RR-1 telemetry source (repository S
 - Fixture series: 300 `CO2_ppm_ISS` points selected at even row-index intervals from the timestamp-sorted data, retaining both endpoints.
 - Missing and non-finite CO2 readings are serialized as JSON `null`, never as `0` or `NaN`. The current source file contains no missing telemetry readings.
 - M3 fixture: `frontend/src/features/environment-context/fixtures/environment.sample.json`.
+- The environment context card citation note uses the same attribution and version/access-date text shown above.
 - Fixture `source_id`: `NASA_OSDR_EDA_RR1`; repository source registry ID: `D01`.
 - Adapter and fixture are committed and pushed on the `feat/m4-environment` branch.
 

@@ -124,7 +124,8 @@ def build_sample(
         "source_url": "https://visualization.osdr.nasa.gov/eda/",
         "citation": (
             "Data and visualizations are courtesy of the Environmental Data "
-            "Application (EDA) (https://visualization.osdr.nasa.gov/eda/)"
+            "Application (EDA) (https://visualization.osdr.nasa.gov/eda/). "
+            "Version: not displayed on the site (accessed 14 Nov 2026)."
         ),
         "display_title": "NASA RR-1 EDA: historical experimental environment",
         "provenance_kind": "nasa_measured",
