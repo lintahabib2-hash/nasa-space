@@ -18,21 +18,24 @@
       "provider": "NASA",
       "data_kind": "human bed-rest analog sleep actigraphy",
       "source_url": "https://nlsp.nasa.gov/search/data/details/e26501eb-7d7a-5012-8c8e-c5bdb3eecaf6?dataType=DATASETS",
-      "integration_status": "locally_processed_research_preview_available",
+      "integration_status": "verified_offline_research_view",
       "member_owner": 2,
       "requires_local_file": "bedrest_trends.json",
       "public_redistribution_verified": false,
-      "notes": "207 daily records across 3 participants; only date precision; pre-test reference inadequate for clinical baselines."
+      "notes": "207 daily records across 3 participants; only date precision; pre-test reference inadequate for clinical baselines.",
+      "research_records": 207
     },
     {
       "id": "NASA_RADLAB",
       "provider": "NASA",
       "data_kind": "radiation instrument telemetry",
       "source_url": "https://visualization.osdr.nasa.gov/radlab/gui/data-api/",
-      "integration_status": "candidate_not_downloaded_or_audited",
+      "integration_status": "audited_optional_member2_research_view",
       "member_owner": 4,
       "public_redistribution_verified": false,
-      "notes": "Requires specific instrument ID, measurement quantity, unit (microGy/hour vs microSv/hour), UTC timestamp, and provenance."
+      "notes": "DosTel1 and DosTel2 are separate ISS instruments. 180 absorbed-dose-rate records in microgray/hour; dose-equivalent-rate values unavailable. Timestamp timezone unverified. No individual exposure claims. Member 4 owns primary environment integration.",
+      "canonical_source_id": "NASA_OSDR_RADLAB_ISS_DOSTEL_SAMPLE",
+      "research_records": 180
     },
     {
       "id": "CSA_PRET",
@@ -49,9 +52,35 @@
       "provider": "NASA",
       "data_kind": "Inspiration4 human blood serum biochemical and immune/cardiac assays",
       "source_url": "https://osdr.nasa.gov/bio/repo/data/studies/OSD-575",
-      "integration_status": "candidate_no_local_numeric_file_validated",
+      "integration_status": "verified_offline_research_view",
       "member_owner": 2,
-      "notes": "Small cohort and discrete sampling timepoints; historical comparisons only, no realtime health alert validation."
+      "notes": "Four Inspiration4 participants; five CMP analytes; three pre-flight and four post-flight timepoints. Same-person descriptive comparisons only.",
+      "canonical_source_id": "NASA_OSDR_OSD-575",
+      "comparison_records": 80,
+      "public_redistribution_verified": false
+    },
+    {
+      "id": "NASA_NLSP_MR016G_CFT70",
+      "provider": "NASA",
+      "data_kind": "human bed-rest analog daily energy intake",
+      "source_url": "https://nlsp.nasa.gov/search/data/details/72616c68-3046-5d36-8f1d-a26d856107ff?dataType=EXPERIMENTS",
+      "member_owner": 2,
+      "integration_status": "verified_offline_research_view",
+      "research_records": 1388,
+      "participants": 14,
+      "public_redistribution_verified": false,
+      "notes": "Participant-specific pre-test nutritional references. Not a physiological health-risk model."
+    },
+    {
+      "id": "NASA_OSDR_OSD-569",
+      "provider": "NASA",
+      "data_kind": "Inspiration4 original submitted blood count",
+      "source_url": "https://osdr.nasa.gov/bio/repo/data/studies/OSD-569",
+      "member_owner": 2,
+      "integration_status": "verified_offline_research_view",
+      "comparison_records": 80,
+      "public_redistribution_verified": false,
+      "notes": "Four participants, five CBC analytes. Preserve original source units and values, including missingness and source-range review flags."
     }
   ],
   "official_challenge_references": [
