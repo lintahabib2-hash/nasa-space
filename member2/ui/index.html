@@ -29,6 +29,33 @@
   <div class="panel"><h2>Scientific context from challenge resources</h2><p class="research-note">NASA Human Research Program describes isolation and confinement, distance from Earth, gravity fields, hostile/closed environments, and space radiation as core hazards. Crew Vitals uses this framing to organize its non-diagnostic monitoring and research views; the studies displayed here do not directly quantify individual hazard exposure.</p><p class="research-note"><a href="https://www.nasa.gov/hrp/hazards/" target="_blank" rel="noopener noreferrer">NASA Five Hazards</a> · <a href="https://www.nasa.gov/hrp/risks/" target="_blank" rel="noopener noreferrer">NASA HRP Risks</a></p></div><div class="panel"><h2>Data provenance</h2><div class="research-note">NASA bed-rest: human spaceflight analog, date-only observations. RR-1: research-environment measurements, not individual exposure. Check-ins: locally provided sleep values stored on this laptop in SQLite.</div><p class="research-note">All analyses are retrospective or experimental and have not been validated for diagnosis or operational astronaut safety decisions.</p><div class="note" id="health"></div></div>
  </div>
 </section>
+
+<section class="grid" aria-label="Additional historical NASA research" style="margin-top:8px">
+  <div class="panel">
+    <div class="row" style="justify-content:space-between"><h2>CFT70 — Personalized energy-intake reference</h2><span class="tag">Human bed-rest analog</span></div>
+    <div class="controls"><div><label for="cftSubject">Research participant</label><select id="cftSubject"></select></div></div>
+    <p id="cftStatus" class="note">Loading previously generated NASA research JSON…</p>
+    <canvas id="cftChart" class="chart" aria-label="CFT70 daily intake and pre-test reference"></canvas>
+    <p id="cftNote" class="research-note"></p><p id="cftSource" class="research-note"></p>
+  </div>
+  <div class="panel">
+    <div class="row" style="justify-content:space-between"><h2>Inspiration4 — Same-person laboratory research</h2><span class="tag">Real astronaut samples</span></div>
+    <div class="controls"><div><label for="i4Study">Research panel</label><select id="i4Study"><option value="cbc">Whole blood (CBC)</option><option value="cmp">Serum (CMP)</option></select></div>
+    <div><label for="i4Subject">Participant</label><select id="i4Subject"></select></div>
+    <div><label for="i4Metric">Measurement</label><select id="i4Metric"></select></div></div>
+    <p id="i4Status" class="note">Loading locally generated NASA comparisons…</p>
+    <canvas id="i4Chart" class="chart" aria-label="Preflight descriptive reference and actual postflight measurements"></canvas>
+    <p id="i4Note" class="research-note"></p><p id="i4Source" class="research-note"></p>
+  </div>
+  <div class="panel">
+    <div class="row" style="justify-content:space-between"><h2>RadLab — ISS DosTel historical instrument trend</h2><span class="tag">Not personal radiation exposure</span></div>
+    <div class="controls"><div><label for="radInstrument">Instrument</label><select id="radInstrument"></select></div></div>
+    <p id="radStatus" class="note">Loading locally acquired NASA radiation measurements…</p>
+    <canvas id="radChart" class="chart" aria-label="DosTel absorbed dose-rate observations"></canvas>
+    <p id="radNote" class="research-note"></p><p id="radSource" class="research-note"></p>
+  </div>
+</section>
+
 </main><footer class="foot">Runs locally without external fonts, CDNs, APIs, authentication services, or an internet connection. Keep this prototype bound to 127.0.0.1; never expose private crew check-ins publicly.</footer>
 <script>
 'use strict';
@@ -69,4 +96,5 @@ $('checkin').addEventListener('submit',async e=>{e.preventDefault();const value=
 $('subject').addEventListener('change',renderBedrest);$('measure').addEventListener('change',renderBedrest);$('crew').addEventListener('change',refreshCheckins);window.addEventListener('resize',()=>{renderBedrest();loadEnvironmentAgain()});function loadEnvironmentAgain(){get('/api/research/environment').then(e=>linePlot($('envChart'),e.observations,'CO2_ppm_ISS','CO2_ppm_Ground')).catch(()=>{})}
 get('/api/health').then(x=>$('health').textContent='Local server ready · bed-rest loaded: '+x.research.bedrest_available+' · environment loaded: '+x.research.eda_available).catch(e=>$('health').textContent=e.message);loadResearch();refreshCheckins();
 </script>
+<script src="/research-panels.js"></script>
 </body></html>
