@@ -1,4 +1,10 @@
-// React entry point
-// Owner: Member 3 (Frontend & UX)
-// TODO: implement during the event window.
-export {};
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+import App from "./App";
+import "./styles/global.css";
+
+createRoot(document.getElementById("root")!).render(
+  <StrictMode>
+    <App />
+  </StrictMode>,
+);

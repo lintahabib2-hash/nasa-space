@@ -1,0 +1,204 @@
+{
+ "schema": "crew-vitals/knowledge@0.1",
+ "status": "draft_pending_member1_review",
+ "notice": "Draft written by Member 3 from Project Guide sections 4 and 5 so the UI can be built. Member 1 owns the reviewed version (shared/knowledge/knowledge.json). Thresholds in the guidance text are documented demo rules to be confirmed against NASA sources and a clinician.",
+ "sources": {
+  "C01": { "title": "NASA Human Research Program: Risks of Human Spaceflight", "url": "https://www.nasa.gov/hrp/risks/", "publisher": "NASA" },
+  "C02": { "title": "NASA Human Research Program: Five Hazards of Human Spaceflight", "url": "https://www.nasa.gov/hrp/hazards/", "publisher": "NASA" },
+  "C03": { "title": "NASA Human Research Program: Ongoing research", "url": "https://www.nasa.gov/hrp/", "publisher": "NASA" },
+  "C04": { "title": "CSA: Monitoring Radiation for Astronaut Health", "url": null, "publisher": "Canadian Space Agency", "url_note": "Link pending: Member 1 source registry" },
+  "C05": { "title": "CSA: Why Conduct Science in Space?", "url": null, "publisher": "Canadian Space Agency", "url_note": "Link pending: Member 1 source registry" },
+  "X01": { "title": "Crew Vitals simulated crew traces (team-created demo data)", "url": null, "publisher": "Crew Vitals team", "url_note": "Simulated. Not NASA data." }
+ },
+ "hazards": {
+  "radiation": "Space radiation",
+  "isolation": "Isolation and confinement",
+  "distance": "Distance from Earth",
+  "gravity": "Altered gravity",
+  "environment": "Hostile and closed environment"
+ },
+ "regions": {
+  "brain": {
+   "label": "Brain and behavior",
+   "function": "Sleep, mood, stress and alertness support safe work and decision-making.",
+   "spaceflight_effects": "Isolation, confinement and circadian disruption can affect sleep, mood and performance.",
+   "hazards": ["isolation", "distance", "environment"],
+   "indicators": ["sleep_duration", "mood", "stress"],
+   "sources": ["C01", "C02", "C03"]
+  },
+  "cardiovascular": {
+   "label": "Heart and blood vessels",
+   "function": "The heart and blood vessels move blood and regulate pressure.",
+   "spaceflight_effects": "Fluid shifts and deconditioning in weightlessness change resting heart rate and pressure regulation, including on return to gravity.",
+   "hazards": ["gravity"],
+   "indicators": ["resting_heart_rate", "systolic_bp", "diastolic_bp"],
+   "sources": ["C01", "C02"]
+  },
+  "metabolic": {
+   "label": "Metabolism",
+   "function": "Metabolism turns food into usable energy and keeps blood glucose regulated.",
+   "spaceflight_effects": "Stress, low activity and food-system limits can affect metabolism.",
+   "hazards": ["environment"],
+   "indicators": ["blood_glucose"],
+   "sources": ["C01"]
+  },
+  "musculoskeletal": {
+   "label": "Bones and muscles",
+   "function": "Bones and muscles support movement and strength.",
+   "spaceflight_effects": "Without gravity loading, bone and muscle are lost. Daily aerobic and resistive exercise is the main countermeasure.",
+   "hazards": ["gravity"],
+   "indicators": ["exercise_minutes"],
+   "sources": ["C01", "C02"]
+  },
+  "immune": {
+   "label": "Immune system (whole body)",
+   "function": "The immune system defends against infection.",
+   "spaceflight_effects": "Immune function can shift in spaceflight. Fever is an early sign of infection.",
+   "hazards": ["radiation", "environment"],
+   "indicators": ["body_temperature"],
+   "sources": ["C01", "C02"]
+  },
+  "radiation": {
+   "label": "Radiation exposure (whole body)",
+   "function": "A personal dosimeter badge tracks how much radiation a crew member receives over time.",
+   "spaceflight_effects": "Outside Earth's protective magnetic field and atmosphere, radiation exposure accumulates over a mission.",
+   "hazards": ["radiation"],
+   "indicators": ["radiation_badge_daily_dose"],
+   "sources": ["C02", "C04"]
+  }
+ },
+ "indicators": {
+  "sleep_duration": {
+   "label": "Sleep duration",
+   "region": "brain",
+   "how_measured": "Wrist actigraphy or wearable, plus a morning sleep log.",
+   "why": "Circadian disruption and fatigue raise error risk.",
+   "self_care": ["Keep a fixed sleep window", "Dim lights before bed", "Reduce caffeine", "Protect quiet hours"],
+   "contact_when": ["Under 6 hours for several days together with mood or performance decline"],
+   "sources": ["C01", "C02", "C03"],
+   "limitations": ["Wearable sleep estimates differ from lab sleep studies."]
+  },
+  "mood": {
+   "label": "Mood (self-rated 1–5)",
+   "region": "brain",
+   "how_measured": "Short opt-in self-rating on a 1 to 5 scale.",
+   "why": "Can be an early sign of behavioral health decline.",
+   "self_care": ["Talk with crew", "Schedule a family call", "Get light exposure", "Exercise"],
+   "contact_when": ["Persistently low mood", "Any thought of self-harm"],
+   "sources": ["C01", "C03"],
+   "limitations": ["Self-ratings are subjective. A coarse 1–5 scale often has too little spread for a statistical baseline (shown as 'insufficient scale')."]
+  },
+  "stress": {
+   "label": "Stress (self-rated 1–5)",
+   "region": "brain",
+   "how_measured": "Short opt-in self-rating on a 1 to 5 scale.",
+   "why": "Can be an early sign of behavioral health decline.",
+   "self_care": ["Talk with crew", "Schedule a family call", "Get light exposure", "Exercise"],
+   "contact_when": ["Persistently high stress with low mood", "Any thought of self-harm"],
+   "sources": ["C01", "C03"],
+   "limitations": ["Self-ratings are subjective. A coarse 1–5 scale often has too little spread for a statistical baseline (shown as 'insufficient scale')."]
+  },
+  "resting_heart_rate": {
+   "label": "Resting heart rate",
+   "region": "cardiovascular",
+   "how_measured": "Wrist wearable or chest strap; manual pulse count as backup.",
+   "why": "Fluid shifts and deconditioning change resting rate.",
+   "self_care": ["Rest", "Hydrate", "Reduce caffeine", "Recheck in 1 hour"],
+   "contact_when": ["Dizziness, fainting or chest discomfort", "Persistently out of personal range"],
+   "sources": ["C01", "C02"],
+   "limitations": ["Wearable readings are affected by motion and fit."]
+  },
+  "systolic_bp": {
+   "label": "Blood pressure (systolic)",
+   "region": "cardiovascular",
+   "how_measured": "Automated upper-arm cuff, seated, two readings.",
+   "why": "Pressure regulation changes in weightlessness and on return to gravity.",
+   "self_care": ["Rest", "Reduce sodium", "Add aerobic exercise", "Rise slowly if low"],
+   "contact_when": ["Repeated readings far outside personal range", "Any symptoms"],
+   "sources": ["C01", "C02"],
+   "limitations": ["Single readings vary; the guide recommends two seated readings."]
+  },
+  "diastolic_bp": {
+   "label": "Blood pressure (diastolic)",
+   "region": "cardiovascular",
+   "how_measured": "Automated upper-arm cuff, seated, two readings.",
+   "why": "Pressure regulation changes in weightlessness and on return to gravity.",
+   "self_care": ["Rest", "Reduce sodium", "Add aerobic exercise", "Rise slowly if low"],
+   "contact_when": ["Repeated readings far outside personal range", "Any symptoms"],
+   "sources": ["C01", "C02"],
+   "limitations": ["Single readings vary; the guide recommends two seated readings."]
+  },
+  "blood_glucose": {
+   "label": "Blood glucose (fasting)",
+   "region": "metabolic",
+   "how_measured": "Fasting fingerstick glucometer.",
+   "why": "Stress, low activity and food-system limits affect metabolism.",
+   "self_care": ["If low: take fast carbohydrate", "If high: hydrate, do light exercise and review meals"],
+   "contact_when": ["Repeated readings below 60 or above 125 mg/dL (demo rule, to be confirmed)"],
+   "sources": ["C01"],
+   "limitations": ["Fingerstick meters have measurement error, and readings depend on fasting state."]
+  },
+  "body_temperature": {
+   "label": "Body temperature",
+   "region": "immune",
+   "how_measured": "Oral or forehead thermometer.",
+   "why": "Fever is an early infection sign when immune function shifts.",
+   "self_care": ["Rest", "Drink fluids", "Isolate if symptomatic", "Recheck every 4 hours"],
+   "contact_when": ["Fever lasting more than a day", "Temperature above 38 °C (demo rule, to be confirmed)"],
+   "sources": ["C01", "C02"],
+   "limitations": ["Forehead thermometers are less precise than oral ones."]
+  },
+  "radiation_badge_daily_dose": {
+   "label": "Personal dosimeter badge (daily)",
+   "region": "radiation",
+   "how_measured": "Personal dosimeter badge reading.",
+   "why": "Tracks cumulative exposure.",
+   "self_care": ["Limit exterior activity", "Follow the shelter procedure"],
+   "contact_when": ["Storm alert", "Cumulative dose near the career limit"],
+   "sources": ["C02", "C04"],
+   "limitations": ["A badge reading is not effective dose or cancer risk. The NASA instrument panel is separate historical context and is not this person's dose."]
+  },
+  "exercise_minutes": {
+   "label": "Exercise (aerobic + resistive)",
+   "region": "musculoskeletal",
+   "how_measured": "Exercise-device logs or wearable minutes.",
+   "why": "Main countermeasure for bone and muscle loss.",
+   "self_care": ["Schedule the full daily aerobic and resistive protocol"],
+   "contact_when": ["Protocol missed for many days", "Pain during exercise"],
+   "sources": ["C01", "C02"],
+   "limitations": ["Logged minutes do not measure exercise intensity or bone and muscle status."]
+  }
+ },
+ "environments": {
+  "station": {
+   "label": "ISS / Station",
+   "setting": "Low Earth orbit",
+   "one_way_delay": "Near real time (seconds), with occasional loss-of-signal periods",
+   "reply_expectation": "A flight surgeon can usually respond during the same session.",
+   "guidance": "Contact the flight surgeon directly and follow their instructions."
+  },
+  "spacecraft": {
+   "label": "Spacecraft",
+   "setting": "Cislunar transit",
+   "one_way_delay": "About 1–2 seconds",
+   "reply_expectation": "Near-live conversation is possible, but links may be scheduled.",
+   "guidance": "Start the interim steps, then contact the flight surgeon at the next link."
+  },
+  "lunar": {
+   "label": "Lunar base",
+   "setting": "Lunar surface",
+   "one_way_delay": "About 1.3 seconds (about 2.6 seconds round trip)",
+   "reply_expectation": "Conversation works with a short lag.",
+   "guidance": "Start the interim steps and contact the flight surgeon."
+  },
+  "mars": {
+   "label": "Mars transit",
+   "setting": "Deep space, Earth–Mars",
+   "one_way_delay": "Grows with distance, to about 20 minutes one way near Mars",
+   "reply_expectation": "A reply can take 40 minutes or more round trip. Do not wait idle.",
+   "guidance": "Follow the interim steps now. Send the flight surgeon a written summary with your readings, then recheck while you wait."
+  }
+ },
+ "environment_sources": ["C02"],
+ "environment_note": "Delay figures are approximate light-time and need confirming against NASA sources (Member 1)."
+}
