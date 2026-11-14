@@ -1,0 +1,3 @@
+# CI: lint + backend pytest + frontend vitest on every PR
+# Owner: Member 6 (Backend, Integration, QA & Deployment)
+# TODO

@@ -1,0 +1,55 @@
+# Crew Vitals code owners.
+# Replace each MEMBER placeholder with that member's real GitHub username, then
+# uncomment the lines. Later rules override earlier ones.
+
+# Default: the integrator reviews everything
+# *                                         @MEMBER6
+
+# M1: Coordination, Science, Pitch
+# /shared/knowledge/                        @MEMBER1
+# /presentation/                            @MEMBER1
+# /docs/source-registry.md                  @MEMBER1
+# /docs/hazard-risk-indicator-map.md        @MEMBER1
+# /docs/decision-log.md                     @MEMBER1
+# /docs/claims-to-use-avoid.md              @MEMBER1
+# /docs/self-care-guidance.md               @MEMBER1
+# /docs/measurement-guide.md                @MEMBER1
+# /docs/eligibility-question.md             @MEMBER1
+
+# M2: Data Science & Analytics
+# /backend/app/analytics/                   @MEMBER2
+# /backend/app/adapters/                    @MEMBER2
+# /backend/scripts/seed_simulated_crew.py   @MEMBER2
+# /data/simulated/                          @MEMBER2
+# /data/nasa/nlsp-bedrest/                  @MEMBER2
+# /data/nasa/osd-575/                       @MEMBER2
+# /docs/methods-note.md                     @MEMBER2
+
+# M3: Frontend & UX
+# /frontend/src/components/                 @MEMBER3
+# /frontend/src/features/dashboard/         @MEMBER3
+# /frontend/src/styles/                     @MEMBER3
+# /frontend/src/App.tsx                     @MEMBER3
+# /frontend/src/main.tsx                    @MEMBER3
+
+# M4: Environment & Radiation
+# /backend/app/environment/                 @MEMBER4
+# /backend/scripts/fetch_nasa_data.py       @MEMBER4
+# /data/nasa/osdr-eda/                      @MEMBER4
+# /data/nasa/radlab/                        @MEMBER4
+# /data/fallback/                           @MEMBER4
+# /frontend/src/features/environment-context/ @MEMBER4
+# /docs/environment-audit.md                @MEMBER4
+
+# M5: Cognitive & Daily Check-In
+# /backend/app/checkin/                     @MEMBER5
+# /frontend/src/features/checkin/           @MEMBER5
+# /frontend/src/features/reaction-time/     @MEMBER5
+# /frontend/src/features/reminders/         @MEMBER5
+# /frontend/src/features/gamification/      @MEMBER5
+# /frontend/src/features/camera/            @MEMBER5
+# /docs/checkin-schema.md                   @MEMBER5
+# /docs/reaction-time-limitations.md        @MEMBER5
+
+# Shared contracts: changes need integrator review
+# /shared/schemas/                          @MEMBER6

@@ -1,7 +1,47 @@
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/*
+!.vscode/extensions.json
+.idea/
+
+# Environment
+.env
+.env.*
+!.env.example
+
+# Python
 __pycache__/
 *.py[cod]
-.pytest_cache/
 .venv/
-.env
+venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Node / frontend
+node_modules/
+frontend/dist/
+frontend/coverage/
+frontend/playwright-report/
+frontend/test-results/
+*.log
+
+# Large / raw data: commit only small, licensed snapshots
+data/**/raw/
+data/external/**
+!data/external/.gitkeep
+*.h5
+*.parquet
+*.zip
+
+# Presentation media: link large videos instead of committing them
+presentation/video/*.mp4
+presentation/video/*.mov
+
+# Member 2 offline research prototype
+# Keep locally acquired NASA files and generated reports out of Git.
 member2/data/
 member2/reports/
