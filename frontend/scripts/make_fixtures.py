@@ -18,6 +18,7 @@ import argparse
 import importlib.util
 import json
 import random
+import sys
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from statistics import median
@@ -76,6 +77,21 @@ SCENARIOS = {
 
 
 def load_member2(path: Path):
+    """Import Member 2's engine.
+
+    Inside a package (backend/app/analytics/ has __init__.py), import it by its dotted name so
+    relative imports such as ``from .persistence import ...`` work. A standalone file falls
+    back to a direct file load.
+    """
+    path = path.resolve()
+    parts = [path.stem]
+    root = path.parent
+    while (root / "__init__.py").exists():
+        parts.insert(0, root.name)
+        root = root.parent
+    if len(parts) > 1:
+        sys.path.insert(0, str(root))
+        return importlib.import_module(".".join(parts))
     spec = importlib.util.spec_from_file_location("member2_analytics", path)
     module = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(module)  # type: ignore[union-attr]

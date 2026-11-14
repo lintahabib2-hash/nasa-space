@@ -1326,10 +1326,11 @@
     "rejected_history_count": 0,
     "baseline_value": 36.7,
     "robust_z": -2.698,
-    "status": "no_persistent_flag",
-    "quality_state": "adequate_for_demo",
+    "status": "insufficient_persistence_history",
+    "quality_state": "limited_history",
     "reasons": [
-     "No sustained deviation under the demonstration rule"
+     "Persistence requires three consecutive UTC dates",
+     "Persistence requires gaps no greater than 48 hours"
     ],
     "severity_basis": "unvalidated_demo_statistical_rule",
     "not_medical_diagnosis": true,

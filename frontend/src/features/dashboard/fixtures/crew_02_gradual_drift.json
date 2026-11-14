@@ -32,7 +32,7 @@
     "status": "review",
     "quality_state": "adequate_for_demo",
     "reasons": [
-     "Three consecutive observations below the personal statistical reference"
+     "Three observations on consecutive UTC dates below the personal statistical reference"
     ],
     "severity_basis": "unvalidated_demo_statistical_rule",
     "not_medical_diagnosis": true,
@@ -594,7 +594,7 @@
     "status": "review",
     "quality_state": "adequate_for_demo",
     "reasons": [
-     "Three consecutive observations above the personal statistical reference"
+     "Three observations on consecutive UTC dates above the personal statistical reference"
     ],
     "severity_basis": "unvalidated_demo_statistical_rule",
     "not_medical_diagnosis": true,
@@ -1728,7 +1728,7 @@
     "status": "review",
     "quality_state": "adequate_for_demo",
     "reasons": [
-     "Three consecutive observations below the personal statistical reference"
+     "Three observations on consecutive UTC dates below the personal statistical reference"
     ],
     "severity_basis": "unvalidated_demo_statistical_rule",
     "not_medical_diagnosis": true,
