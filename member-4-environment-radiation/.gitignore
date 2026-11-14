@@ -1,0 +1,13 @@
+﻿# Temporary backup
+README_before_format_fix.md
+
+# Python cache
+__pycache__/
+*.py[cod]
+
+# Virtual environments
+.venv/
+venv/
+
+# Secrets
+.env
