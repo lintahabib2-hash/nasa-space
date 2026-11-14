@@ -182,6 +182,17 @@ Nine intervals were identified:
 
 The 20-minute and 33-minute gaps are the largest observed gaps. These are timestamp intervals and do not independently establish sensor failure or data loss.
 
+### M3 Environment Fixture
+
+The M4 environment adapter uses the NASA EDA RR-1 telemetry source (repository Source ID: `D01`) and reads `data/raw/RR-1_EDA_Telemetry_table.csv`. The adapter is implemented in `src/environment_adapter.py`.
+
+- Source telemetry: 12,087 rows, ordered by `Controller_Time_GMT`.
+- Fixture series: 300 `CO2_ppm_ISS` points selected at even row-index intervals from the timestamp-sorted data, retaining both endpoints.
+- Missing and non-finite CO2 readings are serialized as JSON `null`, never as `0` or `NaN`. The current source file contains no missing telemetry readings.
+- M3 fixture: `frontend/src/features/environment-context/fixtures/environment.sample.json`.
+- Fixture `source_id`: `NASA_OSDR_EDA_RR1`; repository source registry ID: `D01`.
+- Adapter and fixture are committed and pushed on the `feat/m4-environment` branch.
+
 ### Radiation Table
 
 - Records: 39
@@ -317,14 +328,16 @@ The audit records document structural checks, numerical observations, review ite
 - [x] Review NASA OSDR public-access and redistribution guidance; preserve dataset-specific citation and conditions.
 - [x] Verify general EDA ISS/flight-hardware and ground-control telemetry context.
 - [x] Verify launch and LAR Return timestamps against NASA EDA milestones.
+- [x] Confirm the M3 environment fixture schema and null-handling data contract.
+- [x] Implement and execute `src/environment_adapter.py` against the NASA EDA RR-1 telemetry source.
+- [x] Generate the M3-compliant fixture with 300 downsampled ISS CO2 points and null-safe values.
+- [x] Push the adapter and fixture to `feat/m4-environment`.
 
 ### Pending
 
 - [ ] Confirm the official definition and unit interpretation of accumulated radiation dose.
 - [ ] Inspect additional relevant OSDR datasets.
 - [ ] Confirm Member 4 assignment with team lead.
-- [ ] Receive the expected data contract and registry format from M1/M6.
-- [ ] Confirm the expected environment adapter function interface and JSON structure.
 - [ ] Complete scientific validation and exact sensor/column interpretation.
 - [ ] Prepare final verified dataset documentation.
 
@@ -337,5 +350,5 @@ The audit records document structural checks, numerical observations, review ite
 - Repeated readings and abrupt changes have not been assigned causes.
 - Basic data-quality checks do not establish scientific accuracy.
 - No astronaut safety thresholds or risk classifications have been assumed.
-- No environment adapter or risk engine has been implemented pending team integration requirements.
+- The environment adapter prepares the M3 sample fixture; no risk engine or astronaut risk classifications have been implemented.
 - Dataset reuse and licensing conditions must be checked before making reuse claims.
