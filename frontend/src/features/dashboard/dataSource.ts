@@ -1,3 +1,4 @@
+
 // Loads dashboard data in one of two modes:
 //   fixtures: bundled SIMULATED scenarios. Works offline and on a static host.
 //   api:      Member 2's localhost API (member2/offline_api.py), via the Vite /api proxy.
@@ -6,13 +7,13 @@
 import stable from "./fixtures/crew_01_stable.json";
 import drift from "./fixtures/crew_02_gradual_drift.json";
 import missing from "./fixtures/crew_03_missing_data.json";
-import knowledgeDraft from "./fixtures/knowledge.draft.json";
+import reviewedKnowledge from "../../../../shared/knowledge/knowledge.json";
 import type { BaselineResult, CrewBundle, DataMode, Knowledge, SeriesPoint } from "./types";
 
 export const FIXTURE_BUNDLES: CrewBundle[] = [stable, drift, missing] as CrewBundle[];
 
-// Swap to shared/knowledge/knowledge.json when Member 1 publishes it.
-export const KNOWLEDGE: Knowledge = knowledgeDraft as Knowledge;
+// Member 1's reviewed science knowledge file.
+export const KNOWLEDGE: Knowledge = reviewedKnowledge as Knowledge;
 
 export function configuredMode(): DataMode {
   return import.meta.env.VITE_DATA_MODE === "api" ? "api" : "fixtures";

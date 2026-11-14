@@ -1,0 +1,372 @@
+
+{
+  "schema": "crew-vitals/knowledge@0.1",
+  "status": "reviewed_science_draft",
+  "notice": "Science-reviewed knowledge content for the Crew Vitals prototype. This application supports personal trend awareness and human review. It is not a medical diagnostic system. Dashboard demonstration records are simulated X01 data, not actual astronaut measurements. All observations must retain their original provenance and measurement context.",
+  "sources": {
+    "C01": {
+      "title": "NASA Human Research Program: Risks of Human Spaceflight",
+      "url": "https://www.nasa.gov/hrp/risks/",
+      "publisher": "NASA"
+    },
+    "C02": {
+      "title": "NASA Human Research Program: Five Hazards of Human Spaceflight",
+      "url": "https://www.nasa.gov/hrp/hazards/",
+      "publisher": "NASA"
+    },
+    "C03": {
+      "title": "NASA Human Research Program: Ongoing Research",
+      "url": "https://www.nasa.gov/hrp/ongoing-hrp-research/",
+      "publisher": "NASA"
+    },
+    "C04": {
+      "title": "Canadian Space Agency: Monitoring Radiation for Astronaut Health",
+      "url": "https://www.asc-csa.gc.ca/eng/news/articles/2026/2026-02-26-monitoring-radiation-astronaut-health.asp",
+      "publisher": "Canadian Space Agency"
+    },
+    "C05": {
+      "title": "Canadian Space Agency: Why Conduct Science in Space?",
+      "url": "https://www.asc-csa.gc.ca/eng/iss/science/why-do-we-conduct-science-experiments-in-space.asp",
+      "publisher": "Canadian Space Agency"
+    },
+    "D01": {
+      "title": "NASA OSDR Environmental Data Application",
+      "url": "https://visualization.osdr.nasa.gov/eda/",
+      "publisher": "NASA Open Science Data Repository",
+      "url_note": "Environmental dataset access; individual exports and variables require verification."
+    },
+    "D02": {
+      "title": "NASA OSDR Radiation Laboratory",
+      "url": "https://visualization.osdr.nasa.gov/radlab/gui/overview/",
+      "publisher": "NASA Open Science Data Repository",
+      "url_note": "Instrument radiation observations are environmental context, not an individual's personal badge record."
+    },
+    "D03": {
+      "title": "NASA Life Sciences Data Archive: UTMB Bed Rest Actigraphy",
+      "url": "https://nlsp.nasa.gov/search/data/details/e26501eb-7d7a-5012-8c8e-c5bdb3eecaf6?dataType=DATASETS",
+      "publisher": "NASA Life Sciences Data Archive",
+      "url_note": "Ground-based bed-rest analog data; not direct astronaut sleep measurements."
+    },
+    "X01": {
+      "title": "Crew Vitals simulated crew traces",
+      "url": null,
+      "publisher": "Crew Vitals team",
+      "url_note": "Team-created fictional demonstration data. Never label as NASA-measured."
+    }
+  },
+  "hazards": {
+    "radiation": "Space radiation",
+    "isolation": "Isolation and confinement",
+    "distance": "Distance from Earth",
+    "gravity": "Altered gravity",
+    "environment": "Hostile and closed environment"
+  },
+  "regions": {
+    "brain": {
+      "label": "Brain and behavior",
+      "function": "Sleep, mood, stress and alertness are relevant to well-being and daily task performance.",
+      "spaceflight_effects": "Isolation, confinement, demanding schedules and circadian disruption can affect sleep and behavioral well-being.",
+      "hazards": ["isolation", "distance", "environment"],
+      "indicators": ["sleep_duration", "mood", "stress"],
+      "sources": ["C01", "C02", "C03"]
+    },
+    "cardiovascular": {
+      "label": "Heart and blood vessels",
+      "function": "The cardiovascular system circulates blood and helps regulate blood pressure.",
+      "spaceflight_effects": "Microgravity-related fluid shifts and cardiovascular adaptation are important areas of human spaceflight research.",
+      "hazards": ["gravity"],
+      "indicators": ["resting_heart_rate", "systolic_bp", "diastolic_bp"],
+      "sources": ["C01", "C02", "C03"]
+    },
+    "metabolic": {
+      "label": "Metabolism",
+      "function": "Metabolism converts nutrients into energy and supports normal body functions.",
+      "spaceflight_effects": "Nutrition, physical activity, stress and mission conditions are relevant to metabolic health.",
+      "hazards": ["environment", "isolation"],
+      "indicators": ["blood_glucose"],
+      "sources": ["C01", "C03"]
+    },
+    "musculoskeletal": {
+      "label": "Bones and muscles",
+      "function": "Bones and muscles support movement, posture and physical activity.",
+      "spaceflight_effects": "Reduced mechanical loading in microgravity contributes to bone and muscle changes. Exercise is an important spaceflight countermeasure.",
+      "hazards": ["gravity"],
+      "indicators": ["exercise_minutes"],
+      "sources": ["C01", "C02", "C03"]
+    },
+    "immune": {
+      "label": "General health and temperature",
+      "function": "Body temperature is one observation used when monitoring general health.",
+      "spaceflight_effects": "Immune and other physiological changes during spaceflight are subjects of ongoing research.",
+      "hazards": ["environment", "radiation"],
+      "indicators": ["body_temperature"],
+      "sources": ["C01", "C02", "C03"]
+    },
+    "radiation": {
+      "label": "Radiation exposure",
+      "function": "Radiation instruments and personal dosimeters provide different types of exposure information.",
+      "spaceflight_effects": "Space radiation is a significant human spaceflight hazard, particularly beyond the protection provided by Earth's atmosphere and magnetic field.",
+      "hazards": ["radiation"],
+      "indicators": ["radiation_badge_daily_dose"],
+      "sources": ["C01", "C02", "C04", "D02"]
+    }
+  },
+  "indicators": {
+    "sleep_duration": {
+      "label": "Sleep duration",
+      "region": "brain",
+      "how_measured": "Can be estimated using wrist actigraphy or a wearable device and recorded alongside a crew member's sleep log. The measurement method should be documented.",
+      "why": "Sleep patterns are relevant to circadian health, well-being and daily task performance during spaceflight.",
+      "self_care": [
+        "Use the mission-approved sleep schedule.",
+        "Record sleep and wake times consistently.",
+        "Report persistent sleep difficulties through appropriate crew support channels."
+      ],
+      "contact_when": [
+        "Sleep difficulties persist or interfere with daily activities.",
+        "The crew member requests additional support."
+      ],
+      "sources": ["C01", "C02", "C03", "D03"],
+      "limitations": [
+        "Wearable sleep estimates are not equivalent to laboratory sleep studies.",
+        "Movement-based devices can misclassify rest and sleep.",
+        "Sleep duration alone does not establish sleep quality or fatigue.",
+        "No clinically validated sleep alert threshold is defined by this prototype.",
+        "D03 is a ground-based bed-rest analog dataset, not direct astronaut sleep data."
+      ]
+    },
+    "mood": {
+      "label": "Mood (self-rated 1–5)",
+      "region": "brain",
+      "how_measured": "A crew member voluntarily reports mood using a simple rating scale from 1 to 5.",
+      "why": "Isolation, confinement, workload and separation from family can influence psychological well-being during long-duration missions.",
+      "self_care": [
+        "Use available crew support and communication opportunities.",
+        "Maintain appropriate social contact with other crew members.",
+        "Share concerns with an appropriate trusted support person when desired."
+      ],
+      "contact_when": [
+        "The crew member experiences persistent emotional difficulty.",
+        "The crew member requests behavioral health support.",
+        "Any immediate safety concern or thoughts of self-harm require prompt human support through mission emergency procedures."
+      ],
+      "sources": ["C01", "C02", "C03"],
+      "limitations": [
+        "Mood ratings are subjective and depend on personal interpretation.",
+        "A simple 1–5 scale is not a clinical mental-health assessment.",
+        "A single rating cannot establish a long-term pattern.",
+        "The prototype must not diagnose depression or another mental-health condition."
+      ]
+    },
+    "stress": {
+      "label": "Stress (self-rated 1–5)",
+      "region": "brain",
+      "how_measured": "A crew member voluntarily reports perceived stress using a simple rating scale from 1 to 5.",
+      "why": "Mission demands, isolation, confinement and operational pressures can influence perceived stress.",
+      "self_care": [
+        "Use available crew communication and support opportunities.",
+        "Discuss workload concerns through appropriate mission channels.",
+        "Use mission-approved well-being resources when available."
+      ],
+      "contact_when": [
+        "Stress remains a concern or interferes with daily activities.",
+        "The crew member requests additional support.",
+        "Any immediate safety concern requires prompt human support."
+      ],
+      "sources": ["C01", "C02", "C03"],
+      "limitations": [
+        "Stress ratings are subjective.",
+        "A rating does not identify the cause of stress.",
+        "A simple scale is not a clinical assessment.",
+        "The prototype does not diagnose stress-related disorders."
+      ]
+    },
+    "resting_heart_rate": {
+      "label": "Resting heart rate",
+      "region": "cardiovascular",
+      "how_measured": "Can be recorded using a wearable optical sensor, chest-strap monitor or an approved manual pulse measurement method. Device and measurement context should be documented.",
+      "why": "Heart rate is one cardiovascular observation relevant to studying physiological adaptation during spaceflight.",
+      "self_care": [
+        "Follow approved mission procedures for taking and recording the measurement.",
+        "Record relevant context such as recent activity and measurement time.",
+        "Report health concerns through the appropriate crew medical channel."
+      ],
+      "contact_when": [
+        "The crew member experiences symptoms or concerns alongside an unusual reading.",
+        "Repeated readings differ substantially from the individual's usual pattern and require human review."
+      ],
+      "sources": ["C01", "C02", "C03"],
+      "limitations": [
+        "Movement, sensor placement and device quality can affect readings.",
+        "Exercise, sleep and other factors influence heart rate.",
+        "A heart-rate value alone cannot diagnose a cardiovascular condition.",
+        "No medical alert threshold is established by this prototype."
+      ]
+    },
+    "systolic_bp": {
+      "label": "Blood pressure (systolic)",
+      "region": "cardiovascular",
+      "how_measured": "Can be recorded using an approved automated blood-pressure monitor according to the device and mission measurement procedures. Systolic pressure is the arterial pressure during heart contraction.",
+      "why": "Blood pressure provides information about cardiovascular function and pressure regulation, which are relevant to adaptation in microgravity.",
+      "self_care": [
+        "Follow approved procedures for using the blood-pressure device.",
+        "Record the measurement conditions and device information.",
+        "Report concerns through the appropriate crew medical channel."
+      ],
+      "contact_when": [
+        "Repeated readings raise concern or differ substantially from the individual's usual pattern.",
+        "Symptoms occur alongside a reading that concerns the crew member."
+      ],
+      "sources": ["C01", "C02", "C03"],
+      "limitations": [
+        "Blood pressure varies with posture, activity and measurement conditions.",
+        "Cuff placement and device accuracy affect results.",
+        "A single reading cannot establish a medical condition.",
+        "The prototype does not classify readings using clinical thresholds."
+      ]
+    },
+    "diastolic_bp": {
+      "label": "Blood pressure (diastolic)",
+      "region": "cardiovascular",
+      "how_measured": "Recorded using the same approved blood-pressure measurement procedure as systolic pressure. Diastolic pressure is the arterial pressure while the heart relaxes between contractions.",
+      "why": "Together with systolic pressure, diastolic pressure helps describe cardiovascular function and pressure regulation.",
+      "self_care": [
+        "Follow approved procedures for using the blood-pressure device.",
+        "Record measurement conditions consistently.",
+        "Report concerns through the appropriate crew medical channel."
+      ],
+      "contact_when": [
+        "Repeated readings raise concern or differ substantially from the individual's usual pattern.",
+        "The crew member experiences symptoms or requests medical review."
+      ],
+      "sources": ["C01", "C02", "C03"],
+      "limitations": [
+        "Readings can vary between measurements.",
+        "Measurement conditions and equipment influence accuracy.",
+        "Diastolic pressure requires appropriate clinical context.",
+        "The prototype does not independently classify a reading as medically normal or abnormal."
+      ]
+    },
+    "blood_glucose": {
+      "label": "Blood glucose",
+      "region": "metabolic",
+      "how_measured": "Can be measured using an approved blood-glucose meter and an appropriate blood sample. The record should indicate whether the measurement was fasting or non-fasting.",
+      "why": "Glucose is an important energy source. Metabolism, nutrition and physical activity are relevant to human health during spaceflight.",
+      "self_care": [
+        "Follow approved mission procedures for glucose measurement.",
+        "Record whether the measurement was fasting or non-fasting.",
+        "Discuss concerns with the appropriate crew medical professional."
+      ],
+      "contact_when": [
+        "A reading raises concern under the applicable medical protocol.",
+        "The crew member experiences symptoms or requests medical review."
+      ],
+      "sources": ["C01", "C03"],
+      "limitations": [
+        "Results depend on sampling conditions and device accuracy.",
+        "Fasting and non-fasting measurements are not directly interchangeable.",
+        "A single reading cannot diagnose diabetes or another metabolic condition.",
+        "No glucose alert threshold or treatment instruction is defined by this prototype."
+      ]
+    },
+    "body_temperature": {
+      "label": "Body temperature",
+      "region": "immune",
+      "how_measured": "Can be recorded using an approved thermometer. The measurement method, such as oral or forehead measurement, should be documented.",
+      "why": "Body temperature is one observation used when monitoring general health and possible physiological changes during a mission.",
+      "self_care": [
+        "Follow the approved thermometer instructions.",
+        "Record the measurement method and time.",
+        "Report health concerns through the appropriate crew medical channel."
+      ],
+      "contact_when": [
+        "The crew member has persistent symptoms or concerns.",
+        "A reading raises concern under the applicable mission medical protocol."
+      ],
+      "sources": ["C01", "C02", "C03"],
+      "limitations": [
+        "Different measurement methods can produce different readings.",
+        "Environmental conditions and measurement technique can affect results.",
+        "Temperature alone cannot identify the cause of an illness.",
+        "The prototype does not diagnose infection or establish a fever alert threshold."
+      ]
+    },
+    "radiation_badge_daily_dose": {
+      "label": "Daily radiation badge dose",
+      "region": "radiation",
+      "how_measured": "If a personal dosimeter is provided, its recorded value can be entered with the instrument identity, units and measurement period. A manually entered badge value must retain its own provenance.",
+      "why": "Space radiation is a significant human spaceflight hazard. Radiation monitoring supports research and mission safety procedures.",
+      "self_care": [
+        "Follow the mission's authorized radiation monitoring and safety procedures.",
+        "Use only verified personal dosimeter information when recording an individual measurement.",
+        "Refer radiation concerns to the responsible mission personnel."
+      ],
+      "contact_when": [
+        "An instrument reading or radiation event requires review under mission procedures.",
+        "The crew member has questions about personal exposure or radiation safety."
+      ],
+      "sources": ["C01", "C02", "C04", "D02"],
+      "limitations": [
+        "A personal badge reading is not automatically equivalent to effective dose or biological risk.",
+        "Instrument type, calibration, location and radiation characteristics matter.",
+        "NASA environmental instrument readings are not the same as an individual's personal dosimeter reading.",
+        "Raw radiation flux or dose-rate data must not be converted into personal cancer risk without validated methods.",
+        "The prototype does not issue radiation shelter instructions or determine individual medical risk."
+      ]
+    },
+    "exercise_minutes": {
+      "label": "Exercise duration",
+      "region": "musculoskeletal",
+      "how_measured": "Exercise duration can be recorded using exercise-equipment logs, wearable activity devices or crew-entered records. Aerobic and resistive activity should be distinguished when available.",
+      "why": "Reduced mechanical loading in microgravity contributes to bone and muscle changes. Exercise is an important countermeasure used in human spaceflight.",
+      "self_care": [
+        "Record exercise activity according to mission procedures.",
+        "Distinguish aerobic and resistive exercise when the available record permits.",
+        "Report exercise-related concerns through the appropriate mission support channel."
+      ],
+      "contact_when": [
+        "The crew member experiences pain or other concerns during exercise.",
+        "Exercise records indicate a persistent interruption that requires human review."
+      ],
+      "sources": ["C01", "C02", "C03"],
+      "limitations": [
+        "Exercise duration does not establish exercise intensity.",
+        "Logged minutes do not directly measure muscle strength or bone density.",
+        "Equipment and activity type affect interpretation.",
+        "Exercise records alone cannot establish countermeasure effectiveness for an individual."
+      ]
+    }
+  },
+  "environments": {
+    "station": {
+      "label": "ISS / Station",
+      "setting": "Low Earth orbit",
+      "one_way_delay": "Communication is generally near real time, subject to network coverage and mission communication arrangements.",
+      "reply_expectation": "Availability of medical support depends on mission operations and communication links.",
+      "guidance": "Use established mission communication channels and follow authorized crew medical procedures."
+    },
+    "spacecraft": {
+      "label": "Spacecraft",
+      "setting": "Cislunar transit",
+      "one_way_delay": "Communication delay depends on spacecraft location, relay availability and communication configuration.",
+      "reply_expectation": "Communication availability and response time depend on mission operations.",
+      "guidance": "Follow the mission communication plan and authorized onboard procedures."
+    },
+    "lunar": {
+      "label": "Lunar surface",
+      "setting": "Lunar mission environment",
+      "one_way_delay": "Communication delay depends on the spacecraft or surface location and relay configuration.",
+      "reply_expectation": "Communication availability depends on line of sight and mission relay infrastructure.",
+      "guidance": "Use approved mission communication and medical support procedures."
+    },
+    "mars": {
+      "label": "Mars mission",
+      "setting": "Deep-space or Mars surface operations",
+      "one_way_delay": "Communication delay varies with Earth–Mars distance and mission configuration and can be substantial.",
+      "reply_expectation": "Immediate two-way communication with Earth cannot be assumed.",
+      "guidance": "Follow authorized onboard medical and emergency procedures. Preserve observations and communicate through the mission-approved process."
+    }
+  },
+  "environment_sources": ["C02", "C05"],
+  "environment_note": "Communication descriptions are qualitative context, not operational communication guarantees. Exact delay values and response expectations require mission-specific NASA or agency documentation. Do not use these descriptions to replace a mission communication plan."
+}

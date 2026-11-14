@@ -1,0 +1,158 @@
+
+{
+  "schema": "crew-vitals/source-registry@0.1",
+  "last_audit_review": "2026-11-13",
+  "notice": "Listing a source does not mean its raw data has been downloaded or integrated.",
+  "sources": [
+    {
+      "id": "C01",
+      "title": "NASA Human Research Program Risks",
+      "url": "https://www.nasa.gov/hrp/risks/",
+      "category": "official_challenge_resource",
+      "provenance_kind": "nasa_research",
+      "supports": "Evidence-based descriptions of cardiovascular, sleep, fitness, immune, behavioral, ocular and radiation risks.",
+      "limitations": "Research and risk context only. Does not provide astronaut-level continuous vital recordings or clinical thresholds.",
+      "download_status": "resource_reviewed"
+    },
+    {
+      "id": "C02",
+      "title": "NASA HRP Five Hazards",
+      "url": "https://www.nasa.gov/hrp/hazards/",
+      "category": "official_challenge_resource",
+      "provenance_kind": "nasa_research",
+      "supports": "The five exploration hazards: radiation, isolation and confinement, distance, gravity and hostile or closed environments.",
+      "limitations": "Supports hazard explanations, not cabin telemetry or operational alert policies.",
+      "download_status": "resource_reviewed"
+    },
+    {
+      "id": "C03",
+      "title": "NASA HRP Ongoing Research",
+      "url": "https://www.nasa.gov/hrp/ongoing-hrp-research/",
+      "category": "official_challenge_resource",
+      "provenance_kind": "nasa_research",
+      "supports": "Research areas and measurement approaches that can inform indicator selection.",
+      "limitations": "Does not provide downloadable data for every research activity described.",
+      "download_status": "resource_reviewed"
+    },
+    {
+      "id": "C04",
+      "title": "Canadian Space Agency: Monitoring Radiation and Astronaut Health",
+      "url": "https://www.asc-csa.gc.ca/eng/news/articles/2026/2026-02-26-monitoring-radiation-astronaut-health.asp",
+      "category": "official_challenge_resource",
+      "provenance_kind": "nasa_research",
+      "supports": "Radiation monitoring context and space radiation instruments, including CANS.",
+      "limitations": "Does not provide a patient-level radiation time series or personal dose recommendations.",
+      "download_status": "resource_reviewed"
+    },
+    {
+      "id": "C05",
+      "title": "Canadian Space Agency: Why Conduct Science Experiments in Space?",
+      "url": "https://www.asc-csa.gc.ca/eng/iss/science/why-do-we-conduct-science-experiments-in-space.asp",
+      "category": "official_challenge_resource",
+      "provenance_kind": "nasa_research",
+      "supports": "Background on long-duration spaceflight, microgravity, radiation and isolation.",
+      "limitations": "General science context; not a numerical astronaut vital-sign dataset.",
+      "download_status": "resource_reviewed"
+    },
+    {
+      "id": "D01",
+      "title": "NASA OSDR Environmental Data Application",
+      "url": "https://visualization.osdr.nasa.gov/eda/",
+      "category": "nasa_measured_or_analog_data",
+      "provenance_kind": "environment_measured",
+      "supports": "Environmental measurements such as CO2, temperature, relative humidity and radiation from selected ISS experiments or hardware.",
+      "limitations": "Confirm mission, sensor location, units and sampling interval before use. Environmental readings must not automatically be presented as personal astronaut exposure.",
+      "download_status": "tables_verified_raw_export_not_retrieved"
+    },
+    {
+      "id": "D02",
+      "title": "NASA OSDR RadLab",
+      "url": "https://visualization.osdr.nasa.gov/radlab/gui/overview/",
+      "category": "nasa_measured_or_analog_data",
+      "provenance_kind": "environment_measured",
+      "supports": "Radiation instrument readings and historical radiation context from ISS and beyond-LEO platforms.",
+      "limitations": "Instrument readings must not be presented as an individual's personal dose or health risk.",
+      "download_status": "export_options_documented_raw_file_not_retrieved"
+    },
+    {
+      "id": "D03",
+      "title": "NASA NLSP UTMB Bedrest Campaign 1 Actigraphy",
+      "url": "https://nlsp.nasa.gov/search/data/details/e26501eb-7d7a-5012-8c8e-c5bdb3eecaf6?dataType=DATASETS",
+      "category": "nasa_measured_or_analog_data",
+      "provenance_kind": "analog_measured",
+      "supports": "Sleep-related measures such as sleep duration, latency and efficiency in a bed-rest analog study.",
+      "limitations": "Ground-based bed-rest participants, not astronauts sleeping in space. Actual files and access conditions still require verification.",
+      "download_status": "dataset_entry_verified_files_not_inspected"
+    },
+    {
+      "id": "D06",
+      "title": "NASA OSDR Study OSD-575",
+      "url": "https://osdr.nasa.gov/bio/repo/data/studies/OSD-575",
+      "category": "nasa_measured_or_analog_data",
+      "provenance_kind": "nasa_measured",
+      "supports": "Serum metabolic, immune and cardiac-related biomarker research context.",
+      "limitations": "Sample-based measurements, not continuous wearable readings. Verify individual files and sampling details before use.",
+      "download_status": "study_identified_individual_files_require_verification"
+    },
+    {
+      "id": "D18",
+      "title": "NASA Human Research Program Standard Measures",
+      "url": "https://www.nasa.gov/reference/standard-measures/",
+      "category": "nasa_research_reference",
+      "provenance_kind": "nasa_research",
+      "supports": "Standardized categories for sleep, activity, cognition, blood, urine and fitness measurements.",
+      "limitations": "Not all astronaut records are publicly downloadable.",
+      "download_status": "resource_identified"
+    },
+    {
+      "id": "D19",
+      "title": "NASA Human Research Roadmap Evidence Reports",
+      "url": "https://humanresearchroadmap.nasa.gov/evidence/",
+      "category": "nasa_research_reference",
+      "provenance_kind": "nasa_research",
+      "supports": "Scientific evidence about spaceflight health risks, including sleep and cardiovascular risks.",
+      "limitations": "Evidence reports support explanations; they are not continuous sensor datasets.",
+      "download_status": "resource_identified"
+    },
+    {
+      "id": "E01",
+      "title": "WESAD Dataset",
+      "url": "https://archive.ics.uci.edu/dataset/465/wesad",
+      "category": "external_earth_reference",
+      "provenance_kind": "external_earth",
+      "supports": "Independent testing of physiological signal processing methods.",
+      "limitations": "Earth-based wearable dataset. Never label its records as NASA or astronaut data.",
+      "download_status": "dataset_identified"
+    },
+    {
+      "id": "E02",
+      "title": "BIDMC PPG and Respiration Dataset",
+      "url": "https://www.physionet.org/content/bidmc/1.0.0/",
+      "category": "external_earth_reference",
+      "provenance_kind": "external_earth",
+      "supports": "Independent testing of physiological signal processing methods.",
+      "limitations": "Hospital-based Earth data; separate from astronaut records and spaceflight measurements.",
+      "download_status": "dataset_identified"
+    },
+    {
+      "id": "X01",
+      "title": "Team-created simulated crew records",
+      "url": null,
+      "category": "team_created_demo_data",
+      "provenance_kind": "simulated",
+      "supports": "Demonstrating daily check-ins, personal trends, missing-data cases and the prototype interface.",
+      "limitations": "Fictional demonstration data only. Must never be described as NASA-measured or actual astronaut observations.",
+      "download_status": "created_for_demonstration"
+    }
+  ],
+  "provenance_rules": [
+    "Every displayed measurement must identify its source and provenance.",
+    "Use the appropriate provenance category: nasa_measured, analog_measured, external_earth, simulated or manually_entered.",
+    "Do not combine different people, missions, locations or study populations as if they belong to one astronaut.",
+    "Do not describe simulated records as real NASA observations.",
+    "Do not interpret instrument radiation readings as personal biological risk or individual accumulated dose.",
+    "Do not present trends or prototype indicators as medical diagnoses or validated clinical predictions.",
+    "If a dataset has not been downloaded and inspected, clearly state that it has not yet been ingested.",
+    "Keep the original source URL and measurement context available wherever evidence is displayed."
+  ]
+}
