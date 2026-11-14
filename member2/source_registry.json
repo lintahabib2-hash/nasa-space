@@ -1,0 +1,62 @@
+{
+  "schema_version": "1.0",
+  "policy": "Never combine distinct participants, missions, organisms, sensor contexts or study designs into one person's synthetic longitudinal history.",
+  "datasets": [
+    {
+      "id": "NASA_OSDR_EDA_RR1",
+      "provider": "NASA",
+      "data_kind": "historical research-environment telemetry",
+      "source_url": "https://visualization.osdr.nasa.gov/eda/",
+      "integration_status": "locally_audited_adapter_available",
+      "member_owner": 4,
+      "requires_local_file": "RR-1_EDA_Telemetry_table.csv",
+      "public_redistribution_verified": false,
+      "notes": "Ground and ISS experiment environment columns; do not imply personal exposure or current ISS cabin health conditions."
+    },
+    {
+      "id": "NASA_NLSP_BRSMAct_UTMB_C1",
+      "provider": "NASA",
+      "data_kind": "human bed-rest analog sleep actigraphy",
+      "source_url": "https://nlsp.nasa.gov/search/data/details/e26501eb-7d7a-5012-8c8e-c5bdb3eecaf6?dataType=DATASETS",
+      "integration_status": "locally_processed_research_preview_available",
+      "member_owner": 2,
+      "requires_local_file": "bedrest_trends.json",
+      "public_redistribution_verified": false,
+      "notes": "207 daily records across 3 participants; only date precision; pre-test reference inadequate for clinical baselines."
+    },
+    {
+      "id": "NASA_RADLAB",
+      "provider": "NASA",
+      "data_kind": "radiation instrument telemetry",
+      "source_url": "https://visualization.osdr.nasa.gov/radlab/gui/data-api/",
+      "integration_status": "candidate_not_downloaded_or_audited",
+      "member_owner": 4,
+      "public_redistribution_verified": false,
+      "notes": "Requires specific instrument ID, measurement quantity, unit (microGy/hour vs microSv/hour), UTC timestamp, and provenance."
+    },
+    {
+      "id": "CSA_PRET",
+      "provider": "Canadian Space Agency",
+      "data_kind": "ground neurocognitive performance evaluation",
+      "source_url": "https://open.canada.ca/data/en/dataset/c22fa749-b005-4956-bf68-2ac2b9e68d31",
+      "integration_status": "candidate_underlying_files_not_inspected",
+      "member_owner": 5,
+      "license_catalog": "Open Government Licence - Canada",
+      "notes": "Legacy FTP resources; inspect actual data, schema and participant privacy before loading."
+    },
+    {
+      "id": "NASA_OSD_575",
+      "provider": "NASA",
+      "data_kind": "Inspiration4 human blood serum biochemical and immune/cardiac assays",
+      "source_url": "https://osdr.nasa.gov/bio/repo/data/studies/OSD-575",
+      "integration_status": "candidate_no_local_numeric_file_validated",
+      "member_owner": 2,
+      "notes": "Small cohort and discrete sampling timepoints; historical comparisons only, no realtime health alert validation."
+    }
+  ],
+  "official_challenge_references": [
+    "https://www.nasa.gov/hrp/risks/",
+    "https://www.nasa.gov/hrp/hazards/",
+    "https://www.nasa.gov/hrp/"
+  ]
+}
