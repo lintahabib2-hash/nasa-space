@@ -1,4 +1,10 @@
-// App shell and routing
-// Owner: Member 3 (Frontend & UX)
-// TODO: implement during the event window.
-export {};
+import { AppShell } from "./components/layout/AppShell";
+import { DashboardPage } from "./features/dashboard/DashboardPage";
+
+export default function App() {
+  return (
+    <AppShell>
+      <DashboardPage />
+    </AppShell>
+  );
+}
