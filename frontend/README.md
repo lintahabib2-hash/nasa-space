@@ -67,7 +67,8 @@ python scripts/make_fixtures.py --analytics /tmp/analytics.py
 - The evidence drawer is a modal dialog. Focus moves to Close, Tab is trapped, Escape closes it and focus returns to the opener.
 - Selectors are native radio groups. The comms banner is an `aria-live` region.
 - Every chart has a text summary (`aria-label`) and a "Show data table" view.
-- Light and dark themes. Respects `prefers-reduced-motion` and forced-colors mode. Layout tested at 390 px width.
+- Light "suit-white" theme only. Respects `prefers-reduced-motion` (the signal pulse stops) and forced-colors mode. Layout tested at 390 px width.
+- Fonts (Chakra Petch, Atkinson Hyperlegible, IBM Plex Mono) are bundled via `@fontsource`, so they work offline.
 
 ## Handoffs
 

@@ -7,7 +7,7 @@ import { EvidenceDrawer } from "../../components/evidence-drawer/EvidenceDrawer"
 import { ProvenanceBadge } from "../../components/evidence-drawer/ProvenanceBadge";
 import { StatusChip } from "../../components/status/StatusChip";
 import { configuredMode, FIXTURE_BUNDLES, KNOWLEDGE } from "./dataSource";
-import { humanize } from "./format";
+import { fmtValue, humanize } from "./format";
 import { statusDisplay, worstTier, type Tier } from "./statusDisplay";
 import type { CrewBundle, DataMode, IndicatorData, Knowledge } from "./types";
 import { useCrewData } from "./useCrewData";
@@ -80,7 +80,7 @@ export function DashboardPage({ knowledge = KNOWLEDGE }: { knowledge?: Knowledge
         <EnvironmentSelector environments={knowledge.environments} value={envId} onChange={setEnvId} />
       </div>
 
-      {env && <CommsDelayBanner env={env} alert={anyAction} note={knowledge.environment_note} />}
+      {env && <CommsDelayBanner env={env} envId={envId} alert={anyAction} note={knowledge.environment_note} />}
 
       {state.kind === "loading" && <div className="card" role="status">Loading data from the local API…</div>}
 
@@ -107,7 +107,8 @@ export function DashboardPage({ knowledge = KNOWLEDGE }: { knowledge?: Knowledge
           </div>
 
           <section className="card" aria-labelledby="overview-title">
-            <h2 id="overview-title">All indicators</h2>
+            <span className="eyebrow">Latest check-in vs. personal baseline</span>
+            <h2 id="overview-title">Today&apos;s readings</h2>
             <div className="overview">
               {bundle.indicators.map((i) => {
                 const card = knowledge.indicators[i.measurement];
@@ -119,7 +120,10 @@ export function DashboardPage({ knowledge = KNOWLEDGE }: { knowledge?: Knowledge
                     aria-current={region === regionId}
                     onClick={() => region && setRegionChoice(region)}
                   >
-                    <span className="overview__name">{card?.label ?? humanize(i.measurement)}</span>
+                    <span className="overview__top">
+                      <span className="overview__name">{card?.label ?? humanize(i.measurement)}</span>
+                      <span className="overview__value">{fmtValue(i.result.current_value, i.units)}</span>
+                    </span>
                     <StatusChip status={i.result.status} />
                   </button>
                 );
@@ -129,6 +133,7 @@ export function DashboardPage({ knowledge = KNOWLEDGE }: { knowledge?: Knowledge
 
           <div className="main-grid">
             <section className="card" aria-labelledby="bodymap-title">
+              <span className="eyebrow">Select a region</span>
               <h2 id="bodymap-title">Body map</h2>
               <BodyMap regions={regions} selected={regionId} onSelect={setRegionChoice} />
             </section>
@@ -147,6 +152,7 @@ export function DashboardPage({ knowledge = KNOWLEDGE }: { knowledge?: Knowledge
 
       {/* Member 4 mounts EnvironmentContextCard here. It stays visually separate from crew data. */}
       <section className="card env-slot" aria-labelledby="env-context-title">
+        <span className="eyebrow">Separate from crew data</span>
         <h2 id="env-context-title">Historical NASA environment context</h2>
         <p className="small muted" style={{ margin: 0 }}>
           Reserved for the NASA-measured environment or radiation panel (Member 4). Historical instrument data, not
