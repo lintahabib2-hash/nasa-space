@@ -4,6 +4,14 @@
 
 ## What is deployed
 
+Two ways, both free:
+
+- **Frontend only on GitHub Pages** (default, below). No server; the app reads the bundled snapshot.
+- **Full app: frontend on Vercel + backend API on Render** (see [Full deployment](#full-deployment-vercel--render-free)).
+  The app reads live data from the API, falls back to the snapshot when it is unreachable, and sends saved check-ins to it.
+
+### GitHub Pages (frontend only)
+
 The **frontend only**, as static files (`frontend/dist`) on **GitHub Pages**. There is no server to keep running: the
 dashboard uses its bundled simulated scenarios, and `frontend/public/data/*.json` is a snapshot of what the backend API
 returns, exported by `backend/scripts/export_static_snapshot.py`. A service worker (`dist/sw.js`, generated at build time)
@@ -20,6 +28,62 @@ the same workflow that runs the tests.
 2. Repo **Settings -> Branches -> Add rule for `main`**: require a pull request, require the status checks **backend** and
    **frontend** (from `ci.yml`), no force pushes.
 3. Fill `.github/CODEOWNERS` with real usernames (replace each `@MEMBERn`, uncomment the lines).
+
+## Full deployment: Vercel + Render (free)
+
+The backend cannot run on Vercel: Vercel runs Python as short-lived serverless functions with a read-only disk
+(only `/tmp`, wiped often and not shared between instances), so the SQLite check-in store would lose data. The API
+runs on Render instead; the frontend stays on Vercel. Deploy the backend first, because each side needs the other's URL.
+
+Who can do it: the repo owner connects the repo to Render and Vercel once (GitHub only lets the owner of a personal repo
+install those apps) and invites teammates to the Render project and the Vercel team. A collaborator can also deploy from
+a fork, or from the public repo URL (Render "Public Git Repository", `vercel` CLI), without auto-deploy.
+
+### 1. Backend on Render
+
+1. render.com -> sign up with GitHub -> **New -> Blueprint** -> pick this repo. `render.yaml` fills in everything.
+   Without the Blueprint: **New -> Web Service** with these settings:
+
+   | Field | Value |
+   |---|---|
+   | Root Directory | empty (repo root; the code imports `backend.app`) |
+   | Runtime / Plan | Python 3 / Free |
+   | Build Command | `pip install -r backend/requirements.txt` |
+   | Start Command | `uvicorn backend.app.main:app --host 0.0.0.0 --port $PORT` |
+   | Health Check Path | `/api/health` |
+   | Env vars | `PYTHON_VERSION=3.11.9`, `CREW_VITALS_SEED=1`, `CREW_VITALS_CORS=http://localhost:5173` (replaced in step 3) |
+
+2. When it is live, check `https://<name>.onrender.com/api/health`, `/docs` and `/api/baseline/all?subject_id=X01_downward_drift`.
+
+### 2. Frontend on Vercel
+
+1. vercel.com -> sign up (Hobby) with GitHub -> **Add New -> Project** -> import this repo
+   (if it is not listed: **Adjust GitHub App Permissions** and add it).
+2. Leave Framework (Other), **Root Directory `./`** and the build settings as they are; `vercel.json` sets them.
+   The build reads `shared/knowledge/`, so do not set the root to `frontend`.
+3. **Environment Variables:** `VITE_API_BASE` = `https://<name>.onrender.com` (no trailing `/`). -> **Deploy**.
+
+### 3. Connect them (CORS)
+
+Render -> service -> **Environment**: `CREW_VITALS_CORS` = the Vercel URL, e.g. `https://crew-vitals.vercel.app`
+(comma-separated for several origins). Save; Render redeploys.
+
+### 4. Check it
+
+- The Vercel site loads live data (not "saved snapshot").
+- Saving a check-in shows **"Saved on this device and sent to the crew API."**; it is listed at `<render-url>/api/checkins`.
+- DevTools -> Network -> Offline -> reload: the app still works, and check-ins say they will be sent later.
+
+### Free-plan limits
+
+- **Render free sleeps after about 15 minutes idle.** The next request wakes it (30-60 s). Meanwhile the app shows the
+  snapshot (5 s API timeout) and keeps check-ins in its outbox; they are sent on the next save or the next visit to the
+  check-in page. To keep it awake, point a free monitor (UptimeRobot, cron-job.org) at `/api/health` every 10 minutes
+  (one service running all month fits Render's 750 free hours). Before a demo, open `/api/health` once.
+- **Render free has no persistent disk.** Saved check-ins are lost on restart or redeploy; the simulated X01 scenarios
+  reload on start. For durable storage: paid instance + Render Disk at `/var/data`, `CREW_VITALS_DB=/var/data/crew_vitals.sqlite3`.
+- **`VITE_API_BASE` is baked in at build time.** After changing it in Vercel, redeploy (Deployments -> ... -> Redeploy).
+- Pushes to `main` redeploy both automatically when the repo itself is connected (not from a fork or a public URL).
 
 ## How a release happens
 
@@ -73,7 +137,7 @@ Manual: follow [offline-qa-checklist.md](offline-qa-checklist.md) in a fresh/inc
 - **Sub-path hosting works.** All asset URLs and the worker scope are relative, so `/<repo>/` is fine. (Tested by serving the build from `/nasa-space/`.)
 - **Check-ins stay on the device** (localStorage plus an IndexedDB mirror). Clearing site data in the browser deletes them; use the History export.
 - **Private/incognito windows** may discard storage when closed. The app still works; saved check-ins may not persist.
-- **No live backend on Pages.** `VITE_API_BASE` is unset in production, so the app reads the snapshot. The API is for local development and for the integration tests.
+- **No live backend on Pages.** `VITE_API_BASE` is unset there, so the app reads the snapshot. For a live API use the Vercel + Render setup above.
 - **Other hosts:** Netlify/Vercel also work. Build command `cd frontend && npm ci && npm run build`, publish directory `frontend/dist`.
-- **Vercel:** `vercel.json` at the repo root already sets install, build and output, and keeps `sw.js` uncached. Import the repo in Vercel with the **Root Directory left at the repository root** (the build reads `shared/knowledge/`), and deploy. No other settings are needed.
+- **Vercel:** `vercel.json` at the repo root already sets install, build and output, and keeps `sw.js` uncached. Import the repo with the **Root Directory left at the repository root** (the build reads `shared/knowledge/`). Set `VITE_API_BASE` only if a backend is deployed (see above).
 - **Until Pages is enabled**, the Deploy workflow still runs every test and the build, then finishes green with a warning ("GitHub Pages is not enabled") instead of failing. Enable Pages and re-run it to publish.

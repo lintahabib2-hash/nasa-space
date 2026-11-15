@@ -51,3 +51,5 @@ prototypes/offline_research/reports/
 backend/.runtime/
 
 frontend/playwright-report/
+
+.vercel

@@ -1,0 +1,20 @@
+# Render Blueprint for the Crew Vitals API (Member 6). Free plan.
+# Render dashboard -> New -> Blueprint -> pick this repo. Render asks for CREW_VITALS_CORS
+# (the frontend URL, e.g. https://crew-vitals.vercel.app). See docs/deployment.md.
+services:
+  - type: web
+    name: crew-vitals-api
+    runtime: python
+    plan: free
+    branch: main
+    autoDeploy: true
+    buildCommand: pip install -r backend/requirements.txt
+    startCommand: uvicorn backend.app.main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /api/health
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.9
+      - key: CREW_VITALS_SEED
+        value: "1"
+      - key: CREW_VITALS_CORS
+        sync: false
