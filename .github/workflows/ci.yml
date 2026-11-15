@@ -1,4 +1,4 @@
-# CI: lint + backend pytest + frontend vitest on every PR
+# CI: backend pytest + frontend typecheck, vitest, and browser tests on every PR
 # Owner: Member 6 (Backend, Integration, QA & Deployment)
 #
 # Mark both jobs ("backend" and "frontend") as required status checks on `main`
