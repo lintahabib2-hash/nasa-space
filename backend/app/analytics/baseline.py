@@ -11,6 +11,9 @@ MIN_REFERENCE = 5
 PERSISTENCE_COUNT = 3
 DEMO_Z_THRESHOLD = 3.0
 
+USABLE_STATES = ("valid",)
+FLAGGED_STATES = ("missing", "outlier", "unknown")
+
 REQUIRED = (
     "subject_id", "study_id", "source_id",
     "provenance_kind", "measurement", "value",
@@ -70,7 +73,9 @@ def _validated_fields(record, *, allow_missing=False):
     if record["units"] != units:
         raise ValueError("Measurement units mismatch")
 
-    if "quality_state" in record and record["quality_state"] not in ("valid", "missing"):
+    # Project Guide §6 quality states. "outlier" and "unknown" are legitimate flags from an
+    # adapter; they are treated like a missing reading (never scored), not as malformed input.
+    if "quality_state" in record and record["quality_state"] not in USABLE_STATES + FLAGGED_STATES:
         raise ValueError("Unsupported observation quality state")
 
     raw_time = record.get("timestamp_utc")
@@ -98,7 +103,7 @@ def _validated_fields(record, *, allow_missing=False):
             raise ValueError("Expected an integer measurement")
 
     if not allow_missing and (
-        when is None or value is None or record.get("quality_state") == "missing"
+        when is None or value is None or record.get("quality_state") in FLAGGED_STATES
     ):
         raise ValueError("Measurement or timestamp missing")
 
@@ -179,11 +184,14 @@ def get_baseline_result(records, current):
 
     current_time, current_value = _validated_fields(current, allow_missing=True)
 
-    if (
-        current_value is None
-        or current_time is None
-        or current.get("quality_state") == "missing"
-    ):
+    flagged = current.get("quality_state") in FLAGGED_STATES
+    if current_value is None or current_time is None or flagged:
+        state = current.get("quality_state")
+        reason = (
+            f"Latest measurement flagged as {state}; no status computed"
+            if flagged and state != "missing" and current_value is not None
+            else "Latest measurement or timestamp missing"
+        )
         return {
             "subject_id": current["subject_id"],
             "study_id": current["study_id"],
@@ -199,7 +207,7 @@ def get_baseline_result(records, current):
             "robust_z": None,
             "status": "unknown",
             "quality_state": "missing",
-            "reasons": ["Latest measurement or timestamp missing"],
+            "reasons": [reason],
             "severity_basis": "unvalidated_demo_statistical_rule",
             "not_medical_diagnosis": True,
         }
