@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "crew-vitals/environment-series@1",
+  "title": "NASA environment / radiation series",
+  "description": "Output of get_environment_series() (Member 4). Historical instrument data: it never carries a crew subject_id and is never joined to crew readings. Owner: Member 6.",
+  "type": "object",
+  "required": ["source_id", "citation", "provenance_kind", "instrument", "series", "limitations", "subject_id"],
+  "properties": {
+    "source_id": { "type": "string", "minLength": 1 },
+    "registry_id": { "type": "string" },
+    "source_url": { "type": ["string", "null"] },
+    "citation": { "type": "string", "minLength": 1 },
+    "display_title": { "type": "string" },
+    "provenance_kind": { "enum": ["nasa_measured", "analog_measured", "external_earth", "simulated"] },
+    "instrument": { "type": "string", "minLength": 1 },
+    "subject_id": { "type": "null", "description": "Environment data is not a crew member's record." },
+    "limitations": { "type": "array", "minItems": 1, "items": { "type": "string", "minLength": 1 } },
+    "is_fallback_not_ingested": { "type": "boolean" },
+    "quality_summary": { "type": "object" },
+    "series": {
+      "type": "array", "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["measurement", "units", "points"],
+        "properties": {
+          "measurement": { "type": "string" },
+          "label": { "type": "string" },
+          "units": { "type": "string", "minLength": 1 },
+          "points": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["timestamp_utc", "value", "quality_state"],
+              "properties": {
+                "timestamp_utc": { "type": "string", "pattern": "Z$" },
+                "value": { "type": ["number", "null"] },
+                "quality_state": { "type": "string" }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

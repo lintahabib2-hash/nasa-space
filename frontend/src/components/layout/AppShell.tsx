@@ -90,7 +90,7 @@ export function AppShell({ children, nav }: { children: ReactNode; nav?: ReactNo
         <div className="app-header__inner">
           <img
             className="brand__logo"
-            src="/images/nasa-space-health-monitoring-logo.png"
+            src={`${import.meta.env.BASE_URL}images/nasa-space-health-monitoring-logo.png`}
             alt="NASA Space Health Monitoring logo"
           />
           <h1 className="brand__name">NASA Space Health Monitoring Agent</h1>

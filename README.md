@@ -78,4 +78,44 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for the branch and PR workflow.
 
 ## Setup
 
-_TODO (M6):_ add the one-command start, test commands, live URL and the threshold rationale here.
+**Live app:** https://lintahabib2-hash.github.io/nasa-space/ (works offline after the first visit; header badge shows **Offline ready**).
+
+### Run it
+
+Needs Node 20+ (frontend) and Python 3.11+ (backend, optional).
+
+```bash
+# Frontend: one command to start. Uses the bundled simulated scenarios; no backend needed.
+cd frontend && npm ci && npm run dev          # http://localhost:5173
+
+# Backend API (optional): FastAPI + local SQLite
+pip install -r backend/requirements.txt
+uvicorn backend.app.main:app --port 8000      # interactive docs at http://127.0.0.1:8000/docs
+```
+
+### Test it
+
+```bash
+pip install -r backend/requirements-dev.txt && python -m pytest                    # 140+ backend tests
+cd frontend && npm run verify                                                      # typecheck, unit tests, build, browser tests
+```
+
+`npm run verify` includes the **offline test**: it loads the production build, switches the network off, and checks two
+contrasting scenarios, missing data, and a saved check-in. See [docs/offline-qa-checklist.md](docs/offline-qa-checklist.md).
+Deployment, release steps and the live-URL check are in [docs/deployment.md](docs/deployment.md).
+
+### Threshold rationale (demo rules, not clinical)
+
+Each person is compared only with **their own** earlier readings: a robust z-score `(current - median) / (1.4826 x MAD)`,
+flagged for **review** only when **3 consecutive daily readings** are beyond **|z| = 3.0** on the same side, using at least
+**5** prior readings. Missing data gives `unknown`, too little history gives `insufficient_history`, and a flat history gives
+`insufficient_scale`; the app never reports "healthy" because data is missing. These are illustrative rules, not clinically
+calibrated and not NASA limits. Full table and reasons: [docs/thresholds.md](docs/thresholds.md). Data formats and API
+routes: [docs/data-contract.md](docs/data-contract.md).
+
+### What is simulated
+
+All crew data in this repository is **simulated** and labelled so everywhere it appears. The environment card shows
+historical NASA instrument data (never a person's dose) with its citation and limitations.
+
+Submission links and the final checklist: [submission/links.md](submission/links.md), [submission/checklist.md](submission/checklist.md).

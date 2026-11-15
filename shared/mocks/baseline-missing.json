@@ -1,0 +1,23 @@
+{
+  "baseline_value": 7.1,
+  "current_value": 7.0,
+  "history_count": 9,
+  "measurement": "sleep_duration",
+  "not_medical_diagnosis": true,
+  "provenance_kind": "simulated",
+  "quality_state": "adequate_for_demo",
+  "reasons": [
+    "No sustained deviation under the demonstration rule"
+  ],
+  "reference_count": 7,
+  "reference_end_utc": "2026-11-07T07:00:00+00:00",
+  "reference_start_utc": "2026-11-01T07:00:00+00:00",
+  "rejected_history_count": 1,
+  "robust_z": -0.674,
+  "severity_basis": "unvalidated_demo_statistical_rule",
+  "source_id": "X01",
+  "status": "no_persistent_flag",
+  "study_id": "X01_engineering_fixture",
+  "subject_id": "X01_missing_observation",
+  "units": "hours"
+}

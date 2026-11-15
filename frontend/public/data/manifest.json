@@ -1,0 +1,27 @@
+{
+  "contains_real_astronaut_data": false,
+  "files": {
+    "baselines.json": {
+      "api_path": "/api/baseline/all?subject_id=<subject_id>",
+      "bytes": 2452,
+      "sha256": "2f704fda0e3444fbd9816c0452742108484881a77a9ab25d156b7a43e6fdc6f1"
+    },
+    "environment.json": {
+      "api_path": "/api/environment",
+      "bytes": 41781,
+      "sha256": "032bbfd39156d5e1db62de1381aa0d85b2d06f2fa7425b0af3aef7a3b0e143e3"
+    },
+    "knowledge.json": {
+      "api_path": "/api/knowledge",
+      "bytes": 21419,
+      "sha256": "80440854319f64954da036768c527f4586fd40d4d34d4e813354e7212c7a1d18"
+    },
+    "sources.json": {
+      "api_path": "/api/sources",
+      "bytes": 8530,
+      "sha256": "8f1abde470dafeeb0b2405feb5c6b1288af659bc8cb55e44ede99fe3a47ef91e"
+    }
+  },
+  "generated_by": "backend/scripts/export_static_snapshot.py",
+  "schema": "crew-vitals/snapshot@1"
+}
