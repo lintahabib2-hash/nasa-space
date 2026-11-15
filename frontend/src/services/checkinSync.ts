@@ -17,7 +17,11 @@ export interface SyncOptions {
   fetchImpl?: typeof fetch;
   storage?: Storage;
   timeoutMs?: number;
+  /** Override for tests; defaults to navigator.onLine. */
+  isOnline?: () => boolean;
 }
+
+const browserOnline = () => typeof navigator === "undefined" || navigator.onLine !== false;
 
 type OutboxRecord = { record_id: string } & Record<string, unknown>;
 
@@ -69,6 +73,12 @@ export async function syncCheckin(record: OutboxRecord | null, o: SyncOptions = 
   const outbox = readOutbox(storage).filter((r) => !record || r.record_id !== record.record_id);
   if (record) outbox.push(record);
   writeOutbox(storage, outbox);
+
+  // The browser knows it is offline: keep everything queued and wait for the "online" event
+  // instead of firing requests that cannot succeed.
+  if (!(o.isOnline ?? browserOnline)()) {
+    return outbox.length ? { kind: "queued", pending: outbox.length, reason: "offline" } : { kind: "sent", sent: 0 };
+  }
 
   const remaining: OutboxRecord[] = [];
   let sent = 0;
