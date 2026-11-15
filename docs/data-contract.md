@@ -49,6 +49,12 @@ Member 4's `get_environment_series()`. Historical instrument data with its citat
 Member 5's daily check-in. Each indicator inside it is an envelope (section 1) with `provenance_kind: manually_entered`.
 `POST /api/checkins` validates against this schema, stores the record, and turns its indicators into observations in one transaction.
 
+When `VITE_API_BASE` is set, the check-in page also sends each saved record here (`src/services/checkinSync.ts`).
+The record is always saved on the device first; if the API is unreachable it waits in a local outbox and is resent when
+the browser is back online. The API upserts by `record_id`, so a resend never duplicates. Records the API refuses
+(HTTP 422) are not retried; they stay in the on-device history. `shared/mocks/checkin.sample.json` is a record made by
+the real form code, and `backend/tests/integration/test_checkin_contract.py` keeps both sides in agreement.
+
 ## 5. API routes (`uvicorn backend.app.main:app`)
 
 | Route | Purpose |

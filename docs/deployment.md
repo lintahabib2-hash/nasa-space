@@ -75,3 +75,5 @@ Manual: follow [offline-qa-checklist.md](offline-qa-checklist.md) in a fresh/inc
 - **Private/incognito windows** may discard storage when closed. The app still works; saved check-ins may not persist.
 - **No live backend on Pages.** `VITE_API_BASE` is unset in production, so the app reads the snapshot. The API is for local development and for the integration tests.
 - **Other hosts:** Netlify/Vercel also work. Build command `cd frontend && npm ci && npm run build`, publish directory `frontend/dist`.
+- **Vercel:** `vercel.json` at the repo root already sets install, build and output, and keeps `sw.js` uncached. Import the repo in Vercel with the **Root Directory left at the repository root** (the build reads `shared/knowledge/`), and deploy. No other settings are needed.
+- **Until Pages is enabled**, the Deploy workflow still runs every test and the build, then finishes green with a warning ("GitHub Pages is not enabled") instead of failing. Enable Pages and re-run it to publish.
