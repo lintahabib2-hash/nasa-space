@@ -46,3 +46,8 @@ frontend/.vite/
 # Keep local NASA data and generated reports out of Git.
 prototypes/offline_research/data/
 prototypes/offline_research/reports/
+
+# Local API database (Member 6)
+backend/.runtime/
+
+frontend/playwright-report/

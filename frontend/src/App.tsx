@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { AppShell } from "./components/layout/AppShell";
 import { CheckInPage } from "./features/checkin/CheckInPage";
 import { DashboardPage } from "./features/dashboard/DashboardPage";
+import { OfflineBadge } from "./sw/OfflineBadge";
 
 // Hash routes work on any static host and offline: #/ (dashboard), #/checkin
 type Route = "dashboard" | "checkin";
@@ -20,10 +21,13 @@ export default function App() {
   }, []);
 
   const nav = (
-    <nav className="app-nav" aria-label="Sections">
-      <a href="#/" aria-current={route === "dashboard" ? "page" : undefined}>Crew dashboard</a>
-      <a href="#/checkin" aria-current={route === "checkin" ? "page" : undefined}>Daily check-in</a>
-    </nav>
+    <div className="app-nav-row">
+      <nav className="app-nav" aria-label="Sections">
+        <a href="#/" aria-current={route === "dashboard" ? "page" : undefined}>Crew dashboard</a>
+        <a href="#/checkin" aria-current={route === "checkin" ? "page" : undefined}>Daily check-in</a>
+      </nav>
+      <OfflineBadge />
+    </div>
   );
 
   return <AppShell nav={nav}>{route === "checkin" ? <CheckInPage /> : <DashboardPage />}</AppShell>;

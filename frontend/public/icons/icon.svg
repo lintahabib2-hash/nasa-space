@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="NASA Space Health Monitoring Agent">
+  <rect width="128" height="128" rx="26" fill="#110515"/>
+  <circle cx="64" cy="64" r="44" fill="none" stroke="#b26fcb" stroke-width="6"/>
+  <polyline points="22,66 46,66 56,40 72,92 82,66 106,66" fill="none" stroke="#ffdf91" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

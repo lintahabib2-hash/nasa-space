@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "crew-vitals/snapshot-manifest@1",
+  "title": "Static offline snapshot manifest",
+  "description": "frontend/public/data/manifest.json, written by backend/scripts/export_static_snapshot.py. Lets the static deploy (no API) serve the same answers the API would. Deterministic: no wall-clock time, so CI can detect a stale snapshot. Owner: Member 6.",
+  "type": "object",
+  "required": ["schema", "generated_by", "contains_real_astronaut_data", "files"],
+  "properties": {
+    "schema": { "const": "crew-vitals/snapshot@1" },
+    "generated_by": { "type": "string" },
+    "contains_real_astronaut_data": { "const": false },
+    "files": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object", "required": ["sha256", "bytes", "api_path"],
+        "properties": { "sha256": { "type": "string" }, "bytes": { "type": "integer" }, "api_path": { "type": "string" } }
+      }
+    }
+  }
+}

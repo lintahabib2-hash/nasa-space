@@ -2,3 +2,9 @@
 
 # NASA research preprocessing adapters
 pandas>=2.2,<4
+
+# API + contracts + local persistence (Member 6)
+fastapi>=0.110,<1
+pydantic>=2.6,<3
+uvicorn>=0.29,<1
+jsonschema>=4.21,<5

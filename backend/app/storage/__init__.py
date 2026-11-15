@@ -1,5 +1,5 @@
-"""Local persistence layer
+"""Local persistence (Member 6)."""
 
-Owner: Member 6 (Backend, Integration, QA & Deployment)
-TODO: implement during the event window.
-"""
+from .repository import Repository, RepositoryError
+
+__all__ = ["Repository", "RepositoryError"]

@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "crew-vitals/envelope@1",
+  "title": "Crew Vitals observation envelope",
+  "description": "One measurement for one subject at one UTC instant (Project Guide section 6). Owner: Member 6. Mirrors backend/app/contracts/envelope.py and frontend/src/types/contracts.ts.",
+  "type": "object",
+  "required": ["source_id", "provenance_kind", "subject_id", "study_id", "measurement", "value", "units", "timestamp_utc", "quality_state"],
+  "additionalProperties": false,
+  "properties": {
+    "source_id": { "type": "string", "pattern": "^[A-Za-z0-9_.:-]{1,80}$" },
+    "provenance_kind": { "enum": ["nasa_measured", "analog_measured", "external_earth", "simulated", "manually_entered", "crew_self_report"] },
+    "subject_id": { "type": "string", "pattern": "^[A-Za-z0-9_.:-]{1,80}$" },
+    "study_id": { "type": "string", "pattern": "^[A-Za-z0-9_.:-]{1,80}$" },
+    "measurement": { "type": "string", "pattern": "^[A-Za-z0-9_.:-]{1,80}$" },
+    "value": { "type": ["number", "null"], "description": "Finite number, or null when the reading is missing (never NaN, never imputed)." },
+    "units": { "type": "string", "pattern": "\\S" },
+    "timestamp_utc": { "type": "string", "pattern": "Z$", "description": "ISO-8601 UTC, ends in Z" },
+    "quality_state": { "enum": ["valid", "missing", "outlier", "unknown"] },
+    "reference_url": { "type": ["string", "null"] }
+  },
+  "allOf": [
+    { "if": { "properties": { "value": { "type": "null" } }, "required": ["value"] }, "then": { "properties": { "quality_state": { "const": "missing" } } } },
+    { "if": { "properties": { "quality_state": { "const": "missing" } }, "required": ["quality_state"] }, "then": { "properties": { "value": { "type": "null" } } } }
+  ]
+}

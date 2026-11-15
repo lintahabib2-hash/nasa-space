@@ -1,0 +1,11 @@
+{
+  "name": "NASA Space Health Monitoring Agent",
+  "short_name": "Crew Vitals",
+  "description": "Offline-first crew readiness and context monitor. Decision support, not a diagnosis.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#110515",
+  "theme_color": "#110515",
+  "icons": [{ "src": "icons/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }]
+}
