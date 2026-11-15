@@ -59,4 +59,15 @@ describe("check-in sync to the crew API (Member 6)", () => {
     expect(await syncCheckin(null, { apiBase: "http://api.test", storage, fetchImpl: rejects })).toEqual({ kind: "sent", sent: 0 });
     expect(storage.getItem(OUTBOX_KEY)).toBeNull();
   });
+
+  it("does not try the network while the browser reports it is offline", async () => {
+    const storage = new MemoryStorage();
+    const fetchImpl = ok();
+    const offline = await syncCheckin(record("a"), { apiBase: "http://api.test", storage, fetchImpl, isOnline: () => false });
+    expect(offline).toEqual({ kind: "queued", pending: 1, reason: "offline" });
+    expect(fetchImpl).not.toHaveBeenCalled();
+
+    expect(await syncCheckin(null, { apiBase: "http://api.test", storage, fetchImpl, isOnline: () => true })).toEqual({ kind: "sent", sent: 1 });
+    expect(storage.getItem(OUTBOX_KEY)).toBeNull();
+  });
 });
