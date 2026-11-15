@@ -5,8 +5,36 @@
 > adapter `backend/app/environment/osdr_eda.py`, `get_environment_series()` in `backend/app/environment/series.py`,
 > audit records [environment-audit.csv](environment-audit.csv), RadLab first 100 rows `data/nasa/radlab/first_100_rows.csv`.
 >
-> **Open items:** the first-100-row audit below covers the RadLab probe; the EDA RR-1 telemetry (the chosen source)
-> still needs its own first-100-row record. Instrument/sensor ID for the RR-1 series is not given in the export.
+> **Open item:** the instrument/sensor ID for the RR-1 series is not given in the export.
+> Fallback (cited static chart, not ingested data): [data/fallback/](../data/fallback/README.md).
+
+## EDA RR-1 telemetry: first 100 rows (the chosen source)
+
+Rows 1–100 of `RR-1_EDA_Telemetry_table.csv`, saved unchanged as `data/nasa/osdr-eda/first_100_rows.csv`.
+
+| Check | Result |
+|---|---|
+| Mission tag | RR-1 (from the EDA export; rodent-habitat experiment, not crew data) |
+| Instrument / sensor ID | Not given in the export |
+| Time column | `Controller_Time_GMT`, minute precision, read as UTC |
+| Time span | 2014-09-20 03:59 to 12:14 UTC |
+| Sampling interval | 300 s for all 99 intervals; sorted; 0 duplicate timestamps |
+| Missing values | 0 blank cells in all 7 columns |
+| Units (from column names) | `degC` (temperature), `percent` (relative humidity), `ppm` (CO2) |
+| Negative / non-finite | 0 in every column |
+
+| Column | Min | Max | Median | Distinct values |
+|---|---:|---:|---:|---:|
+| Temp_degC_Ground | 22.7 | 24.1 | 23.4 | 15 |
+| Temp_degC_ISS | 22.8 | 24.1 | 23.4 | 14 |
+| RH_percent_Ground | 36 | 43 | 38 | 8 |
+| RH_percent_ISS | 36 | 39 | 37 | 4 |
+| CO2_ppm_Ground | 456 | 494 | 476 | 18 |
+| CO2_ppm_ISS | 2621 | 2653 | 2641 | 9 |
+
+Outliers: no value is physically implausible. A robust |z| > 5 screen flags 43 ISS CO2 rows, but only because that
+column moves in tiny steps (9 distinct values across 32 ppm), so its median absolute deviation is very small; these are
+not treated as outliers. The adapter only quarantines physically impossible (negative) readings.
 
 ## Primary Data Source (NASA EDA — RR-1)
 

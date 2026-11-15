@@ -1,4 +1,5 @@
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
+import { startOutboxRetry, syncCheckin, type SyncResult } from "../../services/checkinSync";
 import { ProvenanceBadge } from "../../components/evidence-drawer/ProvenanceBadge";
 import { StreakCard } from "../gamification/Streaks";
 import { ReactionTimeTask } from "../reaction-time/ReactionTimeTask";
@@ -22,6 +23,10 @@ export function CheckInPage() {
   const [{ records, error }, setState] = useState(initialRecords);
   const [prompt, setPrompt] = useState(() => PROMPTS[Math.floor(Math.random() * PROMPTS.length)]);
   const onPrompt = useCallback((text: string) => setPrompt(text), []);
+  const [sync, setSync] = useState<SyncResult>({ kind: "local_only" });
+
+  // Member 6: when a crew API is configured, retry any check-ins that could not be sent earlier.
+  useEffect(() => startOutboxRetry(), []);
 
   return (
     <div className="ci-page">
@@ -45,8 +50,16 @@ export function CheckInPage() {
             onSave={(record) => {
               setState({ records: appendCheckin(record), error: "" });
               setPrompt("Thanks for checking in. Take a moment for yourself.");
+              void syncCheckin(record as unknown as { record_id: string } & Record<string, unknown>).then(setSync);
             }}
           />
+          {sync.kind !== "local_only" && (
+            <p className="small muted ci-sync" role="status" aria-live="polite" data-testid="checkin-sync">
+              {sync.kind === "sent"
+                ? "Saved on this device and sent to the crew API."
+                : `Saved on this device. ${sync.pending} check-in${sync.pending === 1 ? "" : "s"} will be sent to the crew API when it is reachable.`}
+            </p>
+          )}
           <ReactionTimeTask onSave={(record) => setState({ records: appendReaction(record), error: "" })} />
           <HistoryList records={records} />
         </div>
