@@ -80,7 +80,8 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for the branch and PR workflow.
 
 **Live app:** https://lintahabib2-hash.github.io/nasa-space/ (works offline after the first visit; header badge shows **Offline ready**).
 It goes live once a repo admin sets **Settings → Pages → Source: GitHub Actions**; until then the Deploy workflow
-tests and builds but does not publish. Vercel also works with no settings (`vercel.json`); see [docs/deployment.md](docs/deployment.md).
+tests and builds but does not publish. For the full app (frontend on Vercel, API on Render, both free; `vercel.json` and
+`render.yaml` are ready), follow [docs/deployment.md](docs/deployment.md#full-deployment-vercel--render-free).
 
 ### Run it
 
