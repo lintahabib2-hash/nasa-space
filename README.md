@@ -56,14 +56,14 @@ Each placeholder file says which member owns it. Ownership is also in [.github/C
 
 ## Team and branches
 
-| Member | Role | Branch |
-|---|---|---|
-| M1 | Coordination, Science Lead, Slides and Demo Video | `feature/member1-science-pitch` |
-| M2 | Data Science and Analytics Engine | `feature/member2-analytics` |
-| M3 | Frontend and UX | `feature/member3-frontend` |
-| M4 | Environment and Radiation | `feature/member4-environment` |
-| M5 | Cognitive and Daily Check-In | `feature/member5-checkin` |
-| M6 | Backend, Integration, QA and Deployment (integrator) | `feature/member6-integration` |
+| Member | Name | Role | Branch |
+|---|---|---|---|
+| M1 | Amna | Coordination, Science Lead, Slides and Demo Video | `feature/member1-science-pitch` |
+| M2 | Sachin | Data Science and Analytics Engine | `feature/member2-analytics` |
+| M3 | Husnain | Frontend and UX | `feature/member3-frontend` |
+| M4 | Bilal | Environment and Radiation | `integration/member4-environment` |
+| M5 | Linta | Cognitive and Daily Check-In | `feature/member5-checkin` |
+| M6 | Hammad | Backend, Integration, QA and Deployment (integrator) | `feature/member6-integration` |
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for the branch and PR workflow.
 
@@ -79,6 +79,8 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for the branch and PR workflow.
 ## Setup
 
 **Live app:** https://lintahabib2-hash.github.io/nasa-space/ (works offline after the first visit; header badge shows **Offline ready**).
+It goes live once a repo admin sets **Settings → Pages → Source: GitHub Actions**; until then the Deploy workflow
+tests and builds but does not publish. Vercel also works with no settings (`vercel.json`); see [docs/deployment.md](docs/deployment.md).
 
 ### Run it
 
